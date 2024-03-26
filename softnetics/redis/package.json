@@ -1,0 +1,16 @@
+{
+  "name": "@softnetics/redis",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --dts"
+  },
+  "devDependencies": {
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "redis": "^4.6.7",
+    "rxjs": "^7.8.1"
+  }
+}

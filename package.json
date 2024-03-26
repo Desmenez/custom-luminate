@@ -1,0 +1,38 @@
+{
+  "private": true,
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "api:dev": "pnpm --filter @api/marketplace dev",
+    "web:dev": "pnpm --filter @web/marketplace dev",
+    "tutor:dev": "pnpm --filter @web/tutor dev",
+    "lint": "turbo run lint",
+    "test": "turbo run test",
+    "format": "prettier --write \"**/*.{js,jsx,ts,tsx,md,json}\"",
+    "codegen": "turbo run codegen",
+    "subtree:push": "./tools/push-subtree.sh",
+    "subtree:pull": "./tools/pull-subtree.sh",
+    "protoc:live-stream": "./packages/grpc/node_modules/.bin/grpc_tools_node_protoc --plugin=protoc-gen-ts_proto=./packages/grpc/node_modules/.bin/protoc-gen-ts_proto --ts_proto_out=./packages/grpc/src/lib --ts_proto_opt=outputServices=nice-grpc,outputServices=generic-definitions,useExactTypes=false,esModuleInterop=true ./proto/live-stream/service.proto",
+    "everyday-proxy": "flyctl proxy 50012 -a stg-everyday-live-stream",
+    "delete-local-merged": "git fetch && git branch --merged | egrep -v 'master|dev|main|staging' | xargs git branch -d"
+  },
+  "devDependencies": {
+    "@luminate/project-config": "workspace:^",
+    "@turbo/gen": "^1.9.7",
+    "eslint": "^8.45.0",
+    "prettier": "^3.0.0",
+    "turbo": "latest"
+  },
+  "name": "luminate",
+  "packageManager": "pnpm@8.7.0",
+  "engines": {
+    "node": ">=18.0.0",
+    "pnpm": ">=8.7.0"
+  },
+  "pnpm": {
+    "patchedDependencies": {
+      "zod-prisma@0.5.4": "patches/zod-prisma@0.5.4.patch",
+      "next-seo@6.1.0": "patches/next-seo@6.1.0.patch"
+    }
+  }
+}

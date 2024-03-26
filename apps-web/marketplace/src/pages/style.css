@@ -1,0 +1,23 @@
+:root {
+  --navbar: 48px;
+  --course-detail-tab: 56px;
+}
+
+@media (min-width: 1024px) {
+  :root {
+    --navbar: 64px;
+    --course-detail-tab: 62px;
+  }
+}
+
+.animation-flicker-workaround[data-state='closed'] {
+  animation-fill-mode: forwards;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+}

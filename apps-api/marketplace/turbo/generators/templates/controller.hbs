@@ -1,0 +1,18 @@
+import { Controller } from '@app/common/controller'
+import { container } from '@app/container'
+
+import { mainContract } from '@luminate/rest'
+{{#if service}}
+
+import { {{pascalCaseName}}Service } from './{{name}}.service'
+{{/if}}
+
+export class {{pascalCaseName}}Controller extends Controller {
+  constructor({{#if service}}private readonly {{camelCaseName}}Service: {{pascalCaseName}}Service{{/if}}) {
+    super()
+
+    this.register(mainContract.{{camelCaseName}}, {})
+  }
+}
+
+container.registerSingleton<{{pascalCaseName}}Controller, {{pascalCaseName}}Controller>()

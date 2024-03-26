@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "rootDir": ".",
+    "paths": {
+      // Packages path aliases
+      "@luminate/next-config": ["packages/next-config/src"],
+      "@luminate/next-config/*": ["packages/next-config/src/*"],
+      "@luminate/project-config": ["packages/project-config/src"],
+      "@luminate/project-config/*": ["packages/project-config/src/*"],
+      "@luminate/react-hooks": ["packages/react-hooks/src"],
+      "@luminate/react-hooks/*": ["packages/react-hooks/src/*"],
+      "@luminate/tsup": ["packages/tsup/src"],
+      "@luminate/tsup/*": ["packages/tsup/src/*"],
+      "@luminate/types": ["packages/types/src"],
+      "@luminate/types/*": ["packages/types/src/*"],
+      "@luminate/ui": ["packages/ui/src"],
+      "@luminate/ui/*": ["packages/ui/src/*"],
+      "@luminate/utils": ["packages/utils/src"],
+      "@luminate/utils/*": ["packages/utils/src/*"]
+    }
+  }
+}

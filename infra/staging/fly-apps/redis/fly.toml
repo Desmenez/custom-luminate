@@ -1,0 +1,10 @@
+# fly.toml app configuration file generated for luminate-redis-staging on 2023-08-09T11:18:05+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "luminate-redis-staging"
+primary_region = "sin"
+
+[build]
+  image = "redis:6.2.4"

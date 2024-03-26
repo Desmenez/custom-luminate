@@ -1,0 +1,16 @@
+{
+  "name": "@luminate/types",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "scripts": {
+    "lint": "eslint --ext .ts,.tsx ."
+  },
+  "devDependencies": {
+    "@luminate/project-config": "workspace:^",
+    "@luminate/types-utility": "workspace:^",
+    "next": "^13.4.19"
+  }
+}

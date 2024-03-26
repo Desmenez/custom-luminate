@@ -1,0 +1,7 @@
+import { container } from '@app/container'
+
+export interface I{{pascalCaseName}}Repository {}
+
+class {{pascalCaseName}}Repository implements I{{pascalCaseName}}Repository {}
+
+container.registerTransient<I{{pascalCaseName}}Repository, {{pascalCaseName}}Repository>()

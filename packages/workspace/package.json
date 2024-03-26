@@ -1,0 +1,10 @@
+{
+  "name": "@luminate/workspace",
+  "version": "0.0.0",
+  "type": "commonjs",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "scripts": {
+    "dev": "node index.js"
+  }
+}

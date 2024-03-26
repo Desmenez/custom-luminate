@@ -1,0 +1,16 @@
+{
+  "di": {
+    "identifier": "container",
+    "disableCache": false
+  },
+  "extends": "@luminate/project-config/tsconfig/nodejs.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@app/*": ["./src/*"]
+    },
+    "sourceMap": true
+  },
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

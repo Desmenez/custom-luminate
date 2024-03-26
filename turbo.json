@@ -1,0 +1,34 @@
+{
+  "$schema": "https://turbo.build/schema.json",
+  "globalDependencies": ["**/.env.*local"],
+  "pipeline": {
+    "build": {
+      "dependsOn": ["check-env", "^codegen", "^build"],
+      "outputs": [".next/**", "!.next/cache/**"]
+    },
+    "check-env": {
+      "inputs": [".env", ".env.staging"],
+      "outputs": [".env"]
+    },
+    "lint": {},
+    "test": {
+      "dependsOn": ["^test"],
+      "outputs": ["coverage/**", "!.next/**"]
+    },
+    "dev": {
+      "cache": false,
+      "persistent": true
+    },
+    "codegen": {
+      "dependsOn": ["^codegen"],
+      "outputs": ["src/generated/**", "src/index.js", "src/index.mjs", "dist/**"]
+    },
+    "deploy:fly": {
+      "cache": false
+    },
+    "apply": {
+      "inputs": ["prisma/migrations/**"],
+      "cache": false
+    }
+  }
+}

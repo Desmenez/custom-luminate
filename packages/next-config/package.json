@@ -1,0 +1,17 @@
+{
+  "name": "@luminate/next-config",
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.ts,.tsx .",
+    "format": "prettier --write \"**/*.js\""
+  },
+  "dependencies": {
+    "next": "^13.4.19"
+  },
+  "devDependencies": {
+    "@luminate/project-config": "workspace:^",
+    "@luminate/workspace": "workspace:^"
+  }
+}

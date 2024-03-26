@@ -1,0 +1,11 @@
+{
+  "name": "@luminate/types-utility",
+  "version": "0.0.0",
+  "private": true,
+  "main": "./src/index.ts",
+  "type": "module",
+  "types": "./src/index.ts",
+  "dependencies": {
+    "utility-types": "^3.10.0"
+  }
+}

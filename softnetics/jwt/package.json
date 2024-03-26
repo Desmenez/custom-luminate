@@ -1,0 +1,16 @@
+{
+  "name": "@softnetics/jwt",
+  "main": "dist/index.js",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --dts"
+  },
+  "dependencies": {
+    "jsonwebtoken": "^9.0.1"
+  },
+  "devDependencies": {
+    "@types/jsonwebtoken": "^9.0.2",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  }
+}

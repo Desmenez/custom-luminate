@@ -1,0 +1,32 @@
+# fly.toml app configuration file generated for marketplace-api-staging on 2023-07-29T22:44:30+07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = "luminate-marketplace-api-staging"
+primary_region = "sin"
+
+[build]
+  dockerfile = "./Dockerfile"
+  ignorefile = "../../.dockerignore"
+  build-target = "runner"
+
+[http_service]
+  internal_port = 4000
+  force_https = true
+  min_machines_running = 0
+  [http_service.concurrency]
+    type = "requests"
+    hard_limit = 250
+    soft_limit = 200
+  [http_service.tls_options]
+    default_self_signed = true
+  [[http_service.checks]]
+   grace_period = "10s"
+   interval = "30s"
+   method = "GET"
+   timeout = "5s"
+   path = "/health"
+
+[deploy]
+  strategy = "bluegreen"

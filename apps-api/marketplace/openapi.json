@@ -1,0 +1,282 @@
+{
+  "openapi": "3.0.2",
+  "paths": {
+    "/live-course/{id}": {
+      "get": {
+        "summary": "Find unique live course",
+        "tags": [
+          "liveCourse"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "operationId": "getLiveCourseById",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "object",
+                  "properties": {
+                    "id": {
+                      "type": "string"
+                    },
+                    "name": {
+                      "type": "string"
+                    },
+                    "description": {
+                      "type": "string"
+                    },
+                    "backgroundUrl": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "backgroundOverlayUrl": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "subjectId": {
+                      "type": "string"
+                    },
+                    "enrolled": {
+                      "type": "integer"
+                    },
+                    "startDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "endDate": {
+                      "type": "string",
+                      "format": "date-time"
+                    },
+                    "liveSessionsDescription": {
+                      "type": "string",
+                      "nullable": true
+                    },
+                    "price": {
+                      "type": "number"
+                    },
+                    "livingSession": {
+                      "type": "object",
+                      "properties": {
+                        "id": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "id"
+                      ],
+                      "nullable": true
+                    },
+                    "tutor": {
+                      "type": "object",
+                      "properties": {
+                        "tutorIconUrl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "displayName": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "tutorIconUrl",
+                        "displayName"
+                      ]
+                    },
+                    "subject": {
+                      "type": "object",
+                      "properties": {
+                        "code": {
+                          "type": "string"
+                        },
+                        "name": {
+                          "type": "string"
+                        },
+                        "filePublicUrl": {
+                          "type": "string",
+                          "nullable": true
+                        },
+                        "mainColor": {
+                          "type": "string",
+                          "nullable": true
+                        }
+                      },
+                      "required": [
+                        "code",
+                        "name",
+                        "filePublicUrl",
+                        "mainColor"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "id",
+                    "name",
+                    "description",
+                    "subjectId",
+                    "enrolled",
+                    "startDate",
+                    "endDate",
+                    "price",
+                    "livingSession",
+                    "tutor",
+                    "subject"
+                  ]
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "404"
+          }
+        }
+      }
+    },
+    "/live-course": {
+      "get": {
+        "summary": "Find live courses",
+        "tags": [
+          "liveCourse"
+        ],
+        "parameters": [],
+        "operationId": "getLiveCourses",
+        "responses": {
+          "200": {
+            "description": "200",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "type": "object",
+                    "properties": {
+                      "id": {
+                        "type": "string"
+                      },
+                      "name": {
+                        "type": "string"
+                      },
+                      "description": {
+                        "type": "string"
+                      },
+                      "backgroundUrl": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "backgroundOverlayUrl": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "subjectId": {
+                        "type": "string"
+                      },
+                      "enrolled": {
+                        "type": "integer"
+                      },
+                      "startDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "endDate": {
+                        "type": "string",
+                        "format": "date-time"
+                      },
+                      "liveSessionsDescription": {
+                        "type": "string",
+                        "nullable": true
+                      },
+                      "price": {
+                        "type": "number"
+                      },
+                      "livingSession": {
+                        "type": "object",
+                        "properties": {
+                          "id": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "id"
+                        ],
+                        "nullable": true
+                      },
+                      "tutor": {
+                        "type": "object",
+                        "properties": {
+                          "tutorIconUrl": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "displayName": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "tutorIconUrl",
+                          "displayName"
+                        ]
+                      },
+                      "subject": {
+                        "type": "object",
+                        "properties": {
+                          "code": {
+                            "type": "string"
+                          },
+                          "name": {
+                            "type": "string"
+                          },
+                          "filePublicUrl": {
+                            "type": "string",
+                            "nullable": true
+                          },
+                          "mainColor": {
+                            "type": "string",
+                            "nullable": true
+                          }
+                        },
+                        "required": [
+                          "code",
+                          "name",
+                          "filePublicUrl",
+                          "mainColor"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "id",
+                      "name",
+                      "description",
+                      "subjectId",
+                      "enrolled",
+                      "startDate",
+                      "endDate",
+                      "price",
+                      "livingSession",
+                      "tutor",
+                      "subject"
+                    ]
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "info": {
+    "title": "Luminate API",
+    "version": "0.0.1"
+  }
+}

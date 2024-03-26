@@ -1,0 +1,11 @@
+{
+  "name": "@luminate/tsup",
+  "version": "0.0.0",
+  "type": "module",
+  "main": "index.js",
+  "types": "index.d.ts",
+  "dependencies": {
+    "@luminate/workspace": "workspace:^",
+    "tsup": "^7.1.0"
+  }
+}

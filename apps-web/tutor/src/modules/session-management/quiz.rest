@@ -1,0 +1,68 @@
+### Get all quizes (all fields)
+GET http://localhost:4000/quiz?liveSessionId=liveSession1
+Content-Type: application/json
+
+### Get all quizes for student (all fields)
+GET http://localhost:4000/quiz/for-student?liveSessionId=liveSession1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdHVkZW50MSIsInR5cGUiOiJsb2dpblRva2VuIiwiaWF0IjoxMDAwMDAwMDAwLCJleHAiOjM2OTA5OTA1MDZ9.V1ROq9Vqsy9iEc6oUJI_f5IGrrV2PeS_G4sqqPBTBrA
+
+### Create Choice Question
+POST http://localhost:4000/quiz
+Content-Type: application/json
+
+{
+  "type": "CHOICE",
+  "config": {
+    "numberOfChoice": 4
+  }, 
+  "solution": {
+    "correctChoice": 2
+  },
+  "isAcceptingAnswers": true,
+  "liveSessionId": "liveSession1"
+}
+
+### Create Text Question
+POST http://localhost:4000/quiz
+Content-Type: application/json
+
+{
+  "type": "TEXT",
+  "config": {},
+  "solution": {
+    "correctAnswer": "Hello World"
+  },
+  "isAcceptingAnswers": true,
+  "liveSessionId": "liveSession1"
+}
+
+### Update Quiz status
+PATCH http://localhost:4000/quiz/clmg8pq0500017jprg9qrh6gl
+Content-Type: application/json
+
+{
+  "isAcceptingAnswers": true
+}
+
+### Respond to quiz
+POST http://localhost:4000/quiz/clmincyqa00017jrfjdekvlh3/respond
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdHVkZW50MSIsInR5cGUiOiJsb2dpblRva2VuIiwiaWF0IjoxMDAwMDAwMDAwLCJleHAiOjM2OTA5OTA1MDZ9.V1ROq9Vqsy9iEc6oUJI_f5IGrrV2PeS_G4sqqPBTBrA
+
+{
+  "answer": {
+    "choice": 2
+  }
+}
+
+### Respond to quiz
+POST http://localhost:4000/quiz/clmh9ykmu00clmhbn2vj00017j5g08dlb6c7037j4uz5vrmhej/respond
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiJzdHVkZW50MSIsInR5cGUiOiJsb2dpblRva2VuIiwiaWF0IjoxMDAwMDAwMDAwLCJleHAiOjM2OTA5OTA1MDZ9.V1ROq9Vqsy9iEc6oUJI_f5IGrrV2PeS_G4sqqPBTBrA
+
+{
+  "answer": {
+    "answer": "Hello World"
+  }
+}

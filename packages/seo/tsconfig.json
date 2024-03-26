@@ -1,0 +1,3 @@
+{
+  "extends": "@luminate/project-config/tsconfig/react-library.json"
+}

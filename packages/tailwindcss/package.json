@@ -1,0 +1,22 @@
+{
+  "name": "@luminate/tailwindcss",
+  "sideEffects": false,
+  "version": "0.0.0",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "type": "module",
+  "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
+    "@tailwindcss/container-queries": "^0.1.1",
+    "@tailwindcss/forms": "^0.5.4",
+    "@tailwindcss/typography": "^0.5.9",
+    "deepmerge": "^4.3.1",
+    "tailwind-merge": "^1.14.0",
+    "tailwindcss": "^3.3.3",
+    "tailwindcss-animate": "^1.0.6",
+    "tailwindcss-radix": "^2.8.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.5.9"
+  }
+}

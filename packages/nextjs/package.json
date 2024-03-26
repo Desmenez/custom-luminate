@@ -1,0 +1,22 @@
+{
+  "name": "@luminate/nextjs",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.tsx",
+  "types": "./src/index.tsx",
+  "sideEffects": false,
+  "scripts": {
+    "lint": "eslint --ext .ts,.tsx ."
+  },
+  "dependencies": {
+    "@luminate/tailwindcss": "workspace:^",
+    "@luminate/ui": "workspace:^",
+    "next": "^13.4.19",
+    "react": "^18.2.0"
+  },
+  "devDependencies": {
+    "@luminate/project-config": "workspace:^",
+    "@types/react": "^18.2.21"
+  }
+}

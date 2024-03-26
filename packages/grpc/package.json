@@ -1,0 +1,14 @@
+{
+  "name": "@luminate/grpc",
+  "version": "0.1.0",
+  "main": "src/index.ts",
+  "devDependencies": {
+    "grpc-tools": "^1.12.4",
+    "ts-proto": "^1.156.2"
+  },
+  "dependencies": {
+    "long": "^5.2.3",
+    "nice-grpc-common": "^2.0.2",
+    "protobufjs": "^7.2.4"
+  }
+}

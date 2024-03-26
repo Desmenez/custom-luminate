@@ -1,0 +1,19 @@
+{
+  "name": "@softnetics/gcp-storage",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "scripts": {
+    "build": "tsup src/index.ts --dts"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^11.0.1",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  },
+  "dependencies": {
+    "@google-cloud/storage": "^6.12.0",
+    "date-fns": "^2.30.0",
+    "fs-extra": "^11.1.1",
+    "nanoid": "^4.0.2"
+  }
+}

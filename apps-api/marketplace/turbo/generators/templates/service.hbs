@@ -1,0 +1,11 @@
+import { container } from '@app/container'
+{{#if repository}}
+
+import { I{{pascalCaseName}}Repository } from './{{name}}.repository'
+{{/if}}
+
+export class {{pascalCaseName}}Service {
+  constructor({{#if repository}}private readonly {{camelCaseName}}Repository: I{{pascalCaseName}}Repository{{/if}}) {}
+}
+
+container.registerSingleton<{{pascalCaseName}}Service, {{pascalCaseName}}Service>()

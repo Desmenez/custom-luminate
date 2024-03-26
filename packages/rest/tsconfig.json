@@ -1,0 +1,8 @@
+{
+  "extends": "@luminate/project-config/tsconfig/base.json",
+  "exclude": ["dist"],
+  "compilerOptions": {
+    "moduleResolution": "bundler",
+    "module": "esnext"
+  }
+}

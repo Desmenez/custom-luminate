@@ -1,0 +1,512 @@
+diff --git a/lib/jsonld/article.d.ts b/lib/jsonld/article.d.ts
+index 61d186ef66286dc6f6694a83ca661903243d87b9..a8247c9964ca086a2445d2e06077b3d549238024 100644
+--- a/lib/jsonld/article.d.ts
++++ b/lib/jsonld/article.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import { ArticleAuthor } from 'src/types';
++import { ArticleAuthor } from '../types';
+ export interface ArticleJsonLdProps extends JsonLdProps {
+     type?: 'Article' | 'BlogPosting' | 'NewsArticle' | 'Blog';
+     url: string;
+diff --git a/lib/jsonld/brand.d.ts b/lib/jsonld/brand.d.ts
+index cd9b6cc549d1b13e6f50e51e652306f7bfffeb6e..b1a194a49686917e2ac48877c978d0999f23b343 100644
+--- a/lib/jsonld/brand.d.ts
++++ b/lib/jsonld/brand.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { AggregateRating } from 'src/types';
++import type { AggregateRating } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface BrandJsonLdProps extends JsonLdProps {
+     id: string;
+diff --git a/lib/jsonld/breadcrumb.d.ts b/lib/jsonld/breadcrumb.d.ts
+index 66f7eff3ca40a18cce7ede0815f6635943d14615..9ecb362f992408ebe541eaf1898d057aea3494f9 100644
+--- a/lib/jsonld/breadcrumb.d.ts
++++ b/lib/jsonld/breadcrumb.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { ItemListElements } from 'src/types';
++import type { ItemListElements } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface BreadCrumbJsonLdProps extends JsonLdProps {
+     itemListElements: ItemListElements[];
+diff --git a/lib/jsonld/carousel.d.ts b/lib/jsonld/carousel.d.ts
+index 302dc7d455eedfbdb956fc2e7136a76b0b80ad61..6fe9a448726266725c6c4762030651880f562526 100644
+--- a/lib/jsonld/carousel.d.ts
++++ b/lib/jsonld/carousel.d.ts
+@@ -1,7 +1,7 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+ import type { CourseJsonLdProps, RecipeJsonLdProps } from 'src/index';
+-import type { Review, AggregateRating } from 'src/types';
++import type { Review, AggregateRating } from '../types';
+ type Director = {
+     name: string;
+ };
+diff --git a/lib/jsonld/collectionPage.d.ts b/lib/jsonld/collectionPage.d.ts
+index f919f1846b014dab45adc7c6d2f9bb79f7acdb24..11481423b7e51c88cca515ce3f737d60487f17ee 100644
+--- a/lib/jsonld/collectionPage.d.ts
++++ b/lib/jsonld/collectionPage.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import type { CreativeWork } from 'src/types';
++import type { CreativeWork } from '../types';
+ export interface CollectionPageJsonLdProps extends JsonLdProps {
+     name: string;
+     hasPart: CreativeWork[];
+diff --git a/lib/jsonld/corporateContact.d.ts b/lib/jsonld/corporateContact.d.ts
+index be19ba08111e5c25a6f9a461cb366fcefbbf84c2..add5f3f64548bf89ed02626e3e7371d0eb923ad3 100644
+--- a/lib/jsonld/corporateContact.d.ts
++++ b/lib/jsonld/corporateContact.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import type { ContactPoint } from 'src/types';
++import type { ContactPoint } from '../types';
+ export interface CorporateContactJsonLdProps extends JsonLdProps {
+     url: string;
+     contactPoint: ContactPoint[];
+diff --git a/lib/jsonld/course.d.ts b/lib/jsonld/course.d.ts
+index c2dd373047e0445e4e98761dbf1ea02a559c999e..e01d6bdbd65a7979fc9af2f7d7d0a752ec5305ea 100644
+--- a/lib/jsonld/course.d.ts
++++ b/lib/jsonld/course.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { Provider } from 'src/types';
++import type { Provider } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface CourseJsonLdProps extends JsonLdProps {
+     courseName: string;
+diff --git a/lib/jsonld/event.d.ts b/lib/jsonld/event.d.ts
+index 778ad2b20785a1e16bcf797d32d41f96fe57aa3a..b2abf14b7c428547bc5f672cd13aa0a75b2ab91e 100644
+--- a/lib/jsonld/event.d.ts
++++ b/lib/jsonld/event.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import type { Location, AggregateOffer, Offers, Performer, Organizer, EventStatus, EventAttendanceMode } from 'src/types';
++import type { Location, AggregateOffer, Offers, Performer, Organizer, EventStatus, EventAttendanceMode } from '../types';
+ export interface EventJsonLdProps extends JsonLdProps {
+     name: string;
+     startDate: string;
+diff --git a/lib/jsonld/faqPage.d.ts b/lib/jsonld/faqPage.d.ts
+index fa4664b5498003782dc0f115d3f8ec6ffac6ca9d..e2a1894c5dc1c4c3c0ebabbbcdfd308673b1d5b6 100644
+--- a/lib/jsonld/faqPage.d.ts
++++ b/lib/jsonld/faqPage.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { Question } from 'src/types';
++import type { Question } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface FAQPageJsonLdProps extends JsonLdProps {
+     mainEntity: Question[];
+diff --git a/lib/jsonld/howTo.d.ts b/lib/jsonld/howTo.d.ts
+index a5096d887e85ad7ab030d6584dd8a791072cf6f1..c77fabb239a25aa42a70548f087b6d1be3afc646 100644
+--- a/lib/jsonld/howTo.d.ts
++++ b/lib/jsonld/howTo.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import { PriceSpecification, Step } from 'src/types';
++import { PriceSpecification, Step } from '../types';
+ export interface HowToJsonLdProps extends JsonLdProps {
+     name: string;
+     image?: string;
+diff --git a/lib/jsonld/localBusiness.d.ts b/lib/jsonld/localBusiness.d.ts
+index 7b1062ef0b532f0ea70b9a81b35b4ef038f82f5d..c92874929b3239110b76be215d95d555a7399acc 100644
+--- a/lib/jsonld/localBusiness.d.ts
++++ b/lib/jsonld/localBusiness.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import type { Address, Geo, AggregateRating, Review, Action, GeoCircle, OpeningHoursSpecification, Offer } from 'src/types';
++import type { Address, Geo, AggregateRating, Review, Action, GeoCircle, OpeningHoursSpecification, Offer } from '../types';
+ export interface LocalBusinessJsonLdProps extends JsonLdProps {
+     type: string;
+     id: string;
+diff --git a/lib/jsonld/organization.d.ts b/lib/jsonld/organization.d.ts
+index ad62f5ec43263772782aee905b67d2b22a2cf7f6..505dfec55781f294943b7bb8dc91e4bc3b140b0a 100644
+--- a/lib/jsonld/organization.d.ts
++++ b/lib/jsonld/organization.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { Address, OrganizationCategory, ContactPoint } from 'src/types';
++import type { Address, OrganizationCategory, ContactPoint } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface OrganizationJsonLdProps extends JsonLdProps {
+     type?: OrganizationCategory;
+diff --git a/lib/jsonld/product.d.ts b/lib/jsonld/product.d.ts
+index b226264983dcbe80df1774b38c5239429d7781b0..28c096a603b762a858d4758d3e6f2d0b29f258f7 100644
+--- a/lib/jsonld/product.d.ts
++++ b/lib/jsonld/product.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import type { Review, AggregateRating, AggregateOffer, Offers } from 'src/types';
++import type { Review, AggregateRating, AggregateOffer, Offers } from '../types';
+ export interface ProductJsonLdProps extends JsonLdProps {
+     productName: string;
+     images?: string[];
+diff --git a/lib/jsonld/profilePage.d.ts b/lib/jsonld/profilePage.d.ts
+index cff2d6accf5fab4b8889ad692a9c721b42d16ffc..18c916772351ad03378703f691cb58e8058c099d 100644
+--- a/lib/jsonld/profilePage.d.ts
++++ b/lib/jsonld/profilePage.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import type { ItemListElements } from 'src/types';
++import type { ItemListElements } from '../types';
+ export interface ProfilePageJsonLdProps extends JsonLdProps {
+     breadcrumb: string | ItemListElements[];
+     lastReviewed?: string;
+diff --git a/lib/jsonld/qaPage.d.ts b/lib/jsonld/qaPage.d.ts
+index 8c3eda270b763e0a0238c278e4b5b5a51681cb2f..49012681634b884522463609bfe2e876688e4893 100644
+--- a/lib/jsonld/qaPage.d.ts
++++ b/lib/jsonld/qaPage.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { Question } from 'src/types';
++import type { Question } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface QAPageJsonLdProps extends JsonLdProps {
+     mainEntity: Question;
+diff --git a/lib/jsonld/recipe.d.ts b/lib/jsonld/recipe.d.ts
+index e146143aaf8da65d5c376dd1af2c68a3a60eec60..c66b87fed5c7f8ffc26ddc4f62b7899d504340cf 100644
+--- a/lib/jsonld/recipe.d.ts
++++ b/lib/jsonld/recipe.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import type { Instruction, AggregateRating, Video } from 'src/types';
++import type { Instruction, AggregateRating, Video } from '../types';
+ export interface RecipeJsonLdProps extends JsonLdProps {
+     name: string;
+     description: string;
+diff --git a/lib/jsonld/softwareApp.d.ts b/lib/jsonld/softwareApp.d.ts
+index c5b5fb29cdfba07b0f6349a3e5a5a9b38f734eb0..e27d4f1e2e83a090316caea5904afba305b1ffd8 100644
+--- a/lib/jsonld/softwareApp.d.ts
++++ b/lib/jsonld/softwareApp.d.ts
+@@ -1,6 +1,6 @@
+ /// <reference types="react" />
+ import { JsonLdProps } from './jsonld';
+-import type { Review, AggregateRating } from 'src/types';
++import type { Review, AggregateRating } from '../types';
+ export interface SoftwareAppJsonLdProps extends JsonLdProps {
+     name: string;
+     price: string;
+diff --git a/lib/jsonld/video.d.ts b/lib/jsonld/video.d.ts
+index 89982c2e2646e308a94074f588531b7263c55ec4..3b6061f9727502c54fd8f447f2a99cc234866d1f 100644
+--- a/lib/jsonld/video.d.ts
++++ b/lib/jsonld/video.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import { Video } from 'src/types';
++import { Video } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface VideoJsonLdProps extends JsonLdProps, Video {
+ }
+diff --git a/lib/jsonld/videoGame.d.ts b/lib/jsonld/videoGame.d.ts
+index d529fa6362e4b518ab119a987763661c058ef9ae..b5251ca8ae10904c543fdbca0c222c5aaca5a4bd 100644
+--- a/lib/jsonld/videoGame.d.ts
++++ b/lib/jsonld/videoGame.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { Offers, AggregateRating, GamePlayMode, Video, Review, ApplicationCategory } from 'src/types';
++import type { Offers, AggregateRating, GamePlayMode, Video, Review, ApplicationCategory } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface VideoGameJsonLdProps extends JsonLdProps {
+     keyOverride?: string;
+diff --git a/lib/jsonld/webPage.d.ts b/lib/jsonld/webPage.d.ts
+index 04bd03679443e863624ff58edeb17d7af2f25994..deba53d1dc1750c26bff61d9d5b1557cb4f9e062 100644
+--- a/lib/jsonld/webPage.d.ts
++++ b/lib/jsonld/webPage.d.ts
+@@ -1,5 +1,5 @@
+ /// <reference types="react" />
+-import type { ReviewedBy } from 'src/types';
++import type { ReviewedBy } from '../types';
+ import { JsonLdProps } from './jsonld';
+ export interface WebPageJsonLdProps extends JsonLdProps {
+     keyOverride?: string;
+diff --git a/lib/utils/schema/setAction.d.ts b/lib/utils/schema/setAction.d.ts
+index 2f7e008341078da470dbd256cb1f200f536215b3..155c4efe4ccad11a29bd338e3eea54c13018c876 100644
+--- a/lib/utils/schema/setAction.d.ts
++++ b/lib/utils/schema/setAction.d.ts
+@@ -1,4 +1,4 @@
+-import { Action } from 'src/types';
++import { Action } from '../../types';
+ export declare function setAction(action?: Action): {
+     '@type': string;
+     name: string;
+diff --git a/lib/utils/schema/setAddress.d.ts b/lib/utils/schema/setAddress.d.ts
+index 86c378635db64952c5dd09e33929657f2cc35453..bb267a29a4d6050a8e51a6c5dad304b044553c7c 100644
+--- a/lib/utils/schema/setAddress.d.ts
++++ b/lib/utils/schema/setAddress.d.ts
+@@ -1,4 +1,4 @@
+-import { Address } from 'src/types';
++import { Address } from '../../types';
+ export declare function setAddress(address?: Address | Address[]): string | {
+     streetAddress: string;
+     addressLocality: string;
+diff --git a/lib/utils/schema/setAggregateOffer.d.ts b/lib/utils/schema/setAggregateOffer.d.ts
+index bbd45e890b9f5d8172fab14efbbd6989c54311d3..1943c5bbbb4e9bc4f156439bd2930eeba1b6ea1c 100644
+--- a/lib/utils/schema/setAggregateOffer.d.ts
++++ b/lib/utils/schema/setAggregateOffer.d.ts
+@@ -1,4 +1,4 @@
+-import type { AggregateOffer } from 'src/types';
++import type { AggregateOffer } from '../../types';
+ export declare function setAggregateOffer(aggregateOffer?: AggregateOffer): {
+     '@type': string;
+     priceCurrency: string;
+diff --git a/lib/utils/schema/setAggregateRating.d.ts b/lib/utils/schema/setAggregateRating.d.ts
+index c32a3373755525dfc56c23b61c829310c59f28d6..a57bdbc107730eed8d6fc5e9247e42ffcb7cefc7 100644
+--- a/lib/utils/schema/setAggregateRating.d.ts
++++ b/lib/utils/schema/setAggregateRating.d.ts
+@@ -1,4 +1,4 @@
+-import type { AggregateRating } from 'src/types';
++import type { AggregateRating } from '../../types';
+ export declare function setAggregateRating(aggregateRating?: AggregateRating): {
+     '@type': string;
+     ratingCount: string | undefined;
+diff --git a/lib/utils/schema/setBroadcastEvent.d.ts b/lib/utils/schema/setBroadcastEvent.d.ts
+index 71c598395f1151836d37eab72093de49aee559b3..30b195c6ed232b1ed20581b868d11c9a37ca6e43 100644
+--- a/lib/utils/schema/setBroadcastEvent.d.ts
++++ b/lib/utils/schema/setBroadcastEvent.d.ts
+@@ -1,4 +1,4 @@
+-import type { BroadcastEvent } from 'src/types';
++import type { BroadcastEvent } from '../../types';
+ export declare function setBroadcastEvent(publication?: BroadcastEvent | BroadcastEvent[]): {
+     '@type': string;
+     name?: string | undefined;
+diff --git a/lib/utils/schema/setClip.d.ts b/lib/utils/schema/setClip.d.ts
+index cad5622d689e0f10fe372c1026f4b77d1f46a5e0..9f8feeb2baddbbb48b1bd5ae9d68be4f91d206d5 100644
+--- a/lib/utils/schema/setClip.d.ts
++++ b/lib/utils/schema/setClip.d.ts
+@@ -1,4 +1,4 @@
+-import { Clip } from 'src/types';
++import { Clip } from '../../types';
+ export declare function setClip(clips?: Clip | Clip[]): {
+     '@type': string;
+     name: string;
+diff --git a/lib/utils/schema/setContactPoint.d.ts b/lib/utils/schema/setContactPoint.d.ts
+index dff087cf49bcaf7b61dddb49b77613a545f25abe..ae330e4f183da92d0d79df11d64ae2fbca7c0d29 100644
+--- a/lib/utils/schema/setContactPoint.d.ts
++++ b/lib/utils/schema/setContactPoint.d.ts
+@@ -1,4 +1,4 @@
+-import { ContactPoint } from 'src/types';
++import { ContactPoint } from '../../types';
+ export declare function setContactPoint(contactPoint: ContactPoint): {
+     '@type': string;
+     contactType: string;
+diff --git a/lib/utils/schema/setContactPoints.d.ts b/lib/utils/schema/setContactPoints.d.ts
+index 4b27a4dccb688cdf3369abf5600f48fdc897a741..a2f2989178e17845898dbf89c8998dd100a10608 100644
+--- a/lib/utils/schema/setContactPoints.d.ts
++++ b/lib/utils/schema/setContactPoints.d.ts
+@@ -1,4 +1,4 @@
+-import type { ContactPoint } from 'src/types';
++import type { ContactPoint } from '../../types';
+ export declare function setContactPoints(contactPoint?: ContactPoint[]): {
+     contactType: string;
+     telephone: string;
+diff --git a/lib/utils/schema/setCost.d.ts b/lib/utils/schema/setCost.d.ts
+index 0e948cab36d9ab047d8d98d20815fe7de0644017..4eb9071aeb3796fbe4f82a1f3cab22390c9a29c9 100644
+--- a/lib/utils/schema/setCost.d.ts
++++ b/lib/utils/schema/setCost.d.ts
+@@ -1,4 +1,4 @@
+-import { PriceSpecification } from 'src/types';
++import { PriceSpecification } from '../../types';
+ export declare function setCost(cost?: PriceSpecification): {
+     '@type': string;
+     type: string;
+diff --git a/lib/utils/schema/setCreativeWork.d.ts b/lib/utils/schema/setCreativeWork.d.ts
+index b40c2fbe00e52a257a63494e8375dd5ea91369b0..e1ccfb3712373d2f75a6ccd2700b2cfa5b13e24a 100644
+--- a/lib/utils/schema/setCreativeWork.d.ts
++++ b/lib/utils/schema/setCreativeWork.d.ts
+@@ -1,4 +1,4 @@
+-import { CreativeWork } from 'src/types';
++import { CreativeWork } from '../../types';
+ export declare function setCreativeWork(creativeWork: CreativeWork): {
+     '@type': string;
+     author: string;
+diff --git a/lib/utils/schema/setGeo.d.ts b/lib/utils/schema/setGeo.d.ts
+index dbc56ca3af76c0b86391dec8bbc9ea0584bf726f..cdeacf8fd3dfcee5bb093bab73b08f8221b3e0cf 100644
+--- a/lib/utils/schema/setGeo.d.ts
++++ b/lib/utils/schema/setGeo.d.ts
+@@ -1,4 +1,4 @@
+-import { Geo } from 'src/types';
++import { Geo } from '../../types';
+ export declare function setGeo(geo?: Geo): {
+     '@type': string;
+     latitude: string;
+diff --git a/lib/utils/schema/setGeoCircle.d.ts b/lib/utils/schema/setGeoCircle.d.ts
+index 55557c5d84b391217f538d3c44504df77e5a23fc..9e749ecb2f355e10de533aed86d4d8c7df44e832 100644
+--- a/lib/utils/schema/setGeoCircle.d.ts
++++ b/lib/utils/schema/setGeoCircle.d.ts
+@@ -1,4 +1,4 @@
+-import { GeoCircle } from 'src/types';
++import { GeoCircle } from '../../types';
+ export declare function setGeoCircle(geoCircle?: GeoCircle): {
+     '@type': string;
+     geoMidpoint: {
+diff --git a/lib/utils/schema/setInstruction.d.ts b/lib/utils/schema/setInstruction.d.ts
+index 733d0f24f2e2edd8c016496edbea2bccb9ebb30c..dea4a150b67a9d9f7ff9d96b038c1b1a9d9835e7 100644
+--- a/lib/utils/schema/setInstruction.d.ts
++++ b/lib/utils/schema/setInstruction.d.ts
+@@ -1,4 +1,4 @@
+-import { Instruction } from 'src/types';
++import { Instruction } from '../../types';
+ export declare function setInstruction(instruction: Instruction): {
+     '@type': string;
+     name?: string | undefined;
+diff --git a/lib/utils/schema/setItemListElements.d.ts b/lib/utils/schema/setItemListElements.d.ts
+index 35926f2e4d1bf82f8eac898c5923b66a6b38a338..de13b4aaad89c9a596beb31f96fe95a5b86a3d52 100644
+--- a/lib/utils/schema/setItemListElements.d.ts
++++ b/lib/utils/schema/setItemListElements.d.ts
+@@ -1,4 +1,4 @@
+-import { ItemListElements } from 'src/types';
++import { ItemListElements } from '../../types';
+ export declare function setItemListElements(items: ItemListElements[]): {
+     '@type': string;
+     position: number;
+diff --git a/lib/utils/schema/setLocation.d.ts b/lib/utils/schema/setLocation.d.ts
+index 9956e9e77171db3bed9374881a478ca0f3c6f349..b2c528b4f82984e3c2c8aa0ba617e00bff98f7fc 100644
+--- a/lib/utils/schema/setLocation.d.ts
++++ b/lib/utils/schema/setLocation.d.ts
+@@ -1,4 +1,4 @@
+-import { Location } from 'src/types';
++import { Location } from '../../types';
+ export declare function setLocation(location?: Location): string | {
+     '@type': string;
+     name?: string | undefined;
+diff --git a/lib/utils/schema/setOffer.d.ts b/lib/utils/schema/setOffer.d.ts
+index eb3440fe0a2d9c0d6b27abb8841aa503dec8a797..a12cb8f5b0ada62855558b40f5640050017111fd 100644
+--- a/lib/utils/schema/setOffer.d.ts
++++ b/lib/utils/schema/setOffer.d.ts
+@@ -1,4 +1,4 @@
+-import type { Offer } from 'src/types';
++import type { Offer } from '../../types';
+ export declare function setOffer(offer?: Offer): {
+     '@type': string;
+     priceSpecification: {
+diff --git a/lib/utils/schema/setOffers.d.ts b/lib/utils/schema/setOffers.d.ts
+index bddecf0a1f2a12ddaf8e612cfc060298c1a6f699..129e954e3d65ff1b102b4f97e3bc2c4f9c838893 100644
+--- a/lib/utils/schema/setOffers.d.ts
++++ b/lib/utils/schema/setOffers.d.ts
+@@ -1,4 +1,4 @@
+-import { Offers } from 'src/types';
++import { Offers } from '../../types';
+ export declare function setOffers(offers?: Offers | Offers[]): {
+     seller: {
+         '@type': string;
+diff --git a/lib/utils/schema/setOpeningHours.d.ts b/lib/utils/schema/setOpeningHours.d.ts
+index 76df6bd0e6eca8e377c4158c27bc13512cd09db1..cd04cb269352fb7705faf1d7da20dd5c17ad238e 100644
+--- a/lib/utils/schema/setOpeningHours.d.ts
++++ b/lib/utils/schema/setOpeningHours.d.ts
+@@ -1,4 +1,4 @@
+-import { OpeningHoursSpecification } from 'src/types';
++import { OpeningHoursSpecification } from '../../types';
+ export declare function setOpeningHours(openingHours?: OpeningHoursSpecification): {
+     '@type': string;
+     opens: string;
+diff --git a/lib/utils/schema/setOrganizer.d.ts b/lib/utils/schema/setOrganizer.d.ts
+index 9d19b44d3688a9db825ba75c3a180df9c422c786..249cbb7547ebb4a00896b610c6b44d9da6f82b0f 100644
+--- a/lib/utils/schema/setOrganizer.d.ts
++++ b/lib/utils/schema/setOrganizer.d.ts
+@@ -1,4 +1,4 @@
+-import { Organizer } from 'src/types';
++import { Organizer } from '../../types';
+ export declare function setOrganizer(organizer?: Organizer): {
+     '@type': "Person" | "Organization";
+     name: string;
+diff --git a/lib/utils/schema/setPerformer.d.ts b/lib/utils/schema/setPerformer.d.ts
+index 393e430fdec3656b2cb8f40e4881efa93a94e5dc..4ab1f057e1c7647b3d20e328045b4d97aa9f16d1 100644
+--- a/lib/utils/schema/setPerformer.d.ts
++++ b/lib/utils/schema/setPerformer.d.ts
+@@ -1,4 +1,4 @@
+-import { Performer } from 'src/types';
++import { Performer } from '../../types';
+ export declare function setPerformer(performer?: Performer): {
+     '@type': "Person" | "PerformingGroup";
+     name: string;
+diff --git a/lib/utils/schema/setProducer.d.ts b/lib/utils/schema/setProducer.d.ts
+index 351393bd3a4217155587be65a1497852fe03948c..1af559fb1cd963ab8f0e50c2525f39cb81e78bdf 100644
+--- a/lib/utils/schema/setProducer.d.ts
++++ b/lib/utils/schema/setProducer.d.ts
+@@ -1,4 +1,4 @@
+-import type { Producer } from 'src/types';
++import type { Producer } from '../../types';
+ export declare function setProducer(producer?: Producer): {
+     '@type': string;
+     sameAs: string | undefined;
+diff --git a/lib/utils/schema/setProvider.d.ts b/lib/utils/schema/setProvider.d.ts
+index b55f040667f88737a73ebcc15664191fe701b6ad..5b8bab5afad9e29c0c7b21bf2815c94712ea18f9 100644
+--- a/lib/utils/schema/setProvider.d.ts
++++ b/lib/utils/schema/setProvider.d.ts
+@@ -1,4 +1,4 @@
+-import type { Provider } from 'src/types';
++import type { Provider } from '../../types';
+ export declare function setProvider(provider: Provider): {
+     '@type': "Person" | "Organization";
+     name: string;
+diff --git a/lib/utils/schema/setQuestions.d.ts b/lib/utils/schema/setQuestions.d.ts
+index 462d29d13530d903a47cea17ca80f74227bcfc99..eed57489fb7a5a09e70d3e0160b84458ce0cd7c5 100644
+--- a/lib/utils/schema/setQuestions.d.ts
++++ b/lib/utils/schema/setQuestions.d.ts
+@@ -1,4 +1,4 @@
+-import type { Question } from 'src/types';
++import type { Question } from '../../types';
+ export declare function setQuestions(questions: Question[]): {
+     '@type': string;
+     name: string;
+diff --git a/lib/utils/schema/setReviewRating.d.ts b/lib/utils/schema/setReviewRating.d.ts
+index 29d695d03c6567c5abd9345e17746bdc94c8e78d..67403f8dfc93fc00f364b1b674f56dea66c0efc3 100644
+--- a/lib/utils/schema/setReviewRating.d.ts
++++ b/lib/utils/schema/setReviewRating.d.ts
+@@ -1,4 +1,4 @@
+-import type { ReviewRating } from 'src/types';
++import type { ReviewRating } from '../../types';
+ export declare function setReviewRating(rating?: ReviewRating): {
+     '@type': string;
+     bestRating?: string | undefined;
+diff --git a/lib/utils/schema/setReviewedBy.d.ts b/lib/utils/schema/setReviewedBy.d.ts
+index 47757519a952d1237bf8ce19b947592040117e6b..32c71b3f6b24adf2a2700ad1e1eb36feb0bdae06 100644
+--- a/lib/utils/schema/setReviewedBy.d.ts
++++ b/lib/utils/schema/setReviewedBy.d.ts
+@@ -1,4 +1,4 @@
+-import type { ReviewedBy } from 'src/types';
++import type { ReviewedBy } from '../../types';
+ export declare function setReviewedBy(reviewedBy?: ReviewedBy): {
+     type?: string | undefined;
+     name: string;
+diff --git a/lib/utils/schema/setReviews.d.ts b/lib/utils/schema/setReviews.d.ts
+index 69c0256d85a9e03e2340cdda7bac08cf20bce98f..4466f6d9635a8e0ef1c32bf9d21c3e949758238a 100644
+--- a/lib/utils/schema/setReviews.d.ts
++++ b/lib/utils/schema/setReviews.d.ts
+@@ -1,4 +1,4 @@
+-import type { Review } from 'src/types';
++import type { Review } from '../../types';
+ export declare function setReviews(reviews?: Review | Review[]): {
+     publisher?: {
+         '@type': string;
+diff --git a/lib/utils/schema/setStep.d.ts b/lib/utils/schema/setStep.d.ts
+index cadf1fd4221e01a5787a8919271fe9a8968ae988..590e606d67c37e8032edd7df94b559c847b2029f 100644
+--- a/lib/utils/schema/setStep.d.ts
++++ b/lib/utils/schema/setStep.d.ts
+@@ -1,4 +1,4 @@
+-import { Step } from 'src/types';
++import { Step } from '../../types';
+ export declare function setStep(step?: Step[]): {
+     '@type': string;
+     itemListElement: {
+diff --git a/lib/utils/schema/setVideo.d.ts b/lib/utils/schema/setVideo.d.ts
+index 06e52501f26623c182e5fa5e3e4b716f8e949d13..0007d52db14ae568dc2bcc9aeaf386a425ccdf39 100644
+--- a/lib/utils/schema/setVideo.d.ts
++++ b/lib/utils/schema/setVideo.d.ts
+@@ -1,4 +1,4 @@
+-import type { Video } from 'src/types';
++import type { Video } from '../../types';
+ export declare function setVideo(video?: Video, setContext?: boolean): {
+     thumbnailUrl: string[];
+     hasPart: {

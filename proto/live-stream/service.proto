@@ -1,0 +1,197 @@
+syntax = "proto3";
+
+package live_stream;
+
+import "google/protobuf/empty.proto";
+
+message GetTutorsRequest { repeated string tutor_ids = 1; }
+
+message TutorResponse {
+  string name = 1;
+  optional string display_name = 2;
+  optional string tutor_icon_url = 3;
+  optional string experience = 4;
+  optional string organization_name = 5;
+  string tutor_id = 6;
+  optional string tutor_file_url = 7;
+}
+
+message OptionalTutorResponse { optional TutorResponse tutor = 1; }
+
+message GetTutorsResponse { repeated OptionalTutorResponse tutors = 1; }
+
+message GetUsersRequest { repeated string user_ids = 1; }
+
+message UserResponse {
+  string display_name = 1;
+  optional string profile_url = 2;
+}
+
+message OptionalUserResponse { optional UserResponse user = 1; }
+
+message GetUsersResponse { repeated OptionalUserResponse users = 1; }
+
+enum OmiseStatus {
+  FAILED = 0;
+  SUCCESS = 1;
+  PENDING = 2;
+}
+
+message CreateOmisePaymentHistoryRequest {
+  string charge_id = 1;
+  OmiseStatus status = 2;
+  uint32 amount = 3;
+  optional uint32 discount = 4;
+  uint32 net_amount = 5;
+  string user_id = 6;
+  optional uint32 topup_days = 8;
+  optional string metadata = 7;
+}
+
+message CreateOmisePaymentHistoryResponse { string payment_history_id = 1; }
+
+message UpdateOmisePaymentHistoryRequest {
+  string payment_history_id = 1;
+  OmiseStatus status = 2;
+}
+
+message GetSubjectsRequest {
+  repeated string subject_ids = 1;
+}
+
+message SubjectResponse {
+  string subject_id = 1;
+  string code = 2;
+  string name = 3;
+  optional string main_color = 4;
+}
+
+message OptionalSubjectResponse { optional SubjectResponse subject = 1; }
+
+message GetSubjectsResponse {
+  repeated OptionalSubjectResponse subjects = 1;
+}
+
+message GetOmiseCustomerIdRequest {
+  string user_id = 1;
+}
+
+message GetOmiseCustomerIdResponse {
+  string customer_id = 1;
+}
+
+message GetUserIdentityRequest {
+  string user_id = 1;
+}
+
+message GetUserIdentityResponse {
+  string id = 1;
+  bool is_active = 2;
+  string identity = 3;
+}
+
+message GetTutorIdentityRequest {
+  string tutor_id = 1;
+}
+
+message GetTutorIdentityResponse {
+  string id = 1;
+  bool is_active = 2;
+}
+
+message LoginTutorWithPasswordRequest {
+  string username = 1;
+  string password = 2;
+}
+
+message LoginTutorWithPasswordResponse {
+  string token = 1;
+  string refresh_token = 2;
+}
+
+message GetBasePlansRequest {
+  repeated string base_plan_ids = 1;
+}
+
+message SubjectForBasePlan {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+}
+
+message BasePlanResponse {
+  string id = 1;
+  string name = 2;
+  SubjectForBasePlan subject = 3; 
+}
+
+message OptionalBasePlanResponse {
+  optional BasePlanResponse base_plan = 1;
+}
+
+message GetBasePlansResponse {
+  repeated OptionalBasePlanResponse base_plans = 1;
+}
+
+message GetExamsRequest {
+  repeated string exam_ids = 1;
+}
+
+message ExamSubject {
+  string id = 1;
+  string name = 2;
+}
+
+message ExamResponse {
+  string id = 1;
+  string name = 2;
+  string code = 3;
+  ExamSubject exam_subject = 4;
+}
+
+message OptionalExamResponse {
+  optional ExamResponse exam = 1;
+}
+
+message GetExamsResponse {
+  repeated OptionalExamResponse exams = 1;
+}
+
+message GetMockExamsRequest {
+  repeated string mock_exam_ids = 1;
+}
+
+message MockExamResponse {
+  string id = 1;
+  string name = 2;
+  string mockExamGroupType = 3;
+}
+
+message OptionalMockExamResponse {
+  optional MockExamResponse mock_exam = 1;
+}
+
+message GetMockExamsResponse {
+  repeated OptionalMockExamResponse mock_exams = 1;
+}
+
+service LuminateGatewayService {
+  rpc GetTutors(GetTutorsRequest) returns (GetTutorsResponse);
+  rpc GetUsers(GetUsersRequest) returns (GetUsersResponse);
+  rpc GetSubjects(GetSubjectsRequest) returns (GetSubjectsResponse);
+  rpc CreateOmisePaymentHistory(CreateOmisePaymentHistoryRequest)
+      returns (CreateOmisePaymentHistoryResponse);
+  rpc UpdateOmisePaymentHistory(UpdateOmisePaymentHistoryRequest)
+      returns (google.protobuf.Empty);
+  rpc GetOmiseCustomerId(GetOmiseCustomerIdRequest)
+      returns (GetOmiseCustomerIdResponse);
+  rpc GetUserIdentity(GetUserIdentityRequest)
+      returns (GetUserIdentityResponse);
+  rpc GetTutorIdentity(GetTutorIdentityRequest)
+      returns (GetTutorIdentityResponse);
+  rpc LoginTutorWithPassword(LoginTutorWithPasswordRequest)
+      returns (LoginTutorWithPasswordResponse);
+  rpc GetBasePlans(GetBasePlansRequest) returns (GetBasePlansResponse);
+  rpc GetExams(GetExamsRequest) returns (GetExamsResponse);
+  rpc GetMockExams(GetMockExamsRequest) returns (GetMockExamsResponse);
+}

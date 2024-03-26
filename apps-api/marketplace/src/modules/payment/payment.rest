@@ -1,0 +1,13 @@
+POST http://localhost:4000/webhook/omise
+Content-Type: application/json
+
+{
+  "object": "event",
+  "data": {
+    "object": "charge",
+    "id": "chrg_test_5wxin0i4ufcobxcv080",
+    "metadata": {
+      "createdBy": "LUMINATE"
+    }
+  }
+} 

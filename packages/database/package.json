@@ -1,0 +1,35 @@
+{
+  "name": "@luminate/database",
+  "main": "src/index.js",
+  "module": "src/index.mjs",
+  "types": "src/index.ts",
+  "scripts": {
+    "codegen": "prisma generate && pnpm build-zod && pnpm build-entrypoint",
+    "build-zod": "tsup src/generated/zod/*.ts --outDir src/generated/zod",
+    "build-entrypoint": "tsup src/index.ts --outDir src",
+    "migrate": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy",
+    "migrate:reset": "prisma migrate reset",
+    "seed": "prisma db seed",
+    "reset": "prisma db push --force-reset && prisma db seed",
+    "apply": "prisma migrate deploy"
+  },
+  "devDependencies": {
+    "@types/node": "^20.4.5",
+    "cuid": "^3.0.0",
+    "date-fns": "^2.30.0",
+    "prisma": "^5.0.0",
+    "tsup": "^7.1.0",
+    "tsx": "^3.12.7",
+    "typescript": "^5.1.6",
+    "zod-prisma": "^0.5.4"
+  },
+  "dependencies": {
+    "@prisma/client": "5.0.0",
+    "tsx": "^3.12.7",
+    "zod": "^3.22.2"
+  },
+  "prisma": {
+    "seed": "node --loader tsx ./src/seed.ts"
+  }
+}

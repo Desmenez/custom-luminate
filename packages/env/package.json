@@ -1,0 +1,14 @@
+{
+  "name": "@luminate/env",
+  "version": "1.0.0",
+  "type": "module",
+  "main": "src/index.ts",
+  "types": "src/index.ts",
+  "dependencies": {
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@luminate/project-config": "workspace:^",
+    "ts-log": "^2.2.5"
+  }
+}

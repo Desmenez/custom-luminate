@@ -1,0 +1,549 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/client"
+}
+
+generator zod {
+  provider              = "zod-prisma"
+  output                = "../src/generated/zod"
+  relationModel         = true
+  modelCase             = "PascalCase"
+  modelSuffix           = "Model"
+  useDecimalJs          = true
+  prismaJsonNullability = true
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model LiveCourseChatRoom {
+  id           String                 @id @default(cuid())
+  platform     LiveCourseChatPlatform @map("platform")
+  url          String
+  liveCourse   LiveCourse             @relation(fields: [liveCourseId], references: [id])
+  liveCourseId String                 @map("live_course_id")
+
+  @@map("live_course_chat_room")
+}
+
+model LiveCourseImageDescription {
+  id           String     @id @default(cuid())
+  liveCourse   LiveCourse @relation(fields: [liveCourseId], references: [id])
+  liveCourseId String     @map("live_course_id")
+  imageUrl     String?    @map("image_url")
+  altText      String?    @map("alt_text")
+  order        Int
+  createdAt    DateTime   @default(now()) @map("created_at")
+  updatedAt    DateTime   @updatedAt @map("updated_at")
+
+  @@map("live_course_image_description")
+}
+
+model FundamentalCourse {
+  id                  String     @id @default(cuid())
+  fundamentalCourseId String
+  sheetUrl            String?    @map("sheet_url")
+  liveCourse          LiveCourse @relation(fields: [liveCourseId], references: [id])
+  liveCourseId        String
+
+  @@map("fundamental_course")
+}
+
+model MockExam {
+  id              String     @id @default(cuid())
+  mockExamGroupId String     @map("mock_exam_group_id")
+  url             String
+  liveCourse      LiveCourse @relation(fields: [liveCourseId], references: [id])
+  liveCourseId    String     @map("live_course_id")
+
+  @@map("mock_exam")
+}
+
+model LiveCourse {
+  id                  String    @id @default(cuid())
+  name                String
+  description         String
+  aboutCourse         String?   @map("about_course")
+  subjectId           String    @map("subject_id")
+  isRecommended       Boolean   @map("is_recommended")
+  courseThumbnailUrl  String?   @map("course_thumbnail_url")
+  courseCoverUrl      String?   @map("course_cover_url")
+  courseStickerUrl    String?   @map("course_sticker_url")
+  courseHeroUrl       String?   @map("course_hero_url")
+  courseHeroMobileUrl String?   @map("course_hero_mobile_url")
+  tutorId             String    @map("tutor_id")
+  /// @zod.custom(z.coerce.date())
+  startDate           DateTime  @map("start_date")
+  /// @zod.custom(z.coerce.date())
+  endDate             DateTime  @map("end_date")
+  enrolled            Int       @default(0)
+  lastEnrollmentDate  DateTime? @map("last_enrollment_date")
+  grades              Int[]
+
+  paymentRemark                 String? @map("payment_remark")
+  fundamentalCoursesDescription String? @map("fundamental_courses_description")
+  liveSessionsDescription       String? @map("live_sessions_description")
+  examsDescription              String? @map("exams_description")
+  mockExamsDescription          String? @map("mock_exams_description")
+
+  isCourseMaterialUploaded Boolean @default(false) @map("is_course_material_uploaded")
+  hasShipping              Boolean @default(false) @map("has_shipping")
+  shippingPrice            Int     @default(100) @map("shipping_price")
+  hasPickUp                Boolean @default(false) @map("has_pick_up")
+  pickupAddress            String? @map("pickup_address")
+
+  liveSessions       LiveSession[]       @relation("liveSessionOnLiveCourse")
+  fundamentalCourses FundamentalCourse[]
+  exerciseIds        String[]
+  examTutorialIds    String[]
+  examIds            String[]
+  mockExams          MockExam[]
+
+  fundamentalCourseRequiresSubscription Boolean @default(false) @map("fundamental_course_requires_subscription")
+  exerciseRequiresSubscription          Boolean @default(false) @map("exercise_requires_subscription")
+  examTutorialRequiresSubscription      Boolean @default(false) @map("exam_tutorial_requires_subscription")
+  examRequiresSubscription              Boolean @default(false) @map("exam_requires_subscription")
+  mockExamRequiresSubscription          Boolean @default(false) @map("mock_exam_requires_subscription")
+
+  chatRooms LiveCourseChatRoom[]
+
+  students     LiveCoursesOnUsers[]
+  trialstudent LiveCourseTrialOnUser[]
+
+  liveCoursePackages LiveCoursePackage[]
+
+  comments LiveCourseComment[]
+
+  basePlanType BasePlanType @default(ENTRANCE) @map("base_plan_type")
+  isActive     Boolean      @map("is_active")
+  createdAt    DateTime     @default(now()) @map("created_at")
+  updatedAt    DateTime     @updatedAt @map("updated_at")
+
+  playbackDurationLimit Int?                        @map("playback_duration_limit")
+  limitType             LiveCoursePlaybackLimitType @default(NONE) @map("limit_type")
+
+  type LiveCourseType
+
+  enableRecordingPlayback       Boolean @default(false) @map("enable_recording_playback")
+  recordingRequiresSubscription Boolean @default(false) @map("recording_playback_requires_subscription")
+
+  onlinePrice         Int?              @map("online_price")
+  onsitePrice         Int?              @map("onsite_price")
+  originalOnlinePrice Int?              @map("original_online_price")
+  originalOnsitePrice Int?              @map("original_onsite_price")
+  onsiteMaxSeats      Int               @default(0) @map("onsite_max_seats")
+  onsiteAddress       String?           @map("onsite_address")
+  addons              LiveCourseAddon[]
+
+  hasQuiz  Boolean             @default(true) @map("has_quiz")
+  bookings LiveCourseBooking[]
+
+  expiresAt         DateTime?              @map("expires_at")
+  shelfLifeDuration Int?                   @map("shelf_life_duration")
+  shelfLifeUnit     ShelfLifeDurationUnit? @map("shelf_life_unit")
+
+  suggestedNextCourses                  LiveCourse[]                 @relation("suggested_courses")
+  suggestedNextCoursesSuggester         LiveCourse[]                 @relation("suggested_courses")
+  suggestedPrerequisiteCourses          LiveCourse[]                 @relation("pre_requisite_courses")
+  suggestedPrerequisiteCoursesSuggester LiveCourse[]                 @relation("pre_requisite_courses")
+  liveCourseImageDescription            LiveCourseImageDescription[]
+
+  discountCodes DiscountCode[]
+
+  @@map("live_course")
+}
+
+model LiveCourseBooking {
+  id                String           @id @default(cuid())
+  liveCourse        LiveCourse       @relation(fields: [liveCourseId], references: [id])
+  liveCourseId      String           @map("live_course_id")
+  userId            String           @map("user_id")
+  learningType      LearningType     @map("learning_type")
+  receiveMethod     ReceiveMethod?   @map("receive_method")
+  shippingAddress   ShippingAddress? @relation(fields: [shippingAddressId], references: [id])
+  shippingAddressId String?          @map("shipping_address_id")
+
+  basePrice     Int @map("base_price")
+  shippingPrice Int @map("shipping_price")
+
+  addonName         String? @map("addon_name")
+  addonPrice        Int?    @map("addon_price")
+  addonDurationDays Int?    @map("addon_duration_days")
+
+  subtotal         Int
+  status           PaymentStatus @default(PENDING)
+  displayExpiresAt DateTime      @map("display_expires_at")
+  expiresAt        DateTime      @map("expires_at")
+
+  charges LiveCourseCharge[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@index([status, expiresAt])
+  @@map("live_course_booking")
+}
+
+model LiveCourseCharge {
+  id            String @id @default(cuid())
+  omiseChargeId String @unique @map("omise_charge_id")
+  paymentId     String @unique @map("payment_id")
+  userId        String @map("user_id")
+
+  paymentMethod PaymentMethod
+  sourceParams  String        @map("source_params")
+
+  amount         Int
+  discountCodeId String?       @map("discount_code_id")
+  discountCode   DiscountCode? @relation(fields: [discountCodeId], references: [id])
+  status         PaymentStatus
+
+  booking   LiveCourseBooking @relation(fields: [bookingId], references: [id])
+  bookingId String            @map("live_course_booking_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  liveCoursesOnUsers LiveCoursesOnUsers?
+
+  @@map("live_course_charge")
+}
+
+model DiscountCodeGroup {
+  id            String         @id @default(cuid())
+  name          String
+  createdAt     DateTime       @default(now()) @map("created_at")
+  updatedAt     DateTime       @updatedAt @map("updated_at")
+  discountCodes DiscountCode[]
+
+  @@map("discount_code_group")
+}
+
+model DiscountCode {
+  id                  String             @id @default(cuid())
+  code                String             @unique
+  discountCodeGroupId String             @map("discount_code_group_id")
+  discountCodeGroup   DiscountCodeGroup  @relation(fields: [discountCodeGroupId], references: [id])
+  startDate           DateTime?          @map("start_date")
+  endDate             DateTime?          @map("end_date")
+  isActive            Boolean            @default(false) @map("is_active")
+  discount            Int
+  usageCount          Int                @default(0) @map("usage_count")
+  limit               Int?
+  scope               DiscountCodeScope  @default(ALL) @map("scope")
+  liveCourses         LiveCourse[]
+  liveCourseCharges   LiveCourseCharge[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("discount_code")
+}
+
+model LiveCourseAddon {
+  id           String     @id @default(cuid())
+  liveCourseId String     @map("live_course_id")
+  liveCourse   LiveCourse @relation(fields: [liveCourseId], references: [id])
+
+  name         String
+  price        Int
+  durationDays Int    @map("duration_days")
+
+  @@map("live_course_addon")
+}
+
+model LiveCoursePackage {
+  id           String                @id @default(cuid())
+  createdAt    DateTime              @default(now()) @map("created_at")
+  updatedAt    DateTime              @updatedAt @map("updated_at")
+  liveCourseId String                @map("live_course_id")
+  liveCourse   LiveCourse            @relation(fields: [liveCourseId], references: [id])
+  title        String
+  description  String?
+  price        Float
+  duration     Int                   @default(0)
+  packageType  LiveCoursePackageType @default(LIVECOURSE_ONLY) @map("package_type")
+  durationUnit DurationUnit          @map("duration_unit")
+  isActive     Boolean               @default(false) @map("is_active")
+  // TODO: figure out payment related stuffs
+  // userPayment  UserPayment[]
+  // discountCode DiscountCode[]
+  hasShipping  Boolean               @default(false) @map("has_shipping")
+
+  @@map("live_course_package")
+}
+
+model Banner {
+  id        String   @id @default(cuid())
+  name      String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+  isActive  Boolean  @default(false) @map("is_active")
+  imageUrl  String?  @map("image_url")
+  altText   String?  @map("alt_text")
+  linkUrl   String?  @map("link_url")
+  order     String
+
+  @@map("banner")
+}
+
+model LiveCoursesOnUsers {
+  userId            String            @map("user_id")
+  liveCourseId      String            @map("live_course_id")
+  liveCourse        LiveCourse        @relation(fields: [liveCourseId], references: [id])
+  createdAt         DateTime          @default(now()) @map("created_at")
+  updatedAt         DateTime          @updatedAt @map("updated_at")
+  charge            LiveCourseCharge? @relation(fields: [chargeId], references: [id])
+  chargeId          String?           @unique @map("charge_id")
+  receiveMethod     ReceiveMethod?    @default(SHIPPING) @map("receive_method")
+  shippingAddressId String?           @map("shipping_address_id")
+  shippingAddress   ShippingAddress?  @relation(fields: [shippingAddressId], references: [id])
+  learningType      LearningType      @map("learning_type")
+
+  recentLiveSessionId                 String?      @map("recent_live_session_id")
+  recentLiveSession                   LiveSession? @relation(fields: [recentLiveSessionId], references: [id])
+  recentLiveSessionTimestampSeconds   Int?         @map("recent_live_session_timestamp_seconds")
+  recentLiveSessionVideoLengthSeconds Int?         @map("recent_live_session_video_length")
+
+  expiresAt DateTime? @map("expires_at")
+
+  @@id([userId, liveCourseId])
+  @@map("live_courses_on_users")
+}
+
+model LiveCourseTrialOnUser {
+  trialSession   LiveSession @relation(fields: [trialSessionId], references: [id])
+  trialSessionId String      @map("trial_session_id")
+  liveCourse     LiveCourse  @relation(fields: [liveCourseId], references: [id])
+  liveCourseId   String      @map("live_course_id")
+  userId         String      @map("user_id")
+
+  @@id([userId, liveCourseId, trialSessionId])
+  @@unique([userId, liveCourseId])
+  @@map("live_course_trial_on_user")
+}
+
+model LiveSession {
+  id            String                     @id @default(cuid())
+  name          String
+  description   String
+  /// @zod.custom(z.coerce.date())
+  startTime     DateTime                   @map("start_time")
+  /// @zod.custom(z.coerce.date())
+  endTime       DateTime                   @map("end_time")
+  trialUser     LiveCourseTrialOnUser[]
+  /// @TypeGraphQL.omit(output: true)
+  streamInputId String                     @map("stream_input_id")
+  /// @TypeGraphQL.omit(output: true)
+  streamKey     String                     @map("stream_key")
+  /// @TypeGraphQL.omit(output: true)
+  videoId       String?                    @map("video_id")
+  liveCourse    LiveCourse                 @relation("liveSessionOnLiveCourse", fields: [liveCourseId], references: [id])
+  liveCourseId  String                     @map("live_course_id")
+  quizzes       LiveSessionQuiz[]
+  answer        StudentOnLiveSessionQuiz[]
+  isQuizClosed  Boolean                    @default(false) @map("is_quiz_closed")
+
+  isTrialSession Boolean @default(false) @map("is_trial_session")
+
+  sheetUrl   String? @map("sheet_url")
+  exerciseId String? @map("exercise_id")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  studentOnLiveSession StudentOnLiveSession[]
+  LiveCoursesOnUsers   LiveCoursesOnUsers[]
+
+  @@index([liveCourseId, startTime])
+  @@map("live_session")
+}
+
+model LiveCourseComment {
+  liveCourseId  String     @map("live_course_id")
+  liveCourse    LiveCourse @relation(fields: [liveCourseId], references: [id])
+  stars         Int        @default(0)
+  userId        String     @map("user_id")
+  description   String?
+  userUpdatedAt DateTime?  @map("user_updated_at")
+  createdAt     DateTime   @default(now()) @map("created_at")
+  updatedAt     DateTime   @updatedAt @map("updated_at")
+
+  @@id([liveCourseId, userId])
+  @@map("live_course_comment")
+}
+
+model LiveSessionQuiz {
+  id                 String                     @id @default(cuid())
+  liveSessionId      String                     @map("live_session_id")
+  liveSession        LiveSession                @relation(fields: [liveSessionId], references: [id], onDelete: Cascade)
+  type               LiveSessionQuizType
+  /// @zod.custom(z.unknown())
+  config             Json
+  /// @zod.custom(z.unknown())
+  solution           Json
+  isAcceptingAnswers Boolean
+  studentAnswers     StudentOnLiveSessionQuiz[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+
+  @@map("live_session_quiz")
+}
+
+model StudentOnLiveSessionQuiz {
+  liveSessionId     String          @map("live_session_id")
+  liveSession       LiveSession     @relation(fields: [liveSessionId], references: [id])
+  studentId         String          @map("student_id")
+  liveSessionQuizId String          @map("live_session_quiz_id")
+  liveSessionQuiz   LiveSessionQuiz @relation(fields: [liveSessionQuizId], references: [id], onDelete: Cascade)
+  answer            Json
+  correct           Boolean
+
+  @@id([studentId, liveSessionQuizId])
+  @@map("student_on_live_session_quiz")
+}
+
+model StudentOnLiveSession {
+  liveSessionId String      @map("live_session_id")
+  liveSession   LiveSession @relation(fields: [liveSessionId], references: [id])
+  studentId     String      @map("student_id")
+
+  timestampSeconds   Int? @map("timestamp_seconds")
+  videoLengthSeconds Int? @map("video_length_seconds")
+  playbackDuration   Int
+
+  @@id([studentId, liveSessionId])
+  @@map("student_on_live_session")
+}
+
+model LiveCoursePageUI {
+  id           String   @id @default(cuid())
+  bannersImage String[] @map("banners_image")
+
+  // sub banner
+  subBannerTitle             String @map("sub_banner_title")
+  subBannerDesc              String @map("sub_banner_desc")
+  subBannerBackgroundImage   String @map("sub_banner_background_image")
+  subBannerBackgroundOverlay String @map("sub_banner_background_overlay")
+  subBannerButtonTitle       String @map("sub_banner_button_title")
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("live_course_page_ui")
+}
+
+model ShippingAddress {
+  id     String @id @default(cuid())
+  userId String @map("user_id")
+
+  name        String
+  phone       String
+  address     String
+  province    String
+  district    String
+  subdistrict String
+  postalCode  String @map("postal_code")
+
+  liveCourses        LiveCoursesOnUsers[]
+  liveCourseBookings LiveCourseBooking[]
+
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("shipping_address")
+}
+
+model TutorCard {
+  id        String   @id @default(cuid())
+  tutorId   String   @map("tutor_id")
+  imageUrl  String   @map("image_url")
+  altText   String?  @map("alt_text")
+  order     String
+  createdAt DateTime @default(now()) @map("created_at")
+  updatedAt DateTime @updatedAt @map("updated_at")
+
+  @@map("tutor_card")
+}
+
+enum BasePlanType {
+  FOUNDATION
+  CORE
+  ENTRANCE
+  ONET
+  POSN
+}
+
+enum DurationUnit {
+  DAY
+  MONTH
+}
+
+enum LiveCoursePlaybackLimitType {
+  MINUTE
+  PERCENT
+  NONE
+}
+
+enum LiveCourseChatPlatform {
+  FACEBOOK
+  LINE
+}
+
+enum LiveCoursePackageType {
+  LIVECOURSE_ONLY
+  WITH_SUBSCRIPTION
+}
+
+enum ReceiveMethod {
+  SHIPPING
+  PICKUP
+}
+
+enum LiveSessionQuizType {
+  CHOICE
+  TEXT
+}
+
+enum LiveCourseType {
+  LIVE
+  FUSION
+  TAPE
+  ONSITE
+}
+
+enum LearningType {
+  ONLINE
+  ONSITE
+}
+
+enum PaymentStatus {
+  PENDING
+  SUCCESS
+  FAILED
+}
+
+enum PaymentMethod {
+  CREDIT_CARD
+  PROMPTPAY
+  TRUEMONEY
+  MOBILE_BANKING
+}
+
+enum ShelfLifeDurationUnit {
+  DAY
+  MONTH
+  YEAR
+  LIFETIME
+}
+
+enum DiscountCodeScope {
+  SPECIFIC_LIVE_COURSE
+  ANY_LIVE_COURSE
+  ALL
+}

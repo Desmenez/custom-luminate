@@ -1,0 +1,5 @@
+{
+  "extends": "@luminate/project-config/tsconfig/nodejs.json",
+  "include": ["src/**/*.ts"],
+  "exclude": ["node_modules"]
+}

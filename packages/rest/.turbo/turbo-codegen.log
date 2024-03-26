@@ -1,0 +1,4 @@
+
+> @luminate/rest@0.1.0 codegen /Users/monkeydev/Desktop/luminate/luminate/packages/rest
+> tsc --emitDeclarationOnly --declaration --rootDir ./src --outDir ./dist
+

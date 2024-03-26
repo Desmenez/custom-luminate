@@ -1,0 +1,18 @@
+{
+  "name": "@luminate/omise",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./src/index.ts",
+  "types": "./src/index.ts",
+  "sideEffects": false,
+  "scripts": {
+    "lint": "eslint --ext .ts,.tsx ."
+  },
+  "peerDependencies": {
+    "next": "^13.4.19"
+  },
+  "devDependencies": {
+    "@luminate/project-config": "workspace:^"
+  }
+}

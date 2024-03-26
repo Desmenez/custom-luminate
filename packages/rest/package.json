@@ -1,0 +1,25 @@
+{
+  "name": "@luminate/rest",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "codegen": "tsc --emitDeclarationOnly --declaration --rootDir ./src --outDir ./dist",
+    "codegen:everyday": "tsup src/index.ts --outDir ./generated --format esm --dts --platform browser",
+    "lint": "eslint --ext .ts,.tsx ."
+  },
+  "main": "./src/index.ts",
+  "types": "./dist/index.d.ts",
+  "dependencies": {
+    "@luminate/database": "workspace:^",
+    "@luminate/types-utility": "workspace:^",
+    "@ts-rest/core": "^3.27.0",
+    "utility-types": "^3.10.0",
+    "zod": "^3.22.2"
+  },
+  "devDependencies": {
+    "@luminate/project-config": "workspace:^",
+    "tsup": "^7.1.0",
+    "typescript": "^5.1.6"
+  }
+}

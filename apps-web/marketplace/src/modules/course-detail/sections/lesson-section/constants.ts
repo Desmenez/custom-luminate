@@ -1,0 +1,2 @@
+export const DEFAULT_BEFORE_ALLOW_ENTER_SESSION_SECONDS = 60 * 15 // 15 minutes
+export const DEFAULT_AFTER_ALLOW_ENTER_SESSION_SECONDS = 60 * 60 * 2 // 2 hours
