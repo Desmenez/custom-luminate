@@ -1,27 +1,27 @@
-import React, { Children, useEffect, useState } from 'react'
+import React, { Children, useEffect, useState } from "react";
 
-import { WheelControls } from '@app/utils/keen-wheel-controls'
-import { useKeenSlider } from 'keen-slider/react'
-import NextImage from 'next/image'
-import NextLink from 'next/link'
+import { WheelControls } from "@app/utils/keen-wheel-controls";
+import { useKeenSlider } from "keen-slider/react";
+import NextImage from "next/image";
+import NextLink from "next/link";
 
-import { useIsClient } from '@luminate/react-hooks'
-import { cn } from '@luminate/ui'
+import { useIsClient } from "@luminate/react-hooks";
+import { cn } from "@luminate/ui";
 
 type Banner = {
-  id: string
-  altText: string | undefined | null
-  imageUrl: string | undefined | null
-  linkUrl: string | undefined | null
-}
+  id: string;
+  altText: string | undefined | null;
+  imageUrl: string | undefined | null;
+  linkUrl: string | undefined | null;
+};
 
 interface BannerCarouselProps {
-  banners: Banner[] | null
+  banners: Banner[] | null;
 }
 
 export function BannerCarousel({ banners }: BannerCarouselProps) {
   if (!banners) {
-    return null
+    return null;
   }
   return (
     <Carousel>
@@ -35,7 +35,7 @@ export function BannerCarousel({ banners }: BannerCarouselProps) {
           >
             <NextImage
               src={banner.imageUrl!}
-              alt={banner.altText ?? ''}
+              alt={banner.altText ?? ""}
               fill
               priority
               sizes="(max-width: 1440px) 100vw, 1440px"
@@ -44,41 +44,41 @@ export function BannerCarousel({ banners }: BannerCarouselProps) {
           </NextLink>
         ))}
     </Carousel>
-  )
+  );
 }
 
 function Carousel({ children }: { children: React.JSX.Element[] }) {
-  const count = Children.count(children)
-  const hasSlides = count > 1
-  const [isHovering, setIsHovering] = useState(false)
-  const autoSlide = !isHovering && hasSlides
-  const [currentIndex, setCurrentIndex] = useState(0)
-  const isClient = useIsClient()
+  const count = Children.count(children);
+  const hasSlides = count > 1;
+  const [isHovering, setIsHovering] = useState(false);
+  const autoSlide = !isHovering && hasSlides;
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const isClient = useIsClient();
 
-  const slides = isClient ? children : children.slice(0, 1)
+  const slides = isClient ? children : children.slice(0, 1);
 
   const [sliderRef, instanceRef] = useKeenSlider(
     {
       drag: hasSlides,
       slides: {
-        origin: 'center',
+        origin: "center",
         perView: 1,
       },
       loop: true,
       slideChanged: (instance) => {
-        setCurrentIndex(instance.track.details.rel)
+        setCurrentIndex(instance.track.details.rel);
       },
     },
     [WheelControls]
-  )
+  );
 
   useEffect(() => {
-    if (!autoSlide) return
+    if (!autoSlide) return;
     const interval = setInterval(() => {
-      instanceRef.current?.next()
-    }, 5000)
-    return () => clearInterval(interval)
-  }, [autoSlide, instanceRef])
+      instanceRef.current?.next();
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [autoSlide, instanceRef]);
 
   return (
     <div className="relative flex flex-col items-center">
@@ -105,8 +105,10 @@ function Carousel({ children }: { children: React.JSX.Element[] }) {
             >
               <div
                 className={cn(
-                  'rounded h-2 w-10 transition-colors',
-                  currentIndex === index ? 'bg-yellow-400' : 'bg-gray-600 lg:bg-gray-200'
+                  "rounded h-2 w-10 transition-colors",
+                  currentIndex === index
+                    ? "bg-yellow-400"
+                    : "bg-gray-600 lg:bg-gray-200"
                 )}
               />
             </button>
@@ -114,5 +116,5 @@ function Carousel({ children }: { children: React.JSX.Element[] }) {
         </div>
       )}
     </div>
-  )
+  );
 }

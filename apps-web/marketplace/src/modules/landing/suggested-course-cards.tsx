@@ -1,27 +1,38 @@
-import BgGradient from '@app/assets/bg-gradients.svg?url'
-import { DefaultHoverCard, DefaultHoverCardProps } from '@app/components/course-card'
-import { faSmile } from '@fortawesome/pro-regular-svg-icons'
-import NextImage from 'next/image'
-import NextLink from 'next/link'
+import BgGradient from "@app/assets/bg-gradients.svg?url";
+import {
+  DefaultHoverCard,
+  DefaultHoverCardProps,
+} from "@app/components/course-card";
+import { faSmile } from "@fortawesome/pro-regular-svg-icons";
+import NextImage from "next/image";
+import NextLink from "next/link";
 
-import { LiveCourseType } from '@luminate/database'
-import { LiveCourseForPreview } from '@luminate/rest'
-import { FontAwesomeIcon } from '@luminate/ui'
+import { LiveCourseType } from "@luminate/database";
+import { LiveCourseForPreview } from "@luminate/rest";
+import { FontAwesomeIcon } from "@luminate/ui";
 
-import { CourseCardSlider } from '../../components/course-card/course-card-slider'
+import { CourseCardSlider } from "../../components/course-card/course-card-slider";
 
 interface SuggestedCourseCardsProps {
-  suggestedCourses: LiveCourseForPreview[] | null
+  suggestedCourses: LiveCourseForPreview[] | null;
 }
 
-export const SuggestedCourseCards = ({ suggestedCourses }: SuggestedCourseCardsProps) => {
+export const SuggestedCourseCards = ({
+  suggestedCourses,
+}: SuggestedCourseCardsProps) => {
   const liveCourses = suggestedCourses?.filter(
-    (course) => course.type === LiveCourseType.LIVE || course.type === LiveCourseType.FUSION
-  )
-  const onlineCourses = suggestedCourses?.filter((course) => course.type === LiveCourseType.TAPE)
-  const onsiteCourses = suggestedCourses?.filter((course) => course.type === LiveCourseType.ONSITE)
+    (course) =>
+      course.type === LiveCourseType.LIVE ||
+      course.type === LiveCourseType.FUSION
+  );
+  const onlineCourses = suggestedCourses?.filter(
+    (course) => course.type === LiveCourseType.TAPE
+  );
+  const onsiteCourses = suggestedCourses?.filter(
+    (course) => course.type === LiveCourseType.ONSITE
+  );
   if (!suggestedCourses) {
-    return null
+    return null;
   }
   return (
     <div className="relative">
@@ -45,25 +56,33 @@ export const SuggestedCourseCards = ({ suggestedCourses }: SuggestedCourseCardsP
         href={`/browse?liveCourseType=${LiveCourseType.ONSITE}`}
       />
     </div>
-  )
-}
+  );
+};
 
 interface CourseCardSectionProps {
-  title: string
-  description: string
-  courses: LiveCourseForPreview[] | undefined
-  href: string
+  title: string;
+  description: string;
+  courses: LiveCourseForPreview[] | undefined;
+  href: string;
 }
 
-function CourseCardSection({ title, description, courses, href }: CourseCardSectionProps) {
+function CourseCardSection({
+  title,
+  description,
+  courses,
+  href,
+}: CourseCardSectionProps) {
   if (!courses || courses.length === 0) {
-    return null
+    return null;
   }
   return (
     <section className="py-8 laptop:py-14 border-t border-gray-700">
       <section className="px-4 laptop:px-14 mb-8 laptop:mb-4">
         <div className="flex items-center gap-2 laptop:gap-4 mb-2 laptop:mb-4">
-          <FontAwesomeIcon icon={faSmile} className="h-5 w-5 laptop:h-10 laptop:w-10" />
+          <FontAwesomeIcon
+            icon={faSmile}
+            className="h-5 w-5 laptop:h-10 laptop:w-10"
+          />
           <h3 className="text-lg laptop:text-3xl font-semibold">{title}</h3>
         </div>
         <div className="w-full flex justify-between items-center">
@@ -79,7 +98,7 @@ function CourseCardSection({ title, description, courses, href }: CourseCardSect
         ))}
       </CourseCardSlider>
     </section>
-  )
+  );
 }
 
 export function ResponsiveHoverCard(props: DefaultHoverCardProps) {
@@ -88,5 +107,5 @@ export function ResponsiveHoverCard(props: DefaultHoverCardProps) {
       className="min-w-[130px] max-w-[130px] h-[175px] laptop:min-w-[220px] laptop:max-w-[220px] laptop:h-[296px]"
       {...props}
     />
-  )
+  );
 }

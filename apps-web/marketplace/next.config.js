@@ -1,9 +1,9 @@
-const nextConfig = require('@luminate/next-config')
-const withBundleAnalyzer = require('@next/bundle-analyzer')({
-  enabled: process.env.ANALYZE === 'true',
-})
+const nextConfig = require("@luminate/next-config");
+const withBundleAnalyzer = require("@next/bundle-analyzer")({
+  enabled: process.env.ANALYZE === "true",
+});
 
-const BASE_PATH = '/learning-space'
+const BASE_PATH = "/learning-space";
 
 /**
  * @type {import('next').NextConfig}
@@ -11,32 +11,33 @@ const BASE_PATH = '/learning-space'
 const newNextConfig = {
   ...nextConfig,
   basePath: BASE_PATH,
+  // Add or merge the images configuration here
+  images: {
+    domains: [...(nextConfig.images?.domains || []), "picsum.photos"],
+  },
   async rewrites() {
-    /**
-     * @type {import('next/dist/lib/load-custom-routes').Rewrite[]}
-     */
-    const rewriteList = []
-    if (process.env.ENABLE_PLAYGROUND !== 'true') {
+    const rewriteList = [];
+    if (process.env.ENABLE_PLAYGROUND !== "true") {
       rewriteList.push({
         source: `/playground/:path*`,
-        destination: '/404',
-      })
+        destination: "/404",
+      });
     }
     return {
       beforeFiles: rewriteList,
-    }
+    };
   },
   modularizeImports: {
-    '@fortawesome/free-brands-svg-icons': {
-      transform: '@fortawesome/free-brands-svg-icons/{{ member }}',
+    "@fortawesome/free-brands-svg-icons": {
+      transform: "@fortawesome/free-brands-svg-icons/{{ member }}",
       skipDefaultConversion: true,
     },
-    '@fortawesome/pro-regular-svg-icons': {
-      transform: '@fortawesome/pro-regular-svg-icons/{{ member }}',
+    "@fortawesome/pro-regular-svg-icons": {
+      transform: "@fortawesome/pro-regular-svg-icons/{{ member }}",
       skipDefaultConversion: true,
     },
-    '@fortawesome/pro-solid-svg-icons': {
-      transform: '@fortawesome/pro-solid-svg-icons/{{ member }}',
+    "@fortawesome/pro-solid-svg-icons": {
+      transform: "@fortawesome/pro-solid-svg-icons/{{ member }}",
       skipDefaultConversion: true,
     },
   },
@@ -54,36 +55,34 @@ const newNextConfig = {
         permanent: false,
         basePath: false,
       },
-    ]
+    ];
   },
   webpack(config) {
-    // Grab the existing rule that handles SVG imports
-    const fileLoaderRule = config.module.rules.find((rule) => rule.test?.test?.('.svg'))
+    const fileLoaderRule = config.module.rules.find((rule) =>
+      rule.test?.test?.(".svg")
+    );
 
     config.module.rules.push(
-      // Reapply the existing rule, but only for svg imports ending in ?url
       {
         ...fileLoaderRule,
         test: /\.svg$/i,
-        resourceQuery: /url/, // *.svg?url
+        resourceQuery: /url/,
       },
-      // Convert all other *.svg imports to React components
       {
         test: /\.svg$/i,
         issuer: /\.[jt]sx?$/,
-        resourceQuery: { not: /url/ }, // exclude if *.svg?url
+        resourceQuery: { not: /url/ },
         use: [
           {
-            loader: '@svgr/webpack',
+            loader: "@svgr/webpack",
             options: {
               svgo: true,
               svgoConfig: {
                 plugins: [
                   {
-                    name: 'preset-default',
+                    name: "preset-default",
                     params: {
                       overrides: {
-                        // disable plugins
                         removeViewBox: false,
                       },
                     },
@@ -94,13 +93,12 @@ const newNextConfig = {
           },
         ],
       }
-    )
+    );
 
-    // Modify the file loader rule to ignore *.svg, since we have it handled now.
-    fileLoaderRule.exclude = /\.svg$/i
+    fileLoaderRule.exclude = /\.svg$/i;
 
-    return config
+    return config;
   },
-}
+};
 
-module.exports = withBundleAnalyzer(newNextConfig)
+module.exports = withBundleAnalyzer(newNextConfig);
