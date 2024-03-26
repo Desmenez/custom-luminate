@@ -7,12 +7,12 @@ export declare const LiveCourseChatRoomInput: z.ZodObject<Pick<{
     }>;
     url: z.ZodString;
     liveCourseId: z.ZodString;
-}, "url" | "platform">, "strip", z.ZodTypeAny, {
-    url: string;
+}, "platform" | "url">, "strip", z.ZodTypeAny, {
     platform: "FACEBOOK" | "LINE";
+    url: string;
 }, {
-    url: string;
     platform: "FACEBOOK" | "LINE";
+    url: string;
 }>;
 export type LiveCourseChatRoomInput = z.infer<typeof LiveCourseChatRoomInput>;
 export declare const LiveCoursePackageCreateInput: z.ZodObject<Pick<{
@@ -52,6 +52,16 @@ export declare const LiveCoursePackageCreateInput: z.ZodObject<Pick<{
     durationUnit: "DAY" | "MONTH";
 }>;
 export type LiveCoursePackageCreateInput = z.infer<typeof LiveCoursePackageCreateInput>;
+export declare const MockExamCreateInput: z.ZodObject<{
+    mockExamGroupId: z.ZodString;
+    url: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    url: string;
+    mockExamGroupId: string;
+}, {
+    url: string;
+    mockExamGroupId: string;
+}>;
 export declare const LiveCourseCreateArgs: z.ZodObject<{
     type: z.ZodNativeEnum<{
         LIVE: "LIVE";
@@ -66,14 +76,16 @@ export declare const LiveCourseCreateArgs: z.ZodObject<{
     isRecommended: z.ZodBoolean;
     tutorId: z.ZodString;
     grades: z.ZodArray<z.ZodNumber, "many">;
+    paymentRemark: z.ZodNullable<z.ZodString>;
+    fundamentalCoursesDescription: z.ZodNullable<z.ZodString>;
+    examsDescription: z.ZodNullable<z.ZodString>;
+    mockExamsDescription: z.ZodNullable<z.ZodString>;
     hasShipping: z.ZodBoolean;
     hasPickUp: z.ZodBoolean;
     pickupAddress: z.ZodNullable<z.ZodString>;
-    fundamentalCourseIds: z.ZodArray<z.ZodString, "many">;
     exerciseIds: z.ZodArray<z.ZodString, "many">;
     examTutorialIds: z.ZodArray<z.ZodString, "many">;
     examIds: z.ZodArray<z.ZodString, "many">;
-    mockExamIds: z.ZodArray<z.ZodString, "many">;
     fundamentalCourseRequiresSubscription: z.ZodBoolean;
     examTutorialRequiresSubscription: z.ZodBoolean;
     examRequiresSubscription: z.ZodBoolean;
@@ -105,28 +117,34 @@ export declare const LiveCourseCreateArgs: z.ZodObject<{
         YEAR: "YEAR";
         LIFETIME: "LIFETIME";
     }>>;
-    liveSessions: z.ZodArray<z.ZodObject<Pick<{
-        description: z.ZodString;
-        liveCourseId: z.ZodString;
+    liveSessions: z.ZodArray<z.ZodObject<Pick<Pick<{
+        id: z.ZodString;
         name: z.ZodString;
+        description: z.ZodString;
+        startTime: z.ZodDate;
+        endTime: z.ZodDate;
+        streamInputId: z.ZodString;
+        streamKey: z.ZodString;
+        videoId: z.ZodNullable<z.ZodString>;
+        liveCourseId: z.ZodString;
+        isQuizClosed: z.ZodBoolean;
         isTrialSession: z.ZodBoolean;
+        sheetUrl: z.ZodNullable<z.ZodString>;
         exerciseId: z.ZodNullable<z.ZodString>;
-        startTime: z.ZodString;
-        endTime: z.ZodString;
-    }, "description" | "name" | "startTime" | "endTime" | "isTrialSession" | "exerciseId">, "strip", z.ZodTypeAny, {
+        createdAt: z.ZodDate;
+        updatedAt: z.ZodDate;
+    }, "description" | "liveCourseId" | "name" | "startTime" | "endTime" | "isTrialSession">, "description" | "name" | "startTime" | "endTime" | "isTrialSession">, "strip", z.ZodTypeAny, {
         description: string;
         name: string;
-        startTime: string;
-        endTime: string;
+        startTime: Date;
+        endTime: Date;
         isTrialSession: boolean;
-        exerciseId: string | null;
     }, {
         description: string;
         name: string;
-        startTime: string;
-        endTime: string;
+        startTime: Date;
+        endTime: Date;
         isTrialSession: boolean;
-        exerciseId: string | null;
     }>, "many">;
     chatRooms: z.ZodArray<z.ZodObject<Pick<{
         id: z.ZodString;
@@ -136,19 +154,39 @@ export declare const LiveCourseCreateArgs: z.ZodObject<{
         }>;
         url: z.ZodString;
         liveCourseId: z.ZodString;
-    }, "url" | "platform">, "strip", z.ZodTypeAny, {
-        url: string;
+    }, "platform" | "url">, "strip", z.ZodTypeAny, {
         platform: "FACEBOOK" | "LINE";
+        url: string;
     }, {
-        url: string;
         platform: "FACEBOOK" | "LINE";
+        url: string;
     }>, "many">;
     startDate: z.ZodNullable<z.ZodString>;
     endDate: z.ZodNullable<z.ZodString>;
     lastEnrollmentDate: z.ZodNullable<z.ZodString>;
     suggestedNextCourseIds: z.ZodArray<z.ZodString, "many">;
     suggestedPrerequisiteCourseIds: z.ZodArray<z.ZodString, "many">;
+    fundamentalCourses: z.ZodArray<z.ZodObject<{
+        fundamentalCourseId: z.ZodString;
+        sheetUrl: z.ZodNullable<z.ZodString>;
+    }, "strip", z.ZodTypeAny, {
+        fundamentalCourseId: string;
+        sheetUrl: string | null;
+    }, {
+        fundamentalCourseId: string;
+        sheetUrl: string | null;
+    }>, "many">;
     imagesDescriptionCount: z.ZodNumber;
+    mockExams: z.ZodArray<z.ZodObject<{
+        mockExamGroupId: z.ZodString;
+        url: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        url: string;
+        mockExamGroupId: string;
+    }, {
+        url: string;
+        mockExamGroupId: string;
+    }>, "many">;
     addons: z.ZodArray<z.ZodObject<Pick<{
         id: z.ZodString;
         liveCourseId: z.ZodString;
@@ -176,14 +214,16 @@ export declare const LiveCourseCreateArgs: z.ZodObject<{
     endDate: string | null;
     lastEnrollmentDate: string | null;
     grades: number[];
+    paymentRemark: string | null;
+    fundamentalCoursesDescription: string | null;
+    examsDescription: string | null;
+    mockExamsDescription: string | null;
     hasShipping: boolean;
     hasPickUp: boolean;
     pickupAddress: string | null;
-    fundamentalCourseIds: string[];
     exerciseIds: string[];
     examTutorialIds: string[];
     examIds: string[];
-    mockExamIds: string[];
     fundamentalCourseRequiresSubscription: boolean;
     examTutorialRequiresSubscription: boolean;
     examRequiresSubscription: boolean;
@@ -203,14 +243,21 @@ export declare const LiveCourseCreateArgs: z.ZodObject<{
     liveSessions: {
         description: string;
         name: string;
-        startTime: string;
-        endTime: string;
+        startTime: Date;
+        endTime: Date;
         isTrialSession: boolean;
-        exerciseId: string | null;
+    }[];
+    fundamentalCourses: {
+        fundamentalCourseId: string;
+        sheetUrl: string | null;
+    }[];
+    mockExams: {
+        url: string;
+        mockExamGroupId: string;
     }[];
     chatRooms: {
-        url: string;
         platform: "FACEBOOK" | "LINE";
+        url: string;
     }[];
     addons: {
         name: string;
@@ -232,14 +279,16 @@ export declare const LiveCourseCreateArgs: z.ZodObject<{
     endDate: string | null;
     lastEnrollmentDate: string | null;
     grades: number[];
+    paymentRemark: string | null;
+    fundamentalCoursesDescription: string | null;
+    examsDescription: string | null;
+    mockExamsDescription: string | null;
     hasShipping: boolean;
     hasPickUp: boolean;
     pickupAddress: string | null;
-    fundamentalCourseIds: string[];
     exerciseIds: string[];
     examTutorialIds: string[];
     examIds: string[];
-    mockExamIds: string[];
     fundamentalCourseRequiresSubscription: boolean;
     examTutorialRequiresSubscription: boolean;
     examRequiresSubscription: boolean;
@@ -259,14 +308,21 @@ export declare const LiveCourseCreateArgs: z.ZodObject<{
     liveSessions: {
         description: string;
         name: string;
-        startTime: string;
-        endTime: string;
+        startTime: Date;
+        endTime: Date;
         isTrialSession: boolean;
-        exerciseId: string | null;
+    }[];
+    fundamentalCourses: {
+        fundamentalCourseId: string;
+        sheetUrl: string | null;
+    }[];
+    mockExams: {
+        url: string;
+        mockExamGroupId: string;
     }[];
     chatRooms: {
-        url: string;
         platform: "FACEBOOK" | "LINE";
+        url: string;
     }[];
     addons: {
         name: string;
@@ -278,57 +334,68 @@ export declare const LiveCourseCreateArgs: z.ZodObject<{
     imagesDescriptionCount: number;
 }>;
 export type LiveCourseCreateArgs = z.infer<typeof LiveCourseCreateArgs>;
+export declare const FileUploadDetails: z.ZodObject<{
+    url: z.ZodString;
+    token: z.ZodString;
+}, "strip", z.ZodTypeAny, {
+    token: string;
+    url: string;
+}, {
+    token: string;
+    url: string;
+}>;
+export type FileUploadDetails = z.infer<typeof FileUploadDetails>;
 export declare const CreateLiveCourseResponse: z.ZodObject<{
     id: z.ZodString;
     courseThumbnailUploadUrl: z.ZodObject<{
         url: z.ZodString;
         token: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        url: string;
         token: string;
+        url: string;
     }, {
-        url: string;
         token: string;
+        url: string;
     }>;
     courseCoverUploadUrl: z.ZodObject<{
         url: z.ZodString;
         token: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        url: string;
         token: string;
+        url: string;
     }, {
-        url: string;
         token: string;
+        url: string;
     }>;
-    courseStickerUploadUrl: z.ZodObject<{
+    courseSticketUploadUrl: z.ZodObject<{
         url: z.ZodString;
         token: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        url: string;
         token: string;
+        url: string;
     }, {
-        url: string;
         token: string;
+        url: string;
     }>;
     courseHeroUploadUrl: z.ZodObject<{
         url: z.ZodString;
         token: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        url: string;
         token: string;
+        url: string;
     }, {
-        url: string;
         token: string;
+        url: string;
     }>;
     courseHeroMobileUploadUrl: z.ZodObject<{
         url: z.ZodString;
         token: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        url: string;
         token: string;
+        url: string;
     }, {
-        url: string;
         token: string;
+        url: string;
     }>;
     liveSessions: z.ZodArray<z.ZodObject<{
         id: z.ZodString;
@@ -336,23 +403,23 @@ export declare const CreateLiveCourseResponse: z.ZodObject<{
             url: z.ZodString;
             token: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            url: string;
             token: string;
+            url: string;
         }, {
-            url: string;
             token: string;
+            url: string;
         }>;
     }, "strip", z.ZodTypeAny, {
         id: string;
         sheetUploadUrl: {
-            url: string;
             token: string;
+            url: string;
         };
     }, {
         id: string;
         sheetUploadUrl: {
-            url: string;
             token: string;
+            url: string;
         };
     }>, "many">;
     liveCourseImageDescription: z.ZodArray<z.ZodObject<{
@@ -362,25 +429,25 @@ export declare const CreateLiveCourseResponse: z.ZodObject<{
             url: z.ZodString;
             token: z.ZodString;
         }, "strip", z.ZodTypeAny, {
-            url: string;
             token: string;
+            url: string;
         }, {
-            url: string;
             token: string;
+            url: string;
         }>;
     }, "strip", z.ZodTypeAny, {
         id: string;
         order: number;
         imageUploadUrl: {
-            url: string;
             token: string;
+            url: string;
         };
     }, {
         id: string;
         order: number;
         imageUploadUrl: {
-            url: string;
             token: string;
+            url: string;
         };
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
@@ -388,74 +455,74 @@ export declare const CreateLiveCourseResponse: z.ZodObject<{
     liveSessions: {
         id: string;
         sheetUploadUrl: {
-            url: string;
             token: string;
+            url: string;
         };
     }[];
     liveCourseImageDescription: {
         id: string;
         order: number;
         imageUploadUrl: {
-            url: string;
             token: string;
+            url: string;
         };
     }[];
     courseThumbnailUploadUrl: {
-        url: string;
         token: string;
+        url: string;
     };
     courseCoverUploadUrl: {
-        url: string;
         token: string;
+        url: string;
     };
-    courseStickerUploadUrl: {
-        url: string;
+    courseSticketUploadUrl: {
         token: string;
+        url: string;
     };
     courseHeroUploadUrl: {
-        url: string;
         token: string;
+        url: string;
     };
     courseHeroMobileUploadUrl: {
-        url: string;
         token: string;
+        url: string;
     };
 }, {
     id: string;
     liveSessions: {
         id: string;
         sheetUploadUrl: {
-            url: string;
             token: string;
+            url: string;
         };
     }[];
     liveCourseImageDescription: {
         id: string;
         order: number;
         imageUploadUrl: {
-            url: string;
             token: string;
+            url: string;
         };
     }[];
     courseThumbnailUploadUrl: {
-        url: string;
         token: string;
+        url: string;
     };
     courseCoverUploadUrl: {
-        url: string;
         token: string;
+        url: string;
     };
-    courseStickerUploadUrl: {
-        url: string;
+    courseSticketUploadUrl: {
         token: string;
+        url: string;
     };
     courseHeroUploadUrl: {
-        url: string;
         token: string;
+        url: string;
     };
     courseHeroMobileUploadUrl: {
-        url: string;
         token: string;
+        url: string;
     };
 }>;
 export type CreateLiveCourseResponse = z.infer<typeof CreateLiveCourseResponse>;
@@ -463,24 +530,21 @@ export declare const LiveCourseInformationUpdateArgs: z.ZodObject<{
     id: z.ZodString;
     description: z.ZodOptional<z.ZodString>;
     name: z.ZodOptional<z.ZodString>;
-    aboutCourse: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     subjectId: z.ZodOptional<z.ZodString>;
     isRecommended: z.ZodOptional<z.ZodBoolean>;
     tutorId: z.ZodOptional<z.ZodString>;
-    startDate: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>>;
-    endDate: z.ZodOptional<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>>;
-    lastEnrollmentDate: z.ZodOptional<z.ZodNullable<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>>>;
+    startDate: z.ZodOptional<z.ZodDate>;
+    endDate: z.ZodOptional<z.ZodDate>;
+    lastEnrollmentDate: z.ZodOptional<z.ZodNullable<z.ZodDate>>;
     grades: z.ZodOptional<z.ZodArray<z.ZodNumber, "many">>;
+    paymentRemark: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    fundamentalCoursesDescription: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    liveSessionsDescription: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    examsDescription: z.ZodOptional<z.ZodNullable<z.ZodString>>;
+    mockExamsDescription: z.ZodOptional<z.ZodNullable<z.ZodString>>;
     hasShipping: z.ZodOptional<z.ZodBoolean>;
     hasPickUp: z.ZodOptional<z.ZodBoolean>;
     pickupAddress: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-    fundamentalCourseIds: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    examTutorialIds: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    examIds: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    mockExamIds: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    fundamentalCourseRequiresSubscription: z.ZodOptional<z.ZodBoolean>;
-    examTutorialRequiresSubscription: z.ZodOptional<z.ZodBoolean>;
-    examRequiresSubscription: z.ZodOptional<z.ZodBoolean>;
     basePlanType: z.ZodOptional<z.ZodNativeEnum<{
         FOUNDATION: "FOUNDATION";
         CORE: "CORE";
@@ -495,138 +559,54 @@ export declare const LiveCourseInformationUpdateArgs: z.ZodObject<{
         PERCENT: "PERCENT";
         NONE: "NONE";
     }>>;
-    enableRecordingPlayback: z.ZodOptional<z.ZodBoolean>;
-    recordingRequiresSubscription: z.ZodOptional<z.ZodBoolean>;
-    onlinePrice: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-    onsitePrice: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-    originalOnlinePrice: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-    originalOnsitePrice: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-    onsiteMaxSeats: z.ZodOptional<z.ZodNumber>;
-    onsiteAddress: z.ZodOptional<z.ZodNullable<z.ZodString>>;
-    shelfLifeDuration: z.ZodOptional<z.ZodNullable<z.ZodNumber>>;
-    shelfLifeUnit: z.ZodOptional<z.ZodNullable<z.ZodNativeEnum<{
-        DAY: "DAY";
-        MONTH: "MONTH";
-        YEAR: "YEAR";
-        LIFETIME: "LIFETIME";
-    }>>>;
-    chatRooms: z.ZodOptional<z.ZodArray<z.ZodObject<{
-        platform: z.ZodNativeEnum<{
-            FACEBOOK: "FACEBOOK";
-            LINE: "LINE";
-        }>;
-        url: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        url: string;
-        platform: "FACEBOOK" | "LINE";
-    }, {
-        url: string;
-        platform: "FACEBOOK" | "LINE";
-    }>, "many">>;
-    suggestedNextCourseIds: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
-    suggestedPrerequisiteCourseIds: z.ZodOptional<z.ZodArray<z.ZodString, "many">>;
 }, "strip", z.ZodTypeAny, {
     id: string;
     description?: string | undefined;
     name?: string | undefined;
-    aboutCourse?: string | null | undefined;
     subjectId?: string | undefined;
     isRecommended?: boolean | undefined;
     tutorId?: string | undefined;
-    startDate?: string | undefined;
-    endDate?: string | undefined;
-    lastEnrollmentDate?: string | null | undefined;
+    startDate?: Date | undefined;
+    endDate?: Date | undefined;
+    lastEnrollmentDate?: Date | null | undefined;
     grades?: number[] | undefined;
+    paymentRemark?: string | null | undefined;
+    fundamentalCoursesDescription?: string | null | undefined;
+    liveSessionsDescription?: string | null | undefined;
+    examsDescription?: string | null | undefined;
+    mockExamsDescription?: string | null | undefined;
     hasShipping?: boolean | undefined;
     hasPickUp?: boolean | undefined;
     pickupAddress?: string | null | undefined;
-    fundamentalCourseIds?: string[] | undefined;
-    examTutorialIds?: string[] | undefined;
-    examIds?: string[] | undefined;
-    mockExamIds?: string[] | undefined;
-    fundamentalCourseRequiresSubscription?: boolean | undefined;
-    examTutorialRequiresSubscription?: boolean | undefined;
-    examRequiresSubscription?: boolean | undefined;
     basePlanType?: "FOUNDATION" | "CORE" | "ENTRANCE" | "ONET" | "POSN" | undefined;
     isActive?: boolean | undefined;
     playbackDurationLimit?: number | null | undefined;
     limitType?: "MINUTE" | "PERCENT" | "NONE" | undefined;
-    enableRecordingPlayback?: boolean | undefined;
-    recordingRequiresSubscription?: boolean | undefined;
-    onlinePrice?: number | null | undefined;
-    onsitePrice?: number | null | undefined;
-    originalOnlinePrice?: number | null | undefined;
-    originalOnsitePrice?: number | null | undefined;
-    onsiteMaxSeats?: number | undefined;
-    onsiteAddress?: string | null | undefined;
-    shelfLifeDuration?: number | null | undefined;
-    shelfLifeUnit?: "DAY" | "MONTH" | "YEAR" | "LIFETIME" | null | undefined;
-    chatRooms?: {
-        url: string;
-        platform: "FACEBOOK" | "LINE";
-    }[] | undefined;
-    suggestedNextCourseIds?: string[] | undefined;
-    suggestedPrerequisiteCourseIds?: string[] | undefined;
 }, {
     id: string;
     description?: string | undefined;
     name?: string | undefined;
-    aboutCourse?: string | null | undefined;
     subjectId?: string | undefined;
     isRecommended?: boolean | undefined;
     tutorId?: string | undefined;
-    startDate?: string | Date | undefined;
-    endDate?: string | Date | undefined;
-    lastEnrollmentDate?: string | Date | null | undefined;
+    startDate?: Date | undefined;
+    endDate?: Date | undefined;
+    lastEnrollmentDate?: Date | null | undefined;
     grades?: number[] | undefined;
+    paymentRemark?: string | null | undefined;
+    fundamentalCoursesDescription?: string | null | undefined;
+    liveSessionsDescription?: string | null | undefined;
+    examsDescription?: string | null | undefined;
+    mockExamsDescription?: string | null | undefined;
     hasShipping?: boolean | undefined;
     hasPickUp?: boolean | undefined;
     pickupAddress?: string | null | undefined;
-    fundamentalCourseIds?: string[] | undefined;
-    examTutorialIds?: string[] | undefined;
-    examIds?: string[] | undefined;
-    mockExamIds?: string[] | undefined;
-    fundamentalCourseRequiresSubscription?: boolean | undefined;
-    examTutorialRequiresSubscription?: boolean | undefined;
-    examRequiresSubscription?: boolean | undefined;
     basePlanType?: "FOUNDATION" | "CORE" | "ENTRANCE" | "ONET" | "POSN" | undefined;
     isActive?: boolean | undefined;
     playbackDurationLimit?: number | null | undefined;
     limitType?: "MINUTE" | "PERCENT" | "NONE" | undefined;
-    enableRecordingPlayback?: boolean | undefined;
-    recordingRequiresSubscription?: boolean | undefined;
-    onlinePrice?: number | null | undefined;
-    onsitePrice?: number | null | undefined;
-    originalOnlinePrice?: number | null | undefined;
-    originalOnsitePrice?: number | null | undefined;
-    onsiteMaxSeats?: number | undefined;
-    onsiteAddress?: string | null | undefined;
-    shelfLifeDuration?: number | null | undefined;
-    shelfLifeUnit?: "DAY" | "MONTH" | "YEAR" | "LIFETIME" | null | undefined;
-    chatRooms?: {
-        url: string;
-        platform: "FACEBOOK" | "LINE";
-    }[] | undefined;
-    suggestedNextCourseIds?: string[] | undefined;
-    suggestedPrerequisiteCourseIds?: string[] | undefined;
 }>;
 export type LiveCourseInformationUpdateArgs = z.infer<typeof LiveCourseInformationUpdateArgs>;
-export declare const AddLiveCourseAddonBody: z.ZodObject<Pick<{
-    id: z.ZodString;
-    liveCourseId: z.ZodString;
-    name: z.ZodString;
-    price: z.ZodNumber;
-    durationDays: z.ZodNumber;
-}, "name" | "price" | "durationDays">, "strip", z.ZodTypeAny, {
-    name: string;
-    price: number;
-    durationDays: number;
-}, {
-    name: string;
-    price: number;
-    durationDays: number;
-}>;
-export type AddLiveCourseAddonBody = z.infer<typeof AddLiveCourseAddonBody>;
 export declare const LiveCourseDeleteArgs: z.ZodObject<Pick<{
     id: z.ZodString;
     name: z.ZodString;
@@ -640,10 +620,10 @@ export declare const LiveCourseDeleteArgs: z.ZodObject<Pick<{
     courseHeroUrl: z.ZodNullable<z.ZodString>;
     courseHeroMobileUrl: z.ZodNullable<z.ZodString>;
     tutorId: z.ZodString;
-    startDate: z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>;
-    endDate: z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>;
+    startDate: z.ZodDate;
+    endDate: z.ZodDate;
     enrolled: z.ZodNumber;
-    lastEnrollmentDate: z.ZodNullable<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>>;
+    lastEnrollmentDate: z.ZodNullable<z.ZodDate>;
     grades: z.ZodArray<z.ZodNumber, "many">;
     paymentRemark: z.ZodNullable<z.ZodString>;
     fundamentalCoursesDescription: z.ZodNullable<z.ZodString>;
@@ -655,11 +635,9 @@ export declare const LiveCourseDeleteArgs: z.ZodObject<Pick<{
     shippingPrice: z.ZodNumber;
     hasPickUp: z.ZodBoolean;
     pickupAddress: z.ZodNullable<z.ZodString>;
-    fundamentalCourseIds: z.ZodArray<z.ZodString, "many">;
     exerciseIds: z.ZodArray<z.ZodString, "many">;
     examTutorialIds: z.ZodArray<z.ZodString, "many">;
     examIds: z.ZodArray<z.ZodString, "many">;
-    mockExamIds: z.ZodArray<z.ZodString, "many">;
     fundamentalCourseRequiresSubscription: z.ZodBoolean;
     exerciseRequiresSubscription: z.ZodBoolean;
     examTutorialRequiresSubscription: z.ZodBoolean;
@@ -696,7 +674,7 @@ export declare const LiveCourseDeleteArgs: z.ZodObject<Pick<{
     onsiteMaxSeats: z.ZodNumber;
     onsiteAddress: z.ZodNullable<z.ZodString>;
     hasQuiz: z.ZodBoolean;
-    expiresAt: z.ZodNullable<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>>;
+    expiresAt: z.ZodNullable<z.ZodDate>;
     shelfLifeDuration: z.ZodNullable<z.ZodNumber>;
     shelfLifeUnit: z.ZodNullable<z.ZodNativeEnum<{
         DAY: "DAY";
@@ -758,12 +736,15 @@ export type RedeemTrialLiveCourseBody = z.infer<typeof RedeemTrialLiveCourseBody
 export declare const AddLiveCourseFundamentalCourseBody: z.ZodObject<{
     liveCourseId: z.ZodString;
     fundamentalCourseId: z.ZodString;
+    sheetUrl: z.ZodNullable<z.ZodString>;
 }, "strip", z.ZodTypeAny, {
     liveCourseId: string;
     fundamentalCourseId: string;
+    sheetUrl: string | null;
 }, {
     liveCourseId: string;
     fundamentalCourseId: string;
+    sheetUrl: string | null;
 }>;
 export type AddLiveCourseFundamentalCourseBody = z.infer<typeof AddLiveCourseFundamentalCourseBody>;
 export declare const RemoveLiveCourseFundamentalCourseBody: z.ZodObject<{
@@ -845,13 +826,28 @@ export declare const RemoveLiveCourseExamTutorialBody: z.ZodObject<{
 export type RemoveLiveCourseExamTutorialBody = z.infer<typeof RemoveLiveCourseExamTutorialBody>;
 export declare const AddLiveCourseMockExamBody: z.ZodObject<{
     liveCourseId: z.ZodString;
-    mockExamIds: z.ZodArray<z.ZodString, "many">;
+    mockExam: z.ZodObject<{
+        mockExamGroupId: z.ZodString;
+        url: z.ZodString;
+    }, "strip", z.ZodTypeAny, {
+        url: string;
+        mockExamGroupId: string;
+    }, {
+        url: string;
+        mockExamGroupId: string;
+    }>;
 }, "strip", z.ZodTypeAny, {
     liveCourseId: string;
-    mockExamIds: string[];
+    mockExam: {
+        url: string;
+        mockExamGroupId: string;
+    };
 }, {
     liveCourseId: string;
-    mockExamIds: string[];
+    mockExam: {
+        url: string;
+        mockExamGroupId: string;
+    };
 }>;
 export type AddLiveCourseMockExamBody = z.infer<typeof AddLiveCourseMockExamBody>;
 export declare const RemoveLiveCourseMockExamBody: z.ZodObject<{
@@ -875,23 +871,23 @@ export declare const CreateLiveCourseChatRoomBody: z.ZodObject<{
         }>;
         url: z.ZodString;
         liveCourseId: z.ZodString;
-    }, "url" | "platform">, "strip", z.ZodTypeAny, {
-        url: string;
+    }, "platform" | "url">, "strip", z.ZodTypeAny, {
         platform: "FACEBOOK" | "LINE";
+        url: string;
     }, {
-        url: string;
         platform: "FACEBOOK" | "LINE";
+        url: string;
     }>;
 }, "strip", z.ZodTypeAny, {
     data: {
-        url: string;
         platform: "FACEBOOK" | "LINE";
+        url: string;
     };
     liveCourseId: string;
 }, {
     data: {
-        url: string;
         platform: "FACEBOOK" | "LINE";
+        url: string;
     };
     liveCourseId: string;
 }>;
@@ -900,29 +896,29 @@ export declare const UpdateLiveCourseChatRoomBody: z.ZodObject<{
     liveCourseId: z.ZodString;
     chatRoomId: z.ZodString;
     data: z.ZodObject<{
-        url: z.ZodOptional<z.ZodString>;
         platform: z.ZodOptional<z.ZodNativeEnum<{
             FACEBOOK: "FACEBOOK";
             LINE: "LINE";
         }>>;
+        url: z.ZodOptional<z.ZodString>;
     }, "strip", z.ZodTypeAny, {
-        url?: string | undefined;
         platform?: "FACEBOOK" | "LINE" | undefined;
+        url?: string | undefined;
     }, {
-        url?: string | undefined;
         platform?: "FACEBOOK" | "LINE" | undefined;
+        url?: string | undefined;
     }>;
 }, "strip", z.ZodTypeAny, {
     data: {
-        url?: string | undefined;
         platform?: "FACEBOOK" | "LINE" | undefined;
+        url?: string | undefined;
     };
     liveCourseId: string;
     chatRoomId: string;
 }, {
     data: {
-        url?: string | undefined;
         platform?: "FACEBOOK" | "LINE" | undefined;
+        url?: string | undefined;
     };
     liveCourseId: string;
     chatRoomId: string;
@@ -939,73 +935,4 @@ export declare const DeleteLiveCourseChatRoomBody: z.ZodObject<{
     chatRoomId: string;
 }>;
 export type DeleteLiveCourseChatRoomBody = z.infer<typeof DeleteLiveCourseChatRoomBody>;
-export declare const UpdateLiveCourseCommentResponse: z.ZodDiscriminatedUnion<"ok", [z.ZodObject<{
-    ok: z.ZodLiteral<true>;
-    value: z.ZodObject<{
-        liveCourseId: z.ZodString;
-        stars: z.ZodNumber;
-        userId: z.ZodString;
-        description: z.ZodNullable<z.ZodString>;
-        userUpdatedAt: z.ZodNullable<z.ZodDate>;
-        createdAt: z.ZodDate;
-        updatedAt: z.ZodDate;
-    }, "strip", z.ZodTypeAny, {
-        description: string | null;
-        userId: string;
-        liveCourseId: string;
-        createdAt: Date;
-        updatedAt: Date;
-        stars: number;
-        userUpdatedAt: Date | null;
-    }, {
-        description: string | null;
-        userId: string;
-        liveCourseId: string;
-        createdAt: Date;
-        updatedAt: Date;
-        stars: number;
-        userUpdatedAt: Date | null;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    value: {
-        description: string | null;
-        userId: string;
-        liveCourseId: string;
-        createdAt: Date;
-        updatedAt: Date;
-        stars: number;
-        userUpdatedAt: Date | null;
-    };
-    ok: true;
-}, {
-    value: {
-        description: string | null;
-        userId: string;
-        liveCourseId: string;
-        createdAt: Date;
-        updatedAt: Date;
-        stars: number;
-        userUpdatedAt: Date | null;
-    };
-    ok: true;
-}>, z.ZodObject<{
-    ok: z.ZodLiteral<false>;
-    error: z.ZodDiscriminatedUnion<"code", [z.ZodObject<{
-        code: z.ZodLiteral<"ALREADY_UPDATED">;
-    }, "strip", z.ZodTypeAny, {
-        code: "ALREADY_UPDATED";
-    }, {
-        code: "ALREADY_UPDATED";
-    }>]>;
-}, "strip", z.ZodTypeAny, {
-    error: {
-        code: "ALREADY_UPDATED";
-    };
-    ok: false;
-}, {
-    error: {
-        code: "ALREADY_UPDATED";
-    };
-    ok: false;
-}>]>;
 //# sourceMappingURL=mutation.d.ts.map

@@ -2,7 +2,6 @@ import { z } from 'zod';
 export declare const QuizServerStudentEventType: {
     readonly QUIZ_UPDATE: "SERVER_QUIZ_UPDATE";
     readonly SHOW_RANK: "SERVER_SHOW_RANK";
-    readonly INCOMING_MESSAGE: "SERVER_INCOMING_MESSAGE";
 };
 export type QuizServerStudentEventType = (typeof QuizServerStudentEventType)[keyof typeof QuizServerStudentEventType];
 export declare const QuizServerStudentQuizUpdate: z.ZodObject<{
@@ -262,47 +261,6 @@ export declare const QuizServerStudentShowRank: z.ZodObject<{
     }[];
 }>;
 export type QuizServerStudentShowRank = z.infer<typeof QuizServerStudentShowRank>;
-export declare const QuizServerStudentIncomingMessage: z.ZodObject<{
-    type: z.ZodLiteral<"SERVER_INCOMING_MESSAGE">;
-    update: z.ZodObject<{
-        id: z.ZodString;
-        name: z.ZodString;
-        message: z.ZodString;
-        avatar: z.ZodNullable<z.ZodString>;
-        timestamp: z.ZodDate;
-    }, "strip", z.ZodTypeAny, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "SERVER_INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}, {
-    type: "SERVER_INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}>;
-export type QuizServerStudentIncomingMessage = z.infer<typeof QuizServerStudentIncomingMessage>;
 export declare const QuizServerStudentEvent: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
     type: z.ZodLiteral<"SERVER_QUIZ_UPDATE">;
     liveSession: z.ZodObject<{
@@ -556,51 +514,11 @@ export declare const QuizServerStudentEvent: z.ZodDiscriminatedUnion<"type", [z.
             displayName: string;
         } | null;
     }[];
-}>, z.ZodObject<{
-    type: z.ZodLiteral<"SERVER_INCOMING_MESSAGE">;
-    update: z.ZodObject<{
-        id: z.ZodString;
-        name: z.ZodString;
-        message: z.ZodString;
-        avatar: z.ZodNullable<z.ZodString>;
-        timestamp: z.ZodDate;
-    }, "strip", z.ZodTypeAny, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "SERVER_INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}, {
-    type: "SERVER_INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
 }>]>;
 export type QuizServerStudentEvent = z.infer<typeof QuizServerStudentEvent>;
 export declare const QuizClientStudentEventType: {
     readonly QUIZ_UPDATE: "CLIENT_QUIZ_UPDATE";
     readonly SHOW_RANK: "CLIENT_SHOW_RANK";
-    readonly INCOMING_MESSAGE: "CLIENT_INCOMING_MESSAGE";
 };
 export type QuizClientStudentEventType = (typeof QuizClientStudentEventType)[keyof typeof QuizClientStudentEventType];
 export declare const QuizClientStudentQuizUpdate: z.ZodObject<{
@@ -731,47 +649,6 @@ export declare const QuizClientStudentShowRank: z.ZodObject<{
     } | null;
 }>;
 export type QuizClientStudentShowRank = z.infer<typeof QuizClientStudentShowRank>;
-export declare const QuizClientStudentIncomingMessage: z.ZodObject<{
-    type: z.ZodLiteral<"CLIENT_INCOMING_MESSAGE">;
-    update: z.ZodObject<{
-        id: z.ZodString;
-        name: z.ZodString;
-        message: z.ZodString;
-        avatar: z.ZodNullable<z.ZodString>;
-        timestamp: z.ZodDate;
-    }, "strip", z.ZodTypeAny, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "CLIENT_INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}, {
-    type: "CLIENT_INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}>;
-export type QuizClientStudentIncomingMessage = z.infer<typeof QuizClientStudentIncomingMessage>;
 export declare const QuizClientStudentEvent: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
     type: z.ZodLiteral<"CLIENT_QUIZ_UPDATE">;
     updates: z.ZodArray<z.ZodObject<{
@@ -896,51 +773,11 @@ export declare const QuizClientStudentEvent: z.ZodDiscriminatedUnion<"type", [z.
         profileUrl: string | null;
         displayName: string;
     } | null;
-}>, z.ZodObject<{
-    type: z.ZodLiteral<"CLIENT_INCOMING_MESSAGE">;
-    update: z.ZodObject<{
-        id: z.ZodString;
-        name: z.ZodString;
-        message: z.ZodString;
-        avatar: z.ZodNullable<z.ZodString>;
-        timestamp: z.ZodDate;
-    }, "strip", z.ZodTypeAny, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "CLIENT_INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}, {
-    type: "CLIENT_INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
 }>]>;
 export type QuizClientStudentEvent = z.infer<typeof QuizClientStudentEvent>;
 export declare const QuizTutorEventType: {
     readonly LEADERBOARD_UPDATE: "LEADERBOARD_UPDATE";
     readonly QUIZ_UPDATE: "QUIZ_UPDATE";
-    readonly INCOMING_MESSAGE: "INCOMING_MESSAGE";
 };
 export type QuizTutorEventType = (typeof QuizTutorEventType)[keyof typeof QuizTutorEventType];
 export declare const QuizTutorLeaderboardUpdate: z.ZodObject<{
@@ -1182,47 +1019,6 @@ export declare const QuizTutorQuizUpdate: z.ZodObject<{
     }[];
 }>;
 export type QuizTutorQuizUpdate = z.infer<typeof QuizTutorQuizUpdate>;
-export declare const QuizTutorIncomingMessage: z.ZodObject<{
-    type: z.ZodLiteral<"INCOMING_MESSAGE">;
-    update: z.ZodObject<{
-        id: z.ZodString;
-        name: z.ZodString;
-        message: z.ZodString;
-        avatar: z.ZodNullable<z.ZodString>;
-        timestamp: z.ZodDate;
-    }, "strip", z.ZodTypeAny, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}, {
-    type: "INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}>;
-export type QuizTutorIncomingMessage = z.infer<typeof QuizTutorIncomingMessage>;
 export declare const QuizTutorEvent: z.ZodDiscriminatedUnion<"type", [z.ZodObject<{
     type: z.ZodLiteral<"LEADERBOARD_UPDATE">;
     scores: z.ZodArray<z.ZodObject<{
@@ -1458,45 +1254,6 @@ export declare const QuizTutorEvent: z.ZodDiscriminatedUnion<"type", [z.ZodObjec
             solution?: unknown;
         } | null;
     }[];
-}>, z.ZodObject<{
-    type: z.ZodLiteral<"INCOMING_MESSAGE">;
-    update: z.ZodObject<{
-        id: z.ZodString;
-        name: z.ZodString;
-        message: z.ZodString;
-        avatar: z.ZodNullable<z.ZodString>;
-        timestamp: z.ZodDate;
-    }, "strip", z.ZodTypeAny, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }, {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    }>;
-}, "strip", z.ZodTypeAny, {
-    type: "INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
-}, {
-    type: "INCOMING_MESSAGE";
-    update: {
-        message: string;
-        id: string;
-        name: string;
-        avatar: string | null;
-        timestamp: Date;
-    };
 }>]>;
 export type QuizTutorEvent = z.infer<typeof QuizTutorEvent>;
 //# sourceMappingURL=events.d.ts.map

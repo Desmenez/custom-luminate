@@ -70,7 +70,7 @@ export declare const PaymentPackageInfo: z.ZodObject<{
     courseStickerUrl: z.ZodNullable<z.ZodString>;
     startDate: z.ZodString;
     endDate: z.ZodString;
-    registrationDeadline: z.ZodNullable<z.ZodString>;
+    registrationDeadline: z.ZodString;
     startingPrice: z.ZodNumber;
     learningTypeOptions: z.ZodObject<{
         online: z.ZodNullable<z.ZodObject<{
@@ -209,7 +209,7 @@ export declare const PaymentPackageInfo: z.ZodObject<{
     courseStickerUrl: string | null;
     startDate: string;
     endDate: string;
-    registrationDeadline: string | null;
+    registrationDeadline: string;
     startingPrice: number;
     learningTypeOptions: {
         online: {
@@ -246,7 +246,7 @@ export declare const PaymentPackageInfo: z.ZodObject<{
     courseStickerUrl: string | null;
     startDate: string;
     endDate: string;
-    registrationDeadline: string | null;
+    registrationDeadline: string;
     startingPrice: number;
     learningTypeOptions: {
         online: {
@@ -277,328 +277,6 @@ export declare const PaymentPackageInfo: z.ZodObject<{
     };
 }>;
 export type PaymentPackageInfo = z.infer<typeof PaymentPackageInfo>;
-export declare const PaymentPackageResponse: z.ZodDiscriminatedUnion<"ok", [z.ZodObject<{
-    ok: z.ZodLiteral<true>;
-    value: z.ZodNullable<z.ZodObject<{
-        liveCourseId: z.ZodString;
-        type: z.ZodNativeEnum<{
-            LIVE: "LIVE";
-            FUSION: "FUSION";
-            TAPE: "TAPE";
-            ONSITE: "ONSITE";
-        }>;
-        name: z.ZodString;
-        courseCoverUrl: z.ZodNullable<z.ZodString>;
-        courseStickerUrl: z.ZodNullable<z.ZodString>;
-        startDate: z.ZodString;
-        endDate: z.ZodString;
-        registrationDeadline: z.ZodNullable<z.ZodString>;
-        startingPrice: z.ZodNumber;
-        learningTypeOptions: z.ZodObject<{
-            online: z.ZodNullable<z.ZodObject<{
-                price: z.ZodNumber;
-                features: z.ZodArray<z.ZodNativeEnum<{
-                    readonly LIVE: "LIVE";
-                    readonly ONSITE: "ONSITE";
-                    readonly ONLINE: "ONLINE";
-                    readonly FUNDAMENTAL: "FUNDAMENTAL";
-                    readonly RECORDING: "RECORDING";
-                    readonly EXERCISE: "EXERCISE";
-                    readonly EXAM: "EXAM";
-                    readonly QUIZ: "QUIZ";
-                    readonly SUBSCRIPTION: "SUBSCRIPTION";
-                }>, "many">;
-            }, "strip", z.ZodTypeAny, {
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-            }, {
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-            }>>;
-            onsite: z.ZodNullable<z.ZodObject<{
-                price: z.ZodNumber;
-                features: z.ZodArray<z.ZodNativeEnum<{
-                    readonly LIVE: "LIVE";
-                    readonly ONSITE: "ONSITE";
-                    readonly ONLINE: "ONLINE";
-                    readonly FUNDAMENTAL: "FUNDAMENTAL";
-                    readonly RECORDING: "RECORDING";
-                    readonly EXERCISE: "EXERCISE";
-                    readonly EXAM: "EXAM";
-                    readonly QUIZ: "QUIZ";
-                    readonly SUBSCRIPTION: "SUBSCRIPTION";
-                }>, "many">;
-                availableSeats: z.ZodNumber;
-                onsiteAddress: z.ZodNullable<z.ZodString>;
-            }, "strip", z.ZodTypeAny, {
-                onsiteAddress: string | null;
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-                availableSeats: number;
-            }, {
-                onsiteAddress: string | null;
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-                availableSeats: number;
-            }>>;
-        }, "strip", z.ZodTypeAny, {
-            online: {
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-            } | null;
-            onsite: {
-                onsiteAddress: string | null;
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-                availableSeats: number;
-            } | null;
-        }, {
-            online: {
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-            } | null;
-            onsite: {
-                onsiteAddress: string | null;
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-                availableSeats: number;
-            } | null;
-        }>;
-        addonOptions: z.ZodArray<z.ZodObject<{
-            id: z.ZodString;
-            name: z.ZodString;
-            price: z.ZodNumber;
-            durationDays: z.ZodNumber;
-            features: z.ZodArray<z.ZodNativeEnum<{
-                readonly LIVE: "LIVE";
-                readonly ONSITE: "ONSITE";
-                readonly ONLINE: "ONLINE";
-                readonly FUNDAMENTAL: "FUNDAMENTAL";
-                readonly RECORDING: "RECORDING";
-                readonly EXERCISE: "EXERCISE";
-                readonly EXAM: "EXAM";
-                readonly QUIZ: "QUIZ";
-                readonly SUBSCRIPTION: "SUBSCRIPTION";
-            }>, "many">;
-        }, "strip", z.ZodTypeAny, {
-            id: string;
-            name: string;
-            price: number;
-            durationDays: number;
-            features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-        }, {
-            id: string;
-            name: string;
-            price: number;
-            durationDays: number;
-            features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-        }>, "many">;
-        receiveMaterialOptions: z.ZodObject<{
-            shipping: z.ZodNullable<z.ZodObject<{
-                price: z.ZodNumber;
-            }, "strip", z.ZodTypeAny, {
-                price: number;
-            }, {
-                price: number;
-            }>>;
-            pickup: z.ZodNullable<z.ZodObject<{
-                pickupAddress: z.ZodNullable<z.ZodString>;
-            }, "strip", z.ZodTypeAny, {
-                pickupAddress: string | null;
-            }, {
-                pickupAddress: string | null;
-            }>>;
-        }, "strip", z.ZodTypeAny, {
-            shipping: {
-                price: number;
-            } | null;
-            pickup: {
-                pickupAddress: string | null;
-            } | null;
-        }, {
-            shipping: {
-                price: number;
-            } | null;
-            pickup: {
-                pickupAddress: string | null;
-            } | null;
-        }>;
-    }, "strip", z.ZodTypeAny, {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        liveCourseId: string;
-        name: string;
-        courseCoverUrl: string | null;
-        courseStickerUrl: string | null;
-        startDate: string;
-        endDate: string;
-        registrationDeadline: string | null;
-        startingPrice: number;
-        learningTypeOptions: {
-            online: {
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-            } | null;
-            onsite: {
-                onsiteAddress: string | null;
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-                availableSeats: number;
-            } | null;
-        };
-        addonOptions: {
-            id: string;
-            name: string;
-            price: number;
-            durationDays: number;
-            features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-        }[];
-        receiveMaterialOptions: {
-            shipping: {
-                price: number;
-            } | null;
-            pickup: {
-                pickupAddress: string | null;
-            } | null;
-        };
-    }, {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        liveCourseId: string;
-        name: string;
-        courseCoverUrl: string | null;
-        courseStickerUrl: string | null;
-        startDate: string;
-        endDate: string;
-        registrationDeadline: string | null;
-        startingPrice: number;
-        learningTypeOptions: {
-            online: {
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-            } | null;
-            onsite: {
-                onsiteAddress: string | null;
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-                availableSeats: number;
-            } | null;
-        };
-        addonOptions: {
-            id: string;
-            name: string;
-            price: number;
-            durationDays: number;
-            features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-        }[];
-        receiveMaterialOptions: {
-            shipping: {
-                price: number;
-            } | null;
-            pickup: {
-                pickupAddress: string | null;
-            } | null;
-        };
-    }>>;
-}, "strip", z.ZodTypeAny, {
-    value: {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        liveCourseId: string;
-        name: string;
-        courseCoverUrl: string | null;
-        courseStickerUrl: string | null;
-        startDate: string;
-        endDate: string;
-        registrationDeadline: string | null;
-        startingPrice: number;
-        learningTypeOptions: {
-            online: {
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-            } | null;
-            onsite: {
-                onsiteAddress: string | null;
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-                availableSeats: number;
-            } | null;
-        };
-        addonOptions: {
-            id: string;
-            name: string;
-            price: number;
-            durationDays: number;
-            features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-        }[];
-        receiveMaterialOptions: {
-            shipping: {
-                price: number;
-            } | null;
-            pickup: {
-                pickupAddress: string | null;
-            } | null;
-        };
-    } | null;
-    ok: true;
-}, {
-    value: {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        liveCourseId: string;
-        name: string;
-        courseCoverUrl: string | null;
-        courseStickerUrl: string | null;
-        startDate: string;
-        endDate: string;
-        registrationDeadline: string | null;
-        startingPrice: number;
-        learningTypeOptions: {
-            online: {
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-            } | null;
-            onsite: {
-                onsiteAddress: string | null;
-                price: number;
-                features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-                availableSeats: number;
-            } | null;
-        };
-        addonOptions: {
-            id: string;
-            name: string;
-            price: number;
-            durationDays: number;
-            features: ("LIVE" | "ONSITE" | "ONLINE" | "FUNDAMENTAL" | "RECORDING" | "EXERCISE" | "EXAM" | "QUIZ" | "SUBSCRIPTION")[];
-        }[];
-        receiveMaterialOptions: {
-            shipping: {
-                price: number;
-            } | null;
-            pickup: {
-                pickupAddress: string | null;
-            } | null;
-        };
-    } | null;
-    ok: true;
-}>, z.ZodObject<{
-    ok: z.ZodLiteral<false>;
-    error: z.ZodDiscriminatedUnion<"code", [z.ZodObject<{
-        code: z.ZodLiteral<"ALREADY_HAS_COURSE">;
-    }, "strip", z.ZodTypeAny, {
-        code: "ALREADY_HAS_COURSE";
-    }, {
-        code: "ALREADY_HAS_COURSE";
-    }>]>;
-}, "strip", z.ZodTypeAny, {
-    error: {
-        code: "ALREADY_HAS_COURSE";
-    };
-    ok: false;
-}, {
-    error: {
-        code: "ALREADY_HAS_COURSE";
-    };
-    ok: false;
-}>]>;
-export type PaymentPackageResponse = z.infer<typeof PaymentPackageResponse>;
 export declare const PaymentBooking: z.ZodObject<{
     id: z.ZodString;
     liveCourseId: z.ZodString;
@@ -613,7 +291,7 @@ export declare const PaymentBooking: z.ZodObject<{
     courseStickerUrl: z.ZodNullable<z.ZodString>;
     startDate: z.ZodString;
     endDate: z.ZodString;
-    registrationDeadline: z.ZodNullable<z.ZodString>;
+    registrationDeadline: z.ZodString;
     serverTime: z.ZodString;
     expiresAt: z.ZodString;
     basePrice: z.ZodNumber;
@@ -665,7 +343,7 @@ export declare const PaymentBooking: z.ZodObject<{
         status: "PENDING" | "SUCCESS" | "FAILED";
         id: string;
     }[];
-    registrationDeadline: string | null;
+    registrationDeadline: string;
     serverTime: string;
     addon: {
         name: string;
@@ -689,7 +367,7 @@ export declare const PaymentBooking: z.ZodObject<{
         status: "PENDING" | "SUCCESS" | "FAILED";
         id: string;
     }[];
-    registrationDeadline: string | null;
+    registrationDeadline: string;
     serverTime: string;
     addon: {
         name: string;
@@ -876,7 +554,6 @@ export declare const PaymentChargeSuccess: z.ZodObject<{
         PROMPTPAY: "PROMPTPAY";
         TRUEMONEY: "TRUEMONEY";
         MOBILE_BANKING: "MOBILE_BANKING";
-        NONE: "NONE";
     }>;
     chargedCard: z.ZodNullable<z.ZodObject<{
         id: z.ZodString;
@@ -917,7 +594,7 @@ export declare const PaymentChargeSuccess: z.ZodObject<{
         subdistrict: string;
         postalCode: string;
     } | null;
-    paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
+    paymentMethod: "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
     chargedCard: {
         id: string;
         brand: string;
@@ -945,7 +622,7 @@ export declare const PaymentChargeSuccess: z.ZodObject<{
         subdistrict: string;
         postalCode: string;
     } | null;
-    paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
+    paymentMethod: "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
     chargedCard: {
         id: string;
         brand: string;
@@ -1090,7 +767,6 @@ export declare const PaymentChargeStatus: z.ZodDiscriminatedUnion<"type", [z.Zod
         PROMPTPAY: "PROMPTPAY";
         TRUEMONEY: "TRUEMONEY";
         MOBILE_BANKING: "MOBILE_BANKING";
-        NONE: "NONE";
     }>;
     chargedCard: z.ZodNullable<z.ZodObject<{
         id: z.ZodString;
@@ -1131,7 +807,7 @@ export declare const PaymentChargeStatus: z.ZodDiscriminatedUnion<"type", [z.Zod
         subdistrict: string;
         postalCode: string;
     } | null;
-    paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
+    paymentMethod: "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
     chargedCard: {
         id: string;
         brand: string;
@@ -1159,7 +835,7 @@ export declare const PaymentChargeStatus: z.ZodDiscriminatedUnion<"type", [z.Zod
         subdistrict: string;
         postalCode: string;
     } | null;
-    paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
+    paymentMethod: "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
     chargedCard: {
         id: string;
         brand: string;
@@ -1338,7 +1014,6 @@ export declare const PaymentCharge: z.ZodObject<{
             PROMPTPAY: "PROMPTPAY";
             TRUEMONEY: "TRUEMONEY";
             MOBILE_BANKING: "MOBILE_BANKING";
-            NONE: "NONE";
         }>;
         chargedCard: z.ZodNullable<z.ZodObject<{
             id: z.ZodString;
@@ -1379,7 +1054,7 @@ export declare const PaymentCharge: z.ZodObject<{
             subdistrict: string;
             postalCode: string;
         } | null;
-        paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
+        paymentMethod: "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
         chargedCard: {
             id: string;
             brand: string;
@@ -1407,7 +1082,7 @@ export declare const PaymentCharge: z.ZodObject<{
             subdistrict: string;
             postalCode: string;
         } | null;
-        paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
+        paymentMethod: "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
         chargedCard: {
             id: string;
             brand: string;
@@ -1498,7 +1173,7 @@ export declare const PaymentCharge: z.ZodObject<{
             subdistrict: string;
             postalCode: string;
         } | null;
-        paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
+        paymentMethod: "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
         chargedCard: {
             id: string;
             brand: string;
@@ -1571,7 +1246,7 @@ export declare const PaymentCharge: z.ZodObject<{
             subdistrict: string;
             postalCode: string;
         } | null;
-        paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
+        paymentMethod: "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
         chargedCard: {
             id: string;
             brand: string;
@@ -1692,69 +1367,5 @@ export declare const GetCreditCardsResponse: z.ZodObject<{
     }[];
 }>;
 export type GetCreditCardsResponse = z.infer<typeof GetCreditCardsResponse>;
-export declare const PaymentHistoryInfo: z.ZodObject<{
-    id: z.ZodString;
-    packageName: z.ZodString;
-    paymentMethod: z.ZodEnum<["CREDIT_CARD", "PROMPTPAY", "TRUEMONEY", "MOBILE_BANKING", "NONE"]>;
-    price: z.ZodNumber;
-    promotionTitle: z.ZodString;
-    promotionDiscountValue: z.ZodNumber;
-    packagePrice: z.ZodNumber;
-    shippingAddressId: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: string;
-    shippingAddressId: string;
-    paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
-    price: number;
-    packageName: string;
-    promotionTitle: string;
-    promotionDiscountValue: number;
-    packagePrice: number;
-}, {
-    id: string;
-    shippingAddressId: string;
-    paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
-    price: number;
-    packageName: string;
-    promotionTitle: string;
-    promotionDiscountValue: number;
-    packagePrice: number;
-}>;
-export type PaymentHistoryInfo = z.infer<typeof PaymentHistoryInfo>;
-export declare const PaymentHistoryItem: z.ZodObject<{
-    date: z.ZodString;
-    id: z.ZodString;
-    packageName: z.ZodString;
-    paymentMethod: z.ZodNativeEnum<{
-        CREDIT_CARD: "CREDIT_CARD";
-        PROMPTPAY: "PROMPTPAY";
-        TRUEMONEY: "TRUEMONEY";
-        MOBILE_BANKING: "MOBILE_BANKING";
-        NONE: "NONE";
-    }>;
-    price: z.ZodNumber;
-    promotionTitle: z.ZodString;
-    promotionDiscountValue: z.ZodNumber;
-    packagePrice: z.ZodNumber;
-}, "strip", z.ZodTypeAny, {
-    id: string;
-    date: string;
-    paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
-    price: number;
-    packageName: string;
-    promotionTitle: string;
-    promotionDiscountValue: number;
-    packagePrice: number;
-}, {
-    id: string;
-    date: string;
-    paymentMethod: "NONE" | "CREDIT_CARD" | "PROMPTPAY" | "TRUEMONEY" | "MOBILE_BANKING";
-    price: number;
-    packageName: string;
-    promotionTitle: string;
-    promotionDiscountValue: number;
-    packagePrice: number;
-}>;
-export type PaymentHistoryItem = z.infer<typeof PaymentHistoryItem>;
 export {};
 //# sourceMappingURL=query.d.ts.map

@@ -34,19 +34,19 @@ export declare const CmsQuizScoreUserScore: z.ZodObject<{
         displayName: string;
     }>;
 }, "strip", z.ZodTypeAny, {
+    score: number;
     user: {
         id: string;
         profileUrl: string;
         displayName: string;
     };
-    score: number;
 }, {
+    score: number;
     user: {
         id: string;
         profileUrl: string;
         displayName: string;
     };
-    score: number;
 }>;
 export type CmsQuizScoreUserScore = z.infer<typeof CmsQuizScoreUserScore>;
 export declare const CmsQuizScoreResponse: z.ZodObject<{
@@ -82,43 +82,43 @@ export declare const CmsQuizScoreResponse: z.ZodObject<{
             displayName: string;
         }>;
     }, "strip", z.ZodTypeAny, {
+        score: number;
         user: {
             id: string;
             profileUrl: string;
             displayName: string;
         };
-        score: number;
     }, {
+        score: number;
         user: {
             id: string;
             profileUrl: string;
             displayName: string;
         };
-        score: number;
     }>, "many">;
 }, "strip", z.ZodTypeAny, {
     quizzes: {
         id: string;
     }[];
     userScores: {
+        score: number;
         user: {
             id: string;
             profileUrl: string;
             displayName: string;
         };
-        score: number;
     }[];
 }, {
     quizzes: {
         id: string;
     }[];
     userScores: {
+        score: number;
         user: {
             id: string;
             profileUrl: string;
             displayName: string;
         };
-        score: number;
     }[];
 }>;
 export type CmsQuizScoreResponse = z.infer<typeof CmsQuizScoreResponse>;
@@ -169,7 +169,6 @@ export declare const LiveSessionFindManyArgs: z.ZodObject<{
     }, {
         name?: string | undefined;
     }>>;
-    excludeEndLiveSession: z.ZodOptional<z.ZodBoolean>;
     take: z.ZodDefault<z.ZodNumber>;
     skip: z.ZodDefault<z.ZodNumber>;
 }, "strip", z.ZodTypeAny, {
@@ -184,7 +183,6 @@ export declare const LiveSessionFindManyArgs: z.ZodObject<{
     where?: {
         name?: string | undefined;
     } | undefined;
-    excludeEndLiveSession?: boolean | undefined;
 }, {
     orderBy?: {
         startTime?: "asc" | "desc" | undefined;
@@ -195,7 +193,6 @@ export declare const LiveSessionFindManyArgs: z.ZodObject<{
     where?: {
         name?: string | undefined;
     } | undefined;
-    excludeEndLiveSession?: boolean | undefined;
     take?: number | undefined;
     skip?: number | undefined;
 }>;
@@ -228,10 +225,10 @@ export declare const LiveSessionForTutor: z.ZodObject<{
         courseHeroUrl: z.ZodNullable<z.ZodString>;
         courseHeroMobileUrl: z.ZodNullable<z.ZodString>;
         tutorId: z.ZodString;
-        startDate: z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>;
-        endDate: z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>;
+        startDate: z.ZodDate;
+        endDate: z.ZodDate;
         enrolled: z.ZodNumber;
-        lastEnrollmentDate: z.ZodNullable<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>>;
+        lastEnrollmentDate: z.ZodNullable<z.ZodDate>;
         grades: z.ZodArray<z.ZodNumber, "many">;
         paymentRemark: z.ZodNullable<z.ZodString>;
         fundamentalCoursesDescription: z.ZodNullable<z.ZodString>;
@@ -243,11 +240,9 @@ export declare const LiveSessionForTutor: z.ZodObject<{
         shippingPrice: z.ZodNumber;
         hasPickUp: z.ZodBoolean;
         pickupAddress: z.ZodNullable<z.ZodString>;
-        fundamentalCourseIds: z.ZodArray<z.ZodString, "many">;
         exerciseIds: z.ZodArray<z.ZodString, "many">;
         examTutorialIds: z.ZodArray<z.ZodString, "many">;
         examIds: z.ZodArray<z.ZodString, "many">;
-        mockExamIds: z.ZodArray<z.ZodString, "many">;
         fundamentalCourseRequiresSubscription: z.ZodBoolean;
         exerciseRequiresSubscription: z.ZodBoolean;
         examTutorialRequiresSubscription: z.ZodBoolean;
@@ -284,7 +279,7 @@ export declare const LiveSessionForTutor: z.ZodObject<{
         onsiteMaxSeats: z.ZodNumber;
         onsiteAddress: z.ZodNullable<z.ZodString>;
         hasQuiz: z.ZodBoolean;
-        expiresAt: z.ZodNullable<z.ZodEffects<z.ZodUnion<[z.ZodString, z.ZodDate]>, string, string | Date>>;
+        expiresAt: z.ZodNullable<z.ZodDate>;
         shelfLifeDuration: z.ZodNullable<z.ZodNumber>;
         shelfLifeUnit: z.ZodNullable<z.ZodNativeEnum<{
             DAY: "DAY";
@@ -440,112 +435,24 @@ export declare const CloudflareLiveStreamLifeCycle: z.ZodObject<{
 export type CloudflareLiveStreamLifeCycle = z.infer<typeof CloudflareLiveStreamLifeCycle>;
 export declare const LiveSessionVideoResource: z.ZodObject<{
     name: z.ZodString;
-    startTime: z.ZodString;
-    endTime: z.ZodString;
-    videoLifecycle: z.ZodDiscriminatedUnion<"ok", [z.ZodObject<{
-        ok: z.ZodLiteral<true>;
-        value: z.ZodObject<{
-            isInput: z.ZodBoolean;
-            videoUID: z.ZodNullable<z.ZodString>;
-            live: z.ZodBoolean;
-        }, "strip", z.ZodTypeAny, {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        }, {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        }>;
+    currentLiveVideoId: z.ZodNullable<z.ZodObject<{
+        isInput: z.ZodBoolean;
+        videoUID: z.ZodNullable<z.ZodString>;
+        live: z.ZodBoolean;
     }, "strip", z.ZodTypeAny, {
-        value: {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        };
-        ok: true;
+        isInput: boolean;
+        videoUID: string | null;
+        live: boolean;
     }, {
-        value: {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        };
-        ok: true;
-    }>, z.ZodObject<{
-        ok: z.ZodLiteral<false>;
-        error: z.ZodDiscriminatedUnion<"code", [z.ZodObject<{
-            code: z.ZodLiteral<"NO_REMAINING_PLAYBACK_TIME">;
-        }, "strip", z.ZodTypeAny, {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        }, {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        }>, z.ZodObject<{
-            code: z.ZodLiteral<"COURSE_EXPIRED">;
-        }, "strip", z.ZodTypeAny, {
-            code: "COURSE_EXPIRED";
-        }, {
-            code: "COURSE_EXPIRED";
-        }>, z.ZodObject<{
-            code: z.ZodLiteral<"ONSITE_LIVE_NOT_ALLOWED">;
-        }, "strip", z.ZodTypeAny, {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        }, {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        }>, z.ZodObject<{
-            code: z.ZodLiteral<"RECORDING_DISABLED">;
-        }, "strip", z.ZodTypeAny, {
-            code: "RECORDING_DISABLED";
-        }, {
-            code: "RECORDING_DISABLED";
-        }>, z.ZodObject<{
-            code: z.ZodLiteral<"RECORDING_REQUIRES_SUBSCRIPTION">;
-        }, "strip", z.ZodTypeAny, {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        }, {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        }>]>;
-    }, "strip", z.ZodTypeAny, {
-        error: {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        } | {
-            code: "COURSE_EXPIRED";
-        } | {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        } | {
-            code: "RECORDING_DISABLED";
-        } | {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        };
-        ok: false;
-    }, {
-        error: {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        } | {
-            code: "COURSE_EXPIRED";
-        } | {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        } | {
-            code: "RECORDING_DISABLED";
-        } | {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        };
-        ok: false;
-    }>]>;
+        isInput: boolean;
+        videoUID: string | null;
+        live: boolean;
+    }>>;
     remainingPlaybackTime: z.ZodNullable<z.ZodNumber>;
-    timestampSeconds: z.ZodNullable<z.ZodNumber>;
     index: z.ZodNumber;
     description: z.ZodString;
     liveCourse: z.ZodObject<{
-        id: z.ZodString;
         name: z.ZodString;
-        type: z.ZodNativeEnum<{
-            LIVE: "LIVE";
-            FUSION: "FUSION";
-            TAPE: "TAPE";
-            ONSITE: "ONSITE";
-        }>;
-        enableRecordingPlayback: z.ZodBoolean;
-        recordingRequiresSubscription: z.ZodBoolean;
         exercisesCourses: z.ZodArray<z.ZodObject<{
             name: z.ZodString;
             id: z.ZodString;
@@ -571,12 +478,8 @@ export declare const LiveSessionVideoResource: z.ZodObject<{
         }>, "many">;
         tutorId: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        id: string;
         name: string;
         tutorId: string;
-        enableRecordingPlayback: boolean;
-        recordingRequiresSubscription: boolean;
         exercisesCourses: {
             id: string;
             name: string;
@@ -585,12 +488,8 @@ export declare const LiveSessionVideoResource: z.ZodObject<{
             } | null;
         }[];
     }, {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        id: string;
         name: string;
         tutorId: string;
-        enableRecordingPlayback: boolean;
-        recordingRequiresSubscription: boolean;
         exercisesCourses: {
             id: string;
             name: string;
@@ -599,19 +498,11 @@ export declare const LiveSessionVideoResource: z.ZodObject<{
             } | null;
         }[];
     }>;
-    learningType: z.ZodNullable<z.ZodNativeEnum<{
-        ONLINE: "ONLINE";
-        ONSITE: "ONSITE";
-    }>>;
 }, "strip", z.ZodTypeAny, {
     description: string;
     liveCourse: {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        id: string;
         name: string;
         tutorId: string;
-        enableRecordingPlayback: boolean;
-        recordingRequiresSubscription: boolean;
         exercisesCourses: {
             id: string;
             name: string;
@@ -621,42 +512,18 @@ export declare const LiveSessionVideoResource: z.ZodObject<{
         }[];
     };
     name: string;
-    learningType: "ONSITE" | "ONLINE" | null;
-    startTime: string;
-    endTime: string;
-    timestampSeconds: number | null;
-    videoLifecycle: {
-        value: {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        };
-        ok: true;
-    } | {
-        error: {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        } | {
-            code: "COURSE_EXPIRED";
-        } | {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        } | {
-            code: "RECORDING_DISABLED";
-        } | {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        };
-        ok: false;
-    };
+    currentLiveVideoId: {
+        isInput: boolean;
+        videoUID: string | null;
+        live: boolean;
+    } | null;
     remainingPlaybackTime: number | null;
     index: number;
 }, {
     description: string;
     liveCourse: {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        id: string;
         name: string;
         tutorId: string;
-        enableRecordingPlayback: boolean;
-        recordingRequiresSubscription: boolean;
         exercisesCourses: {
             id: string;
             name: string;
@@ -666,277 +533,15 @@ export declare const LiveSessionVideoResource: z.ZodObject<{
         }[];
     };
     name: string;
-    learningType: "ONSITE" | "ONLINE" | null;
-    startTime: string;
-    endTime: string;
-    timestampSeconds: number | null;
-    videoLifecycle: {
-        value: {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        };
-        ok: true;
-    } | {
-        error: {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        } | {
-            code: "COURSE_EXPIRED";
-        } | {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        } | {
-            code: "RECORDING_DISABLED";
-        } | {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        };
-        ok: false;
-    };
+    currentLiveVideoId: {
+        isInput: boolean;
+        videoUID: string | null;
+        live: boolean;
+    } | null;
     remainingPlaybackTime: number | null;
     index: number;
 }>;
 export type LiveSessionVideoResource = z.infer<typeof LiveSessionVideoResource>;
-export declare const LiveSessionAdminVideoResource: z.ZodObject<{
-    name: z.ZodString;
-    startTime: z.ZodString;
-    endTime: z.ZodString;
-    videoLifecycle: z.ZodDiscriminatedUnion<"ok", [z.ZodObject<{
-        ok: z.ZodLiteral<true>;
-        value: z.ZodObject<{
-            isInput: z.ZodBoolean;
-            videoUID: z.ZodNullable<z.ZodString>;
-            live: z.ZodBoolean;
-        }, "strip", z.ZodTypeAny, {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        }, {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        }>;
-    }, "strip", z.ZodTypeAny, {
-        value: {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        };
-        ok: true;
-    }, {
-        value: {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        };
-        ok: true;
-    }>, z.ZodObject<{
-        ok: z.ZodLiteral<false>;
-        error: z.ZodDiscriminatedUnion<"code", [z.ZodObject<{
-            code: z.ZodLiteral<"NO_REMAINING_PLAYBACK_TIME">;
-        }, "strip", z.ZodTypeAny, {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        }, {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        }>, z.ZodObject<{
-            code: z.ZodLiteral<"COURSE_EXPIRED">;
-        }, "strip", z.ZodTypeAny, {
-            code: "COURSE_EXPIRED";
-        }, {
-            code: "COURSE_EXPIRED";
-        }>, z.ZodObject<{
-            code: z.ZodLiteral<"ONSITE_LIVE_NOT_ALLOWED">;
-        }, "strip", z.ZodTypeAny, {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        }, {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        }>, z.ZodObject<{
-            code: z.ZodLiteral<"RECORDING_DISABLED">;
-        }, "strip", z.ZodTypeAny, {
-            code: "RECORDING_DISABLED";
-        }, {
-            code: "RECORDING_DISABLED";
-        }>, z.ZodObject<{
-            code: z.ZodLiteral<"RECORDING_REQUIRES_SUBSCRIPTION">;
-        }, "strip", z.ZodTypeAny, {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        }, {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        }>]>;
-    }, "strip", z.ZodTypeAny, {
-        error: {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        } | {
-            code: "COURSE_EXPIRED";
-        } | {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        } | {
-            code: "RECORDING_DISABLED";
-        } | {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        };
-        ok: false;
-    }, {
-        error: {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        } | {
-            code: "COURSE_EXPIRED";
-        } | {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        } | {
-            code: "RECORDING_DISABLED";
-        } | {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        };
-        ok: false;
-    }>]>;
-    description: z.ZodString;
-    liveCourse: z.ZodObject<{
-        id: z.ZodString;
-        name: z.ZodString;
-        type: z.ZodNativeEnum<{
-            LIVE: "LIVE";
-            FUSION: "FUSION";
-            TAPE: "TAPE";
-            ONSITE: "ONSITE";
-        }>;
-        enableRecordingPlayback: z.ZodBoolean;
-        recordingRequiresSubscription: z.ZodBoolean;
-        exercisesCourses: z.ZodArray<z.ZodObject<{
-            name: z.ZodString;
-            id: z.ZodString;
-            subject: z.ZodNullable<z.ZodObject<{
-                code: z.ZodString;
-            }, "strip", z.ZodTypeAny, {
-                code: string;
-            }, {
-                code: string;
-            }>>;
-        }, "strip", z.ZodTypeAny, {
-            id: string;
-            name: string;
-            subject: {
-                code: string;
-            } | null;
-        }, {
-            id: string;
-            name: string;
-            subject: {
-                code: string;
-            } | null;
-        }>, "many">;
-        tutorId: z.ZodString;
-    }, "strip", z.ZodTypeAny, {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        id: string;
-        name: string;
-        tutorId: string;
-        enableRecordingPlayback: boolean;
-        recordingRequiresSubscription: boolean;
-        exercisesCourses: {
-            id: string;
-            name: string;
-            subject: {
-                code: string;
-            } | null;
-        }[];
-    }, {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        id: string;
-        name: string;
-        tutorId: string;
-        enableRecordingPlayback: boolean;
-        recordingRequiresSubscription: boolean;
-        exercisesCourses: {
-            id: string;
-            name: string;
-            subject: {
-                code: string;
-            } | null;
-        }[];
-    }>;
-}, "strip", z.ZodTypeAny, {
-    description: string;
-    liveCourse: {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        id: string;
-        name: string;
-        tutorId: string;
-        enableRecordingPlayback: boolean;
-        recordingRequiresSubscription: boolean;
-        exercisesCourses: {
-            id: string;
-            name: string;
-            subject: {
-                code: string;
-            } | null;
-        }[];
-    };
-    name: string;
-    startTime: string;
-    endTime: string;
-    videoLifecycle: {
-        value: {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        };
-        ok: true;
-    } | {
-        error: {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        } | {
-            code: "COURSE_EXPIRED";
-        } | {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        } | {
-            code: "RECORDING_DISABLED";
-        } | {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        };
-        ok: false;
-    };
-}, {
-    description: string;
-    liveCourse: {
-        type: "LIVE" | "FUSION" | "TAPE" | "ONSITE";
-        id: string;
-        name: string;
-        tutorId: string;
-        enableRecordingPlayback: boolean;
-        recordingRequiresSubscription: boolean;
-        exercisesCourses: {
-            id: string;
-            name: string;
-            subject: {
-                code: string;
-            } | null;
-        }[];
-    };
-    name: string;
-    startTime: string;
-    endTime: string;
-    videoLifecycle: {
-        value: {
-            isInput: boolean;
-            videoUID: string | null;
-            live: boolean;
-        };
-        ok: true;
-    } | {
-        error: {
-            code: "NO_REMAINING_PLAYBACK_TIME";
-        } | {
-            code: "COURSE_EXPIRED";
-        } | {
-            code: "ONSITE_LIVE_NOT_ALLOWED";
-        } | {
-            code: "RECORDING_DISABLED";
-        } | {
-            code: "RECORDING_REQUIRES_SUBSCRIPTION";
-        };
-        ok: false;
-    };
-}>;
-export type LiveSessionAdminVideoResource = z.infer<typeof LiveSessionAdminVideoResource>;
 export declare const GetLiveSessionIndexQueryParam: z.ZodObject<{
     id: z.ZodString;
 }, "strip", z.ZodTypeAny, {

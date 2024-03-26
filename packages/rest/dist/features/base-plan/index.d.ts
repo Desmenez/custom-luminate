@@ -1,25 +1,5 @@
 export * from './dto';
 export declare const basePlanContract: {
-    getIsCanAccessViaLiveCourse: {
-        query: import("zod").ZodObject<{
-            id: import("zod").ZodString;
-        }, "strip", import("zod").ZodTypeAny, {
-            id: string;
-        }, {
-            id: string;
-        }>;
-        responses: {
-            200: import("zod").ZodObject<{
-                canAccess: import("zod").ZodBoolean;
-            }, "strip", import("zod").ZodTypeAny, {
-                canAccess: boolean;
-            }, {
-                canAccess: boolean;
-            }>;
-        };
-        method: "GET";
-        path: "/is-can-access-via-live-course";
-    };
     getBasePlans: {
         query: import("zod").ZodObject<{
             where: import("zod").ZodOptional<import("zod").ZodObject<{
@@ -202,23 +182,28 @@ export declare const basePlanContract: {
                 id: import("zod").ZodString;
                 name: import("zod").ZodString;
                 subject: import("zod").ZodObject<{
-                    code: import("zod").ZodString;
+                    id: import("zod").ZodString;
+                    name: import("zod").ZodString;
                 }, "strip", import("zod").ZodTypeAny, {
-                    code: string;
+                    id: string;
+                    name: string;
                 }, {
-                    code: string;
+                    id: string;
+                    name: string;
                 }>;
             }, "strip", import("zod").ZodTypeAny, {
                 id: string;
                 name: string;
                 subject: {
-                    code: string;
+                    id: string;
+                    name: string;
                 };
             }, {
                 id: string;
                 name: string;
                 subject: {
-                    code: string;
+                    id: string;
+                    name: string;
                 };
             }>, "many">;
         };

@@ -298,40 +298,29 @@ export declare const GetBasePlansResponse: z.ZodArray<z.ZodObject<{
     id: z.ZodString;
     name: z.ZodString;
     subject: z.ZodObject<{
-        code: z.ZodString;
+        id: z.ZodString;
+        name: z.ZodString;
     }, "strip", z.ZodTypeAny, {
-        code: string;
+        id: string;
+        name: string;
     }, {
-        code: string;
+        id: string;
+        name: string;
     }>;
 }, "strip", z.ZodTypeAny, {
     id: string;
     name: string;
     subject: {
-        code: string;
+        id: string;
+        name: string;
     };
 }, {
     id: string;
     name: string;
     subject: {
-        code: string;
+        id: string;
+        name: string;
     };
 }>, "many">;
 export type GetBasePlansResponse = z.infer<typeof GetBasePlansResponse>;
-export declare const GetCanAccessViaLiveCourseQueryParams: z.ZodObject<{
-    id: z.ZodString;
-}, "strip", z.ZodTypeAny, {
-    id: string;
-}, {
-    id: string;
-}>;
-export type GetCanAccessViaLiveCourseQueryParams = z.infer<typeof GetCanAccessViaLiveCourseQueryParams>;
-export declare const GetCanAccessViaLiveCourseResponse: z.ZodObject<{
-    canAccess: z.ZodBoolean;
-}, "strip", z.ZodTypeAny, {
-    canAccess: boolean;
-}, {
-    canAccess: boolean;
-}>;
-export type GetCanAccessViaLiveCourseResponse = z.infer<typeof GetCanAccessViaLiveCourseResponse>;
 //# sourceMappingURL=query.d.ts.map

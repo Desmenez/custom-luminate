@@ -7,17 +7,14 @@ export declare const authContract: {
                 id: z.ZodString;
                 identity: z.ZodString;
                 profileUrl: z.ZodNullable<z.ZodString>;
-                displayName: z.ZodNullable<z.ZodString>;
             }, "strip", z.ZodTypeAny, {
                 id: string;
                 identity: string;
                 profileUrl: string | null;
-                displayName: string | null;
             }, {
                 id: string;
                 identity: string;
                 profileUrl: string | null;
-                displayName: string | null;
             }>>;
         };
         method: "GET";

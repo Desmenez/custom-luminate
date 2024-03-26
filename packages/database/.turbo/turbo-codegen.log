@@ -1,103 +1,88 @@
 
-> @luminate/database@ codegen /Users/monkeydev/Desktop/luminate/luminate/packages/database
-> prisma generate && pnpm build-schema && pnpm build-zod && pnpm build-entrypoint
+> @luminate/database@ codegen /Users/monkeydev/Desktop/projects/custom-luminate/packages/database
+> prisma generate && pnpm build-zod && pnpm build-entrypoint
 
 Prisma schema loaded from prisma/schema.prisma
 
-✔ Generated Prisma Client (5.0.0 | library) to ./src/generated/client in 187ms
+✔ Generated Prisma Client (5.0.0 | library) to ./src/generated/client in 211ms
 
-✔ Generated Zod Schemas (0.5.4) to ./src/generated/zod in 193ms
+✔ Generated Zod Schemas (0.5.4) to ./src/generated/zod in 204ms
 You can now start using Prisma Client in your code. Reference: https://pris.ly/d/client
 ```
 import { PrismaClient } from './src/generated/client'
 const prisma = new PrismaClient()
 ```
 
-> @luminate/database@ build-schema /Users/monkeydev/Desktop/luminate/luminate/packages/database
-> tsup src/schema/*.ts --dts --outDir src/generated/schema && cp -R src/schema/* src/generated/schema
-
-CLI Building entry: src/schema/index.ts
-CLI Using tsconfig: tsconfig.json
-CLI tsup v7.1.0
-CLI Using tsup config: /Users/monkeydev/Desktop/luminate/luminate/packages/database/tsup.config.ts
-CLI Target: node16
-CJS Build start
-ESM Build start
-ESM src/generated/schema/index.mjs 214.00 B
-ESM ⚡️ Build success in 9ms
-CJS src/generated/schema/index.js 1.23 KB
-CJS ⚡️ Build success in 9ms
-DTS Build start
-DTS ⚡️ Build success in 717ms
-DTS src/generated/schema/index.d.ts  147.00 B
-DTS src/generated/schema/index.d.mts 147.00 B
-
-> @luminate/database@ build-zod /Users/monkeydev/Desktop/luminate/luminate/packages/database
+> @luminate/database@ build-zod /Users/monkeydev/Desktop/projects/custom-luminate/packages/database
 > tsup src/generated/zod/*.ts --outDir src/generated/zod
 
-CLI Building entry: src/generated/zod/banner.ts, src/generated/zod/discountcode.ts, src/generated/zod/discountcodegroup.ts, src/generated/zod/index.ts, src/generated/zod/livecourse.ts, src/generated/zod/livecourseaddon.ts, src/generated/zod/livecoursebooking.ts, src/generated/zod/livecoursecharge.ts, src/generated/zod/livecoursechatroom.ts, src/generated/zod/livecoursecomment.ts, src/generated/zod/livecourseimagedescription.ts, src/generated/zod/livecoursepackage.ts, src/generated/zod/livecoursepageui.ts, src/generated/zod/livecoursesonusers.ts, src/generated/zod/livecoursetrialonuser.ts, src/generated/zod/livesession.ts, src/generated/zod/livesessionquiz.ts, src/generated/zod/shippingaddress.ts, src/generated/zod/studentonlivesession.ts, src/generated/zod/studentonlivesessionquiz.ts, src/generated/zod/tutorcard.ts
+CLI Building entry: src/generated/zod/banner.ts, src/generated/zod/discountcode.ts, src/generated/zod/discountcodegroup.ts, src/generated/zod/fundamentalcourse.ts, src/generated/zod/index.ts, src/generated/zod/livecourse.ts, src/generated/zod/livecourseaddon.ts, src/generated/zod/livecoursebooking.ts, src/generated/zod/livecoursecharge.ts, src/generated/zod/livecoursechatroom.ts, src/generated/zod/livecoursecomment.ts, src/generated/zod/livecourseimagedescription.ts, src/generated/zod/livecoursepackage.ts, src/generated/zod/livecoursepageui.ts, src/generated/zod/livecoursesonusers.ts, src/generated/zod/livecoursetrialonuser.ts, src/generated/zod/livesession.ts, src/generated/zod/livesessionquiz.ts, src/generated/zod/mockexam.ts, src/generated/zod/shippingaddress.ts, src/generated/zod/studentonlivesession.ts, src/generated/zod/studentonlivesessionquiz.ts, src/generated/zod/tutorcard.ts
 CLI Using tsconfig: tsconfig.json
 CLI tsup v7.1.0
-CLI Using tsup config: /Users/monkeydev/Desktop/luminate/luminate/packages/database/tsup.config.ts
+CLI Using tsup config: /Users/monkeydev/Desktop/projects/custom-luminate/packages/database/tsup.config.ts
 CLI Target: node16
 CJS Build start
 ESM Build start
-ESM src/generated/zod/livesessionquiz.mjs            828.00 B
+ESM src/generated/zod/shippingaddress.mjs            674.00 B
+ESM src/generated/zod/livesession.mjs                1.28 KB
 ESM src/generated/zod/studentonlivesessionquiz.mjs   736.00 B
 ESM src/generated/zod/livecoursechatroom.mjs         488.00 B
-ESM src/generated/zod/tutorcard.mjs                  311.00 B
 ESM src/generated/zod/livecoursepackage.mjs          732.00 B
-ESM src/generated/zod/livecoursesonusers.mjs         1.09 KB
 ESM src/generated/zod/livecourseimagedescription.mjs 549.00 B
-ESM src/generated/zod/livesession.mjs                1.31 KB
-ESM src/generated/zod/banner.mjs                     447.00 B
-ESM src/generated/zod/discountcode.mjs               871.00 B
-ESM src/generated/zod/discountcodegroup.mjs          415.00 B
-ESM src/generated/zod/livecourse.mjs                 3.60 KB
-ESM src/generated/zod/livecoursebooking.mjs          1.10 KB
-ESM src/generated/zod/livecoursetrialonuser.mjs      482.00 B
-ESM src/generated/zod/livecourseaddon.mjs            433.00 B
-ESM src/generated/zod/livecoursepageui.mjs           383.00 B
 ESM src/generated/zod/livecoursecharge.mjs           903.00 B
-ESM src/generated/zod/index.mjs                      720.00 B
+ESM src/generated/zod/livecoursepageui.mjs           383.00 B
+ESM src/generated/zod/banner.mjs                     319.00 B
+ESM src/generated/zod/livecoursesonusers.mjs         1.09 KB
+ESM src/generated/zod/fundamentalcourse.mjs          432.00 B
+ESM src/generated/zod/discountcodegroup.mjs          415.00 B
+ESM src/generated/zod/index.mjs                      785.00 B
 ESM src/generated/zod/livecoursecomment.mjs          515.00 B
-ESM src/generated/zod/shippingaddress.mjs            674.00 B
+ESM src/generated/zod/discountcode.mjs               871.00 B
+ESM src/generated/zod/mockexam.mjs                   367.00 B
+ESM src/generated/zod/livecourseaddon.mjs            433.00 B
+ESM src/generated/zod/livecourse.mjs                 3.62 KB
+ESM src/generated/zod/livecoursetrialonuser.mjs      482.00 B
+ESM src/generated/zod/livecoursebooking.mjs          1.10 KB
 ESM src/generated/zod/studentonlivesession.mjs       526.00 B
-ESM ⚡️ Build success in 14ms
-CJS src/generated/zod/banner.js                     2.03 KB
-CJS src/generated/zod/livecourse.js                 5.08 KB
-CJS src/generated/zod/livecoursebooking.js          2.79 KB
-CJS src/generated/zod/livecourseaddon.js            2.11 KB
-CJS src/generated/zod/discountcode.js               2.50 KB
-CJS src/generated/zod/livecoursecomment.js          2.21 KB
-CJS src/generated/zod/livecoursechatroom.js         2.19 KB
-CJS src/generated/zod/livecourseimagedescription.js 2.30 KB
-CJS src/generated/zod/livecoursepackage.js          2.42 KB
-CJS src/generated/zod/livesessionquiz.js            2.48 KB
-CJS src/generated/zod/livecoursesonusers.js         2.77 KB
-CJS src/generated/zod/shippingaddress.js            2.32 KB
-CJS src/generated/zod/livecoursecharge.js           2.55 KB
-CJS src/generated/zod/livesession.js                2.88 KB
-CJS src/generated/zod/livecoursetrialonuser.js      2.19 KB
-CJS src/generated/zod/studentonlivesession.js       2.24 KB
-CJS src/generated/zod/livecoursepageui.js           2.00 KB
-CJS src/generated/zod/tutorcard.js                  1.90 KB
+ESM src/generated/zod/livesessionquiz.mjs            828.00 B
+ESM src/generated/zod/tutorcard.mjs                  258.00 B
+ESM ⚡️ Build success in 23ms
 CJS src/generated/zod/discountcodegroup.js          2.11 KB
+CJS src/generated/zod/fundamentalcourse.js          2.13 KB
+CJS src/generated/zod/discountcode.js               2.50 KB
+CJS src/generated/zod/livecourseaddon.js            2.11 KB
+CJS src/generated/zod/livecoursecharge.js           2.55 KB
+CJS src/generated/zod/livecoursebooking.js          2.79 KB
+CJS src/generated/zod/livecoursecomment.js          2.21 KB
+CJS src/generated/zod/index.js                      3.26 KB
+CJS src/generated/zod/livecourseimagedescription.js 2.30 KB
+CJS src/generated/zod/livecoursepageui.js           2.00 KB
+CJS src/generated/zod/livecoursechatroom.js         2.19 KB
+CJS src/generated/zod/livecoursesonusers.js         2.77 KB
+CJS src/generated/zod/livecoursepackage.js          2.42 KB
+CJS src/generated/zod/livecoursetrialonuser.js      2.19 KB
+CJS src/generated/zod/banner.js                     1.89 KB
+CJS src/generated/zod/livesession.js                2.84 KB
+CJS src/generated/zod/studentonlivesession.js       2.24 KB
 CJS src/generated/zod/studentonlivesessionquiz.js   2.45 KB
-CJS src/generated/zod/index.js                      3.06 KB
-CJS ⚡️ Build success in 16ms
+CJS src/generated/zod/mockexam.js                   2.00 KB
+CJS src/generated/zod/livesessionquiz.js            2.48 KB
+CJS src/generated/zod/shippingaddress.js            2.32 KB
+CJS src/generated/zod/livecourse.js                 5.07 KB
+CJS src/generated/zod/tutorcard.js                  1.85 KB
+CJS ⚡️ Build success in 23ms
 
-> @luminate/database@ build-entrypoint /Users/monkeydev/Desktop/luminate/luminate/packages/database
+> @luminate/database@ build-entrypoint /Users/monkeydev/Desktop/projects/custom-luminate/packages/database
 > tsup src/index.ts --outDir src
 
 CLI Building entry: src/index.ts
 CLI Using tsconfig: tsconfig.json
 CLI tsup v7.1.0
-CLI Using tsup config: /Users/monkeydev/Desktop/luminate/luminate/packages/database/tsup.config.ts
+CLI Using tsup config: /Users/monkeydev/Desktop/projects/custom-luminate/packages/database/tsup.config.ts
 CLI Target: node16
 CJS Build start
 ESM Build start
-CJS src/index.js 1.16 KB
-CJS ⚡️ Build success in 5ms
 ESM src/index.mjs 69.00 B
 ESM ⚡️ Build success in 5ms
+CJS src/index.js 1.16 KB
+CJS ⚡️ Build success in 5ms
