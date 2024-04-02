@@ -2,87 +2,87 @@
 > @luminate/database@ codegen /Users/monkeydev/Desktop/projects/custom-luminate/packages/database
 > prisma generate && pnpm build-zod && pnpm build-entrypoint
 
-Prisma schema loaded from prisma/schema.prisma
+[2mPrisma schema loaded from prisma/schema.prisma[22m
 
-✔ Generated Prisma Client (5.0.0 | library) to ./src/generated/client in 211ms
+✔ Generated [1mPrisma Client[22m (5.0.0 | library)[2m to ./src/generated/client[22m in 558ms
 
-✔ Generated Zod Schemas (0.5.4) to ./src/generated/zod in 204ms
-You can now start using Prisma Client in your code. Reference: https://pris.ly/d/client
-```
-import { PrismaClient } from './src/generated/client'
-const prisma = new PrismaClient()
-```
+✔ Generated [1mZod Schemas[22m (0.5.4)[2m to ./src/generated/zod[22m in 359ms
+You can now start using Prisma Client in your code. Reference: ]8;;https://pris.ly/d/clienthttps://pris.ly/d/client]8;;
+[2m```[22m
+[36mimport[39m [34m{[39m PrismaClient [34m}[39m [36mfrom[39m [1m[32m'./src/generated/client'[39m[22m
+[36mconst[39m prisma = [36mnew[39m PrismaClient[34m([39m[34m)[39m
+[2m```[22m
 
 > @luminate/database@ build-zod /Users/monkeydev/Desktop/projects/custom-luminate/packages/database
 > tsup src/generated/zod/*.ts --outDir src/generated/zod
 
-CLI Building entry: src/generated/zod/banner.ts, src/generated/zod/discountcode.ts, src/generated/zod/discountcodegroup.ts, src/generated/zod/fundamentalcourse.ts, src/generated/zod/index.ts, src/generated/zod/livecourse.ts, src/generated/zod/livecourseaddon.ts, src/generated/zod/livecoursebooking.ts, src/generated/zod/livecoursecharge.ts, src/generated/zod/livecoursechatroom.ts, src/generated/zod/livecoursecomment.ts, src/generated/zod/livecourseimagedescription.ts, src/generated/zod/livecoursepackage.ts, src/generated/zod/livecoursepageui.ts, src/generated/zod/livecoursesonusers.ts, src/generated/zod/livecoursetrialonuser.ts, src/generated/zod/livesession.ts, src/generated/zod/livesessionquiz.ts, src/generated/zod/mockexam.ts, src/generated/zod/shippingaddress.ts, src/generated/zod/studentonlivesession.ts, src/generated/zod/studentonlivesessionquiz.ts, src/generated/zod/tutorcard.ts
-CLI Using tsconfig: tsconfig.json
-CLI tsup v7.1.0
-CLI Using tsup config: /Users/monkeydev/Desktop/projects/custom-luminate/packages/database/tsup.config.ts
-CLI Target: node16
-CJS Build start
-ESM Build start
-ESM src/generated/zod/shippingaddress.mjs            674.00 B
-ESM src/generated/zod/livesession.mjs                1.28 KB
-ESM src/generated/zod/studentonlivesessionquiz.mjs   736.00 B
-ESM src/generated/zod/livecoursechatroom.mjs         488.00 B
-ESM src/generated/zod/livecoursepackage.mjs          732.00 B
-ESM src/generated/zod/livecourseimagedescription.mjs 549.00 B
-ESM src/generated/zod/livecoursecharge.mjs           903.00 B
-ESM src/generated/zod/livecoursepageui.mjs           383.00 B
-ESM src/generated/zod/banner.mjs                     319.00 B
-ESM src/generated/zod/livecoursesonusers.mjs         1.09 KB
-ESM src/generated/zod/fundamentalcourse.mjs          432.00 B
-ESM src/generated/zod/discountcodegroup.mjs          415.00 B
-ESM src/generated/zod/index.mjs                      785.00 B
-ESM src/generated/zod/livecoursecomment.mjs          515.00 B
-ESM src/generated/zod/discountcode.mjs               871.00 B
-ESM src/generated/zod/mockexam.mjs                   367.00 B
-ESM src/generated/zod/livecourseaddon.mjs            433.00 B
-ESM src/generated/zod/livecourse.mjs                 3.62 KB
-ESM src/generated/zod/livecoursetrialonuser.mjs      482.00 B
-ESM src/generated/zod/livecoursebooking.mjs          1.10 KB
-ESM src/generated/zod/studentonlivesession.mjs       526.00 B
-ESM src/generated/zod/livesessionquiz.mjs            828.00 B
-ESM src/generated/zod/tutorcard.mjs                  258.00 B
-ESM ⚡️ Build success in 23ms
-CJS src/generated/zod/discountcodegroup.js          2.11 KB
-CJS src/generated/zod/fundamentalcourse.js          2.13 KB
-CJS src/generated/zod/discountcode.js               2.50 KB
-CJS src/generated/zod/livecourseaddon.js            2.11 KB
-CJS src/generated/zod/livecoursecharge.js           2.55 KB
-CJS src/generated/zod/livecoursebooking.js          2.79 KB
-CJS src/generated/zod/livecoursecomment.js          2.21 KB
-CJS src/generated/zod/index.js                      3.26 KB
-CJS src/generated/zod/livecourseimagedescription.js 2.30 KB
-CJS src/generated/zod/livecoursepageui.js           2.00 KB
-CJS src/generated/zod/livecoursechatroom.js         2.19 KB
-CJS src/generated/zod/livecoursesonusers.js         2.77 KB
-CJS src/generated/zod/livecoursepackage.js          2.42 KB
-CJS src/generated/zod/livecoursetrialonuser.js      2.19 KB
-CJS src/generated/zod/banner.js                     1.89 KB
-CJS src/generated/zod/livesession.js                2.84 KB
-CJS src/generated/zod/studentonlivesession.js       2.24 KB
-CJS src/generated/zod/studentonlivesessionquiz.js   2.45 KB
-CJS src/generated/zod/mockexam.js                   2.00 KB
-CJS src/generated/zod/livesessionquiz.js            2.48 KB
-CJS src/generated/zod/shippingaddress.js            2.32 KB
-CJS src/generated/zod/livecourse.js                 5.07 KB
-CJS src/generated/zod/tutorcard.js                  1.85 KB
-CJS ⚡️ Build success in 23ms
+[34mCLI[39m Building entry: src/generated/zod/banner.ts, src/generated/zod/discountcode.ts, src/generated/zod/discountcodegroup.ts, src/generated/zod/fundamentalcourse.ts, src/generated/zod/index.ts, src/generated/zod/livecourse.ts, src/generated/zod/livecourseaddon.ts, src/generated/zod/livecoursebooking.ts, src/generated/zod/livecoursecharge.ts, src/generated/zod/livecoursechatroom.ts, src/generated/zod/livecoursecomment.ts, src/generated/zod/livecourseimagedescription.ts, src/generated/zod/livecoursepackage.ts, src/generated/zod/livecoursepageui.ts, src/generated/zod/livecoursesonusers.ts, src/generated/zod/livecoursetrialonuser.ts, src/generated/zod/livesession.ts, src/generated/zod/livesessionquiz.ts, src/generated/zod/mockexam.ts, src/generated/zod/shippingaddress.ts, src/generated/zod/studentonlivesession.ts, src/generated/zod/studentonlivesessionquiz.ts, src/generated/zod/tutorcard.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v7.1.0
+[34mCLI[39m Using tsup config: /Users/monkeydev/Desktop/projects/custom-luminate/packages/database/tsup.config.ts
+[34mCLI[39m Target: node16
+[34mCJS[39m Build start
+[34mESM[39m Build start
+[32mESM[39m [1msrc/generated/zod/mockexam.mjs                   [22m[32m367.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livesessionquiz.mjs            [22m[32m828.00 B[39m
+[32mESM[39m [1msrc/generated/zod/shippingaddress.mjs            [22m[32m674.00 B[39m
+[32mESM[39m [1msrc/generated/zod/studentonlivesessionquiz.mjs   [22m[32m736.00 B[39m
+[32mESM[39m [1msrc/generated/zod/studentonlivesession.mjs       [22m[32m526.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecoursepageui.mjs           [22m[32m383.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecourseimagedescription.mjs [22m[32m549.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecoursepackage.mjs          [22m[32m732.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecoursetrialonuser.mjs      [22m[32m482.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecoursecomment.mjs          [22m[32m515.00 B[39m
+[32mESM[39m [1msrc/generated/zod/tutorcard.mjs                  [22m[32m258.00 B[39m
+[32mESM[39m [1msrc/generated/zod/banner.mjs                     [22m[32m319.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecoursesonusers.mjs         [22m[32m1.09 KB[39m
+[32mESM[39m [1msrc/generated/zod/discountcode.mjs               [22m[32m871.00 B[39m
+[32mESM[39m [1msrc/generated/zod/discountcodegroup.mjs          [22m[32m415.00 B[39m
+[32mESM[39m [1msrc/generated/zod/fundamentalcourse.mjs          [22m[32m432.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecourse.mjs                 [22m[32m3.62 KB[39m
+[32mESM[39m [1msrc/generated/zod/livecoursecharge.mjs           [22m[32m903.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecoursechatroom.mjs         [22m[32m488.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livesession.mjs                [22m[32m1.28 KB[39m
+[32mESM[39m [1msrc/generated/zod/index.mjs                      [22m[32m785.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecourseaddon.mjs            [22m[32m433.00 B[39m
+[32mESM[39m [1msrc/generated/zod/livecoursebooking.mjs          [22m[32m1.10 KB[39m
+[32mESM[39m ⚡️ Build success in 42ms
+[32mCJS[39m [1msrc/generated/zod/banner.js                     [22m[32m1.89 KB[39m
+[32mCJS[39m [1msrc/generated/zod/discountcode.js               [22m[32m2.50 KB[39m
+[32mCJS[39m [1msrc/generated/zod/discountcodegroup.js          [22m[32m2.11 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecoursebooking.js          [22m[32m2.79 KB[39m
+[32mCJS[39m [1msrc/generated/zod/index.js                      [22m[32m3.26 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecourse.js                 [22m[32m5.07 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecoursecharge.js           [22m[32m2.55 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecoursechatroom.js         [22m[32m2.19 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecourseaddon.js            [22m[32m2.11 KB[39m
+[32mCJS[39m [1msrc/generated/zod/fundamentalcourse.js          [22m[32m2.13 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecoursecomment.js          [22m[32m2.21 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecourseimagedescription.js [22m[32m2.30 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecoursepackage.js          [22m[32m2.42 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecoursepageui.js           [22m[32m2.00 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecoursetrialonuser.js      [22m[32m2.19 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livecoursesonusers.js         [22m[32m2.77 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livesession.js                [22m[32m2.84 KB[39m
+[32mCJS[39m [1msrc/generated/zod/livesessionquiz.js            [22m[32m2.48 KB[39m
+[32mCJS[39m [1msrc/generated/zod/mockexam.js                   [22m[32m2.00 KB[39m
+[32mCJS[39m [1msrc/generated/zod/studentonlivesession.js       [22m[32m2.24 KB[39m
+[32mCJS[39m [1msrc/generated/zod/studentonlivesessionquiz.js   [22m[32m2.45 KB[39m
+[32mCJS[39m [1msrc/generated/zod/tutorcard.js                  [22m[32m1.85 KB[39m
+[32mCJS[39m [1msrc/generated/zod/shippingaddress.js            [22m[32m2.32 KB[39m
+[32mCJS[39m ⚡️ Build success in 45ms
 
 > @luminate/database@ build-entrypoint /Users/monkeydev/Desktop/projects/custom-luminate/packages/database
 > tsup src/index.ts --outDir src
 
-CLI Building entry: src/index.ts
-CLI Using tsconfig: tsconfig.json
-CLI tsup v7.1.0
-CLI Using tsup config: /Users/monkeydev/Desktop/projects/custom-luminate/packages/database/tsup.config.ts
-CLI Target: node16
-CJS Build start
-ESM Build start
-ESM src/index.mjs 69.00 B
-ESM ⚡️ Build success in 5ms
-CJS src/index.js 1.16 KB
-CJS ⚡️ Build success in 5ms
+[34mCLI[39m Building entry: src/index.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v7.1.0
+[34mCLI[39m Using tsup config: /Users/monkeydev/Desktop/projects/custom-luminate/packages/database/tsup.config.ts
+[34mCLI[39m Target: node16
+[34mCJS[39m Build start
+[34mESM[39m Build start
+[32mCJS[39m [1msrc/index.js [22m[32m1.16 KB[39m
+[32mCJS[39m ⚡️ Build success in 5ms
+[32mESM[39m [1msrc/index.mjs [22m[32m69.00 B[39m
+[32mESM[39m ⚡️ Build success in 5ms

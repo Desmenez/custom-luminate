@@ -1,4 +1,4 @@
-import { z } from 'zod';
+import { z } from "zod";
 export declare const GetBannerOrderByInput: z.ZodObject<{
     createdAt: z.ZodOptional<z.ZodEnum<["asc", "desc"]>>;
     updatedAt: z.ZodOptional<z.ZodEnum<["asc", "desc"]>>;

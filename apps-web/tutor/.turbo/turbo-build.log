@@ -1,0 +1,45 @@
+
+> @web/tutor@0.1.0 build /Users/monkeydev/Desktop/projects/custom-luminate/apps-web/tutor
+> next build
+
+- [36minfo[39m Loaded env from /Users/monkeydev/Desktop/projects/custom-luminate/apps-web/tutor/.env
+- [33mwarn[39m [1mYou have enabled experimental feature (scrollRestoration) in next.config.js.[22m
+- [33mwarn[39m Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+
+- [36minfo[39m Skipping linting
+[?25l- [36minfo[39m Checking validity of types [36m.[39m[2K[1G- [36minfo[39m Checking validity of types [36m..[39m[2K[1G- [36minfo[39m Checking validity of types [36m...[39m[2K[1G- [36minfo[39m Checking validity of types [36m.[39m[2K[1G- [36minfo[39m Checking validity of types [36m..[39m[2K[1G- [36minfo[39m Checking validity of types [36m...[39m[2K[1G- [36minfo[39m Checking validity of types [36m.[39m[2K[1G- [36minfo[39m Checking validity of types [36m..[39m[2K[1G- [36minfo[39m Checking validity of types [36m...[39m[2K[1G- [36minfo[39m Checking validity of types [36m.[39m[2K[1G- [36minfo[39m Checking validity of types [36m..[39m[2K[1G- [36minfo[39m Checking validity of types [36m...[39m[2K[1G- [36minfo[39m Checking validity of types [36m.[39m[2K[1G[?25h- [36minfo[39m Checking validity of types  
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h- [36minfo[39m Creating an optimized production build  
+- [36minfo[39m Compiled successfully
+[?25l- [36minfo[39m Collecting page data [36m.[39m[2K[1G- [36minfo[39m Collecting page data [36m..[39m[2K[1G- [36minfo[39m Collecting page data [36m...[39m[2K[1G- [36minfo[39m Collecting page data [36m.[39mEnvironment variables are valid
+Environment variables are valid
+Environment variables are valid
+Environment variables are valid
+Environment variables are valid
+Environment variables are valid
+Environment variables are valid
+[2K[1G- [36minfo[39m Collecting page data [36m..[39m[2K[1G[?25h- [36minfo[39m Collecting page data  
+[?25l[36m[    ][39m - [36minfo[39m Generating static pages (0/4)[2K[1G[?25h- [36minfo[39m Generating static pages (4/4)
+[?25l- [36minfo[39m Finalizing page optimization [36m.[39m[2K[1G[?25h- [36minfo[39m Finalizing page optimization  
+
+[4mRoute (pages)[24m                              [4mSize[24m     [4mFirst Load JS[24m
+┌ λ /                                      14 kB           [31m[1m251 kB[22m[39m
+├   /_app                                  0 B             [31m[1m214 kB[22m[39m
+├ ○ /404                                   1.29 kB         [31m[1m215 kB[22m[39m
+├ λ /course/[courseId]                     10.5 kB         [31m[1m234 kB[22m[39m
+├ ○ /playground/course-table               875 B           [31m[1m238 kB[22m[39m
+├ λ /playground/login                      3.04 kB         [31m[1m217 kB[22m[39m
+├ ○ /playground/quiz                       1.74 kB         [31m[1m223 kB[22m[39m
+├ ○ /playground/quiz-management            4 kB            [31m[1m225 kB[22m[39m
+├ λ /session/[sessionId]                   26.5 kB         [31m[1m248 kB[22m[39m
+└ λ /sign-in                               8.76 kB         [31m[1m223 kB[22m[39m
++ First Load JS shared by all              [31m[1m226 kB[22m[39m
+  ├ chunks/framework-32885ef170e0685d.js   45.2 kB
+  ├ chunks/main-438afcfb633893a4.js        33.5 kB
+  ├ chunks/pages/_app-a3141cdecd63028e.js  133 kB
+  ├ chunks/webpack-adec8cb98d24dff1.js     1.81 kB
+  └ css/039167c3ce9e80cf.css               11.8 kB
+
+λ  (Server)  server-side renders at runtime (uses [36mgetInitialProps[39m or [36mgetServerSideProps[39m)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+[?25h

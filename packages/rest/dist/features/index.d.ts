@@ -1,17 +1,17 @@
-export * from './base-plan';
-export * from './live-course';
-export * from './live-course-package';
-export * from './live-session';
-export * from './tutor';
-export * from './quiz';
-export * from './subject';
-export * from './mock-exam';
-export * from './exam';
-export * from './student';
-export * from './banner';
-export * from './payment';
-export * from './webhook';
-export * from './file-storage';
+export * from "./base-plan";
+export * from "./live-course";
+export * from "./live-course-package";
+export * from "./live-session";
+export * from "./tutor";
+export * from "./quiz";
+export * from "./subject";
+export * from "./mock-exam";
+export * from "./exam";
+export * from "./student";
+export * from "./banner";
+export * from "./payment";
+export * from "./webhook";
+export * from "./file-storage";
 export declare const mainContract: {
     auth: {
         me: {

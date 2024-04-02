@@ -1,0 +1,32 @@
+# Git
+.git
+.gitignore
+
+# Github
+.github
+
+# IDE
+.vscode
+.idea
+
+# Docker 
+# .dockerignore
+# Dockerfile
+
+
+# node
+# **/node_modules
+
+**/dist
+
+fly.toml
+
+# **/.env*
+
+# next
+**/.next
+
+# from @luminate/database .gitignore
+packages/database/src/generated
+packages/database/src/index.js
+packages/database/src/index.mjs

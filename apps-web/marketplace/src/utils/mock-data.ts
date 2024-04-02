@@ -71,64 +71,64 @@ export const mockTutorCards = [
   },
 ];
 
-export const mockMyCourses: MyCourseCardsProps = {
-  myCourses: [
-    {
-      id: "1",
-      type: "ONSITE",
-      description: "description",
-      name: "course-1",
-      subjectId: "subjectId",
-      isRecommended: true,
-      courseThumbnailUrl: "https://picsum.photos/id/114/220/296",
-      courseCoverUrl: "https://picsum.photos/id/116/350/194",
-      courseStickerUrl: "https://picsum.photos/id/10/200/90",
-      startDate: "2021-09-01T00:00:00Z",
-      endDate: "2021-09-01T00:00:00Z",
-      liveSessionsDescription: "liveSessionsDescription",
-      basePlanType: "FOUNDATION",
-      isMyCourse: true,
-      onlinePrice: 100,
-      onsitePrice: 100,
-      subject: {
-        code: "code",
-        name: "name",
-      },
-      tutor: {
-        displayName: "tutor1",
-        tutorIconUrl: "https://picsum.photos/id/117/50",
-      },
-    },
-  ],
-};
+// export const mockMyCourses: MyCourseCardsProps = {
+//   myCourses: [
+//     {
+//       id: "1",
+//       basePlanType: "FOUNDATION",
+//       courseCoverUrl: "https://picsum.photos/id/116/350/194",
+//       courseStickerUrl: "https://picsum.photos/id/10/200/90",
+//       courseThumbnailUrl: "https://picsum.photos/id/114/220/296",
+//       description: "description",
+//       endDate: new Date("2021-09-01T00:00:00Z"),
+//       isMyCourse: true,
+//       isRecommended: true,
+//       liveSessionsDescription: "liveSessionsDescription",
+//       name: "course-1",
+//       onlinePrice: 100,
+//       onsitePrice: 100,
+//       startDate: new Date("2021-09-01T00:00:00Z"),
+//       subject: {
+//         code: "code",
+//         name: "name",
+//       },
+//       subjectId: "subjectId",
+//       tutor: {
+//         displayName: "tutor1",
+//         tutorIconUrl: "https://picsum.photos/id/117/50",
+//       },
+//       type: "ONSITE",
+//     },
+//   ],
+// };
 
-export const mockSuggestedCourses: SuggestedCourseCardsProps = {
-  suggestedCourses: [
-    {
-      id: "1",
-      type: "ONSITE",
-      description: "description",
-      name: "suggest-course-1",
-      subjectId: "subjectId",
-      isRecommended: true,
-      courseThumbnailUrl: "https://picsum.photos/id/114/220/296",
-      courseCoverUrl: "https://picsum.photos/id/116/350/194",
-      courseStickerUrl: "https://picsum.photos/id/10/200/90",
-      startDate: "2021-09-01T00:00:00Z",
-      endDate: "2021-09-01T00:00:00Z",
-      liveSessionsDescription: "liveSessionsDescription",
-      basePlanType: "FOUNDATION",
-      isMyCourse: false,
-      onlinePrice: 100,
-      onsitePrice: 100,
-      subject: {
-        code: "code",
-        name: "name",
-      },
-      tutor: {
-        displayName: "tutor1",
-        tutorIconUrl: "https://picsum.photos/id/117/50",
-      },
-    },
-  ],
-};
+// export const mockSuggestedCourses: SuggestedCourseCardsProps = {
+//   suggestedCourses: [
+//     {
+//       id: "1",
+//       type: "ONSITE",
+//       description: "description",
+//       name: "suggest-course-1",
+//       subjectId: "subjectId",
+//       isRecommended: true,
+//       courseThumbnailUrl: "https://picsum.photos/id/114/220/296",
+//       courseCoverUrl: "https://picsum.photos/id/116/350/194",
+//       courseStickerUrl: "https://picsum.photos/id/10/200/90",
+//       startDate: "2021-09-01T00:00:00Z",
+//       endDate: "2021-09-01T00:00:00Z",
+//       liveSessionsDescription: "liveSessionsDescription",
+//       basePlanType: "FOUNDATION",
+//       isMyCourse: false,
+//       onlinePrice: 100,
+//       onsitePrice: 100,
+//       subject: {
+//         code: "code",
+//         name: "name",
+//       },
+//       tutor: {
+//         displayName: "tutor1",
+//         tutorIconUrl: "https://picsum.photos/id/117/50",
+//       },
+//     },
+//   ],
+// };

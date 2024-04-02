@@ -16,6 +16,9 @@
     "everyday-proxy": "flyctl proxy 50012 -a stg-everyday-live-stream",
     "delete-local-merged": "git fetch && git branch --merged | egrep -v 'master|dev|main|staging' | xargs git branch -d"
   },
+  "dependencies": {
+    "glob": "latest"
+  },
   "devDependencies": {
     "@luminate/project-config": "workspace:^",
     "@turbo/gen": "^1.9.7",

@@ -1,0 +1,66 @@
+
+> @web/marketplace@0.1.0 build /Users/monkeydev/Desktop/projects/custom-luminate/apps-web/marketplace
+> next build
+
+- [36minfo[39m Loaded env from /Users/monkeydev/Desktop/projects/custom-luminate/apps-web/marketplace/.env
+- [33mwarn[39m [1mYou have enabled experimental feature (scrollRestoration) in next.config.js.[22m
+- [33mwarn[39m Experimental features are not covered by semver, and may cause unexpected or broken application behavior. Use at your own risk.
+
+- [36minfo[39m Skipping linting
+[?25l- [36minfo[39m Checking validity of types [36m.[39m[2K[1G- [36minfo[39m Checking validity of types [36m..[39m[2K[1G- [36minfo[39m Checking validity of types [36m...[39m[2K[1G- [36minfo[39m Checking validity of types [36m.[39m[2K[1G- [36minfo[39m Checking validity of types [36m..[39m[2K[1G- [36minfo[39m Checking validity of types [36m...[39m[2K[1G- [36minfo[39m Checking validity of types [36m.[39m[2K[1G- [36minfo[39m Checking validity of types [36m..[39m[2K[1G- [36minfo[39m Checking validity of types [36m...[39m[2K[1G- [36minfo[39m Checking validity of types [36m.[39m[2K[1G- [36minfo[39m Checking validity of types [36m..[39m[2K[1G- [36minfo[39m Checking validity of types [36m...[39m[2K[1G[?25h- [36minfo[39m Checking validity of types  
+[?25l- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m..[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m...[39m[2K[1G- [36minfo[39m Creating an optimized production build [36m.[39m[2K[1G[?25h- [36minfo[39m Creating an optimized production build  
+- [36minfo[39m Compiled successfully
+[?25l- [36minfo[39m Collecting page data [36m.[39m[2K[1G- [36minfo[39m Collecting page data [36m..[39m[2K[1G- [36minfo[39m Collecting page data [36m...[39mEnvironment variables are valid
+Environment variables are valid
+Environment variables are valid
+Environment variables are valid
+Environment variables are valid
+Environment variables are valid
+Environment variables are valid
+[2K[1G- [36minfo[39m Collecting page data [36m.[39m[2K[1G- [36minfo[39m Collecting page data [36m..[39m[2K[1G- [36minfo[39m Collecting page data [36m...[39m[2K[1G- [36minfo[39m Collecting page data [36m.[39m[2K[1G[?25h- [36minfo[39m Collecting page data  
+[?25l[36m[    ][39m - [36minfo[39m Generating static pages (0/13)tutorIds []
+tutorIdsHandler {
+  push: [Function: push],
+  remove: [Function: remove],
+  set: [Function: set]
+}
+tutors in real real undefined
+tutorIds in checkbox []
+null
+[2K[1G[?25h- [36minfo[39m Generating static pages (13/13)
+[?25l- [36minfo[39m Finalizing page optimization [36m.[39m[2K[1G[?25h- [36minfo[39m Finalizing page optimization  
+
+[4mRoute (pages)[24m                              [4mSize[24m     [4mFirst Load JS[24m
+┌ ○ /                                      8.15 kB         [31m[1m227 kB[22m[39m
+├   /_app                                  0 B             [31m[1m218 kB[22m[39m
+├ ○ /404                                   1.3 kB          [31m[1m220 kB[22m[39m
+├ λ /api/hello                             0 B             [31m[1m218 kB[22m[39m
+├ λ /api/mock-api                          0 B             [31m[1m218 kB[22m[39m
+├ ○ /browse                                7.86 kB         [31m[1m261 kB[22m[39m
+├ λ /course/[courseId]                     23 kB           [31m[1m292 kB[22m[39m
+├ λ /live/[liveSessionId]                  220 kB          [31m[1m445 kB[22m[39m
+├ λ /my-course                             5.6 kB          [31m[1m250 kB[22m[39m
+├ λ /payment/booking/[bookingId]           7.68 kB         [31m[1m259 kB[22m[39m
+├ λ /payment/course/[courseId]             9.43 kB         [31m[1m258 kB[22m[39m
+├ ○ /payment/status/[chargeId]             10.3 kB         [31m[1m244 kB[22m[39m
+├ ○ /playground/dynamic-section            3.49 kB         [31m[1m230 kB[22m[39m
+├ ○ /playground/exam-section               2.85 kB         [31m[1m224 kB[22m[39m
+├ ○ /playground/lesson-section             1.58 kB         [31m[1m236 kB[22m[39m
+├ λ /playground/login                      2.62 kB         [31m[1m221 kB[22m[39m
+├ ○ /playground/omise                      1.52 kB         [31m[1m220 kB[22m[39m
+├ ○ /playground/pagination                 1.53 kB         [31m[1m220 kB[22m[39m
+├ ○ /playground/payment-course-header      3.1 kB          [31m[1m229 kB[22m[39m
+├ ○ /playground/review-section             2.23 kB         [31m[1m243 kB[22m[39m
+├ ○ /playground/toast                      515 B           [31m[1m219 kB[22m[39m
+└ ○ /playground/tutor-demo                 5.42 kB         [31m[1m239 kB[22m[39m
++ First Load JS shared by all              [31m[1m233 kB[22m[39m
+  ├ chunks/framework-32885ef170e0685d.js   45.2 kB
+  ├ chunks/main-c871a0f70947fc71.js        33.6 kB
+  ├ chunks/pages/_app-0873a811c45f373f.js  138 kB
+  ├ chunks/webpack-0a7a3410e240523d.js     1.9 kB
+  └ css/0ff790ed0584aebb.css               14.8 kB
+
+λ  (Server)  server-side renders at runtime (uses [36mgetInitialProps[39m or [36mgetServerSideProps[39m)
+○  (Static)  automatically rendered as static HTML (uses no initial props)
+
+[?25h

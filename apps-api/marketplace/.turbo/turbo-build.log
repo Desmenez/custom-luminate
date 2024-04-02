@@ -1,0 +1,14 @@
+
+> @api/marketplace@0.1.0 build /Users/monkeydev/Desktop/projects/custom-luminate/apps-api/marketplace
+> tsup
+
+[34mCLI[39m Building entry: src/main.ts
+[34mCLI[39m Using tsconfig: tsconfig.json
+[34mCLI[39m tsup v7.1.0
+[34mCLI[39m Using tsup config: /Users/monkeydev/Desktop/projects/custom-luminate/apps-api/marketplace/tsup.config.js
+[34mCLI[39m Target: esnext
+[34mCLI[39m Cleaning output folder
+[34mCJS[39m Build start
+[32mCJS[39m [1mdist/main.cjs     [22m[32m774.11 KB[39m
+[32mCJS[39m [1mdist/main.cjs.map [22m[32m1.19 MB[39m
+[32mCJS[39m ⚡️ Build success in 1108ms

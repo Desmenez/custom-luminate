@@ -13,7 +13,12 @@ const newNextConfig = {
   basePath: BASE_PATH,
   // Add or merge the images configuration here
   images: {
-    domains: [...(nextConfig.images?.domains || []), "picsum.photos"],
+    domains: [
+      ...(nextConfig.images?.domains || []),
+      "picsum.photos",
+      "loremflickr.com",
+      "cloudflare-ipfs.com",
+    ],
   },
   async rewrites() {
     const rewriteList = [];

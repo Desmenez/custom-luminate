@@ -1,9 +1,9 @@
-import { Children, PropsWithChildren, useId, useState } from 'react'
+import { Children, PropsWithChildren, useId, useState } from "react";
 
-import { reactQueryClient } from '@app/core/services'
-import { faCircleChevronDown } from '@fortawesome/pro-solid-svg-icons'
+import { reactQueryClient } from "@app/core/services";
+import { faCircleChevronDown } from "@fortawesome/pro-solid-svg-icons";
 
-import { BasePlanType, LiveCourseType } from '@luminate/database'
+import { BasePlanType, LiveCourseType } from "@luminate/database";
 import {
   Checkbox,
   Collapsible,
@@ -11,27 +11,34 @@ import {
   CollapsibleTrigger,
   FontAwesomeIcon,
   Label,
-} from '@luminate/ui'
+} from "@luminate/ui";
 
-import { Grade } from '../constants'
-import { UseQueryParamArrayResult } from '../hooks'
+import { Grade } from "../constants";
+import { UseQueryParamArrayResult } from "../hooks";
 
 export interface FiltersProps {
-  liveCourseType: UseQueryParamArrayResult<LiveCourseType>['value']
-  liveCourseTypeHandler: UseQueryParamArrayResult<LiveCourseType>['handler']
-  grades: UseQueryParamArrayResult<Grade>['value']
-  gradesHandler: UseQueryParamArrayResult<Grade>['handler']
-  basePlanTypes: UseQueryParamArrayResult<BasePlanType>['value']
-  basePlanTypesHandler: UseQueryParamArrayResult<BasePlanType>['handler']
-  subjectIds: UseQueryParamArrayResult<string>['value']
-  subjectIdsHandler: UseQueryParamArrayResult<string>['handler']
-  tutorIds: UseQueryParamArrayResult<string>['value']
-  tutorIdsHandler: UseQueryParamArrayResult<string>['handler']
+  liveCourseType: UseQueryParamArrayResult<LiveCourseType>["value"];
+  liveCourseTypeHandler: UseQueryParamArrayResult<LiveCourseType>["handler"];
+  grades: UseQueryParamArrayResult<Grade>["value"];
+  gradesHandler: UseQueryParamArrayResult<Grade>["handler"];
+  basePlanTypes: UseQueryParamArrayResult<BasePlanType>["value"];
+  basePlanTypesHandler: UseQueryParamArrayResult<BasePlanType>["handler"];
+  subjectIds: UseQueryParamArrayResult<string>["value"];
+  subjectIdsHandler: UseQueryParamArrayResult<string>["handler"];
+  tutorIds: UseQueryParamArrayResult<string>["value"];
+  tutorIdsHandler: UseQueryParamArrayResult<string>["handler"];
 }
 
 export const Filters = (props: FiltersProps) => {
-  const { data: tutors } = reactQueryClient.tutor.getTutors.useQuery(['tutors'])
-  const { data: subjects } = reactQueryClient.subject.getSubjects.useQuery(['subjects'])
+  const { data: tutors } = reactQueryClient.tutor.getTutors.useQuery([
+    "tutors",
+  ]);
+  const { data: subjects } = reactQueryClient.subject.getSubjects.useQuery([
+    "subjects",
+  ]);
+
+  console.log("tutors in real real", tutors);
+  console.log("tutorIds in checkbox", props.tutorIds);
 
   return (
     <>
@@ -138,20 +145,26 @@ export const Filters = (props: FiltersProps) => {
         </CollapsibleFilter>
       )}
     </>
-  )
-}
+  );
+};
 
-const CollapsibleFilter = ({ children, label }: PropsWithChildren<{ label: string }>) => {
-  const count = Children.count(children)
-  const collapsible = count > 3
-  const [open, setOpen] = useState(false)
+const CollapsibleFilter = ({
+  children,
+  label,
+}: PropsWithChildren<{ label: string }>) => {
+  const count = Children.count(children);
+  const collapsible = count > 3;
+  const [open, setOpen] = useState(false);
   return (
     <Collapsible open={open} onOpenChange={setOpen}>
       <div className="flex flex-col gap-2.5">
         {collapsible ? (
           <CollapsibleTrigger className="flex justify-between items-center [&[data-state=open]>svg]:rotate-180">
             <span className="font-semibold my-1">{label}</span>
-            <FontAwesomeIcon icon={faCircleChevronDown} className="w-5 h-5 transition-transform" />
+            <FontAwesomeIcon
+              icon={faCircleChevronDown}
+              className="w-5 h-5 transition-transform"
+            />
           </CollapsibleTrigger>
         ) : (
           <span className="font-semibold my-1">{label}</span>
@@ -159,20 +172,22 @@ const CollapsibleFilter = ({ children, label }: PropsWithChildren<{ label: strin
         {Children.toArray(children).slice(0, 3)}
         {collapsible && (
           <CollapsibleContent>
-            <div className="flex flex-col gap-2.5 ">{Children.toArray(children).slice(3)}</div>
+            <div className="flex flex-col gap-2.5 ">
+              {Children.toArray(children).slice(3)}
+            </div>
           </CollapsibleContent>
         )}
       </div>
     </Collapsible>
-  )
-}
+  );
+};
 
 interface FilterCheckboxProps<T extends string>
   extends React.ComponentPropsWithoutRef<typeof Checkbox> {
-  label: string
-  value: T
-  array: UseQueryParamArrayResult<T>['value']
-  arrayHandler: UseQueryParamArrayResult<T>['handler']
+  label: string;
+  value: T;
+  array: UseQueryParamArrayResult<T>["value"];
+  arrayHandler: UseQueryParamArrayResult<T>["handler"];
 }
 
 const FilterCheckbox = <T extends string>({
@@ -182,7 +197,7 @@ const FilterCheckbox = <T extends string>({
   arrayHandler,
   ...props
 }: FilterCheckboxProps<T>) => {
-  const id = useId()
+  const id = useId();
   return (
     <label className="flex items-center gap-2 cursor-pointer" htmlFor={id}>
       <Checkbox
@@ -190,9 +205,9 @@ const FilterCheckbox = <T extends string>({
         checked={array.includes(value)}
         onCheckedChange={(checked) => {
           if (checked) {
-            arrayHandler.push(value)
+            arrayHandler.push(value);
           } else {
-            arrayHandler.remove(value)
+            arrayHandler.remove(value);
           }
         }}
         {...props}
@@ -201,5 +216,5 @@ const FilterCheckbox = <T extends string>({
         {label}
       </Label>
     </label>
-  )
-}
+  );
+};

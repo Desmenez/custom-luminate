@@ -1,4 +1,4 @@
-version: '3.7'
+version: "3.7"
 
 services:
   database:
@@ -20,6 +20,19 @@ services:
       - redis-storage:/data
     ports:
       - 6379:6379
+
+  frontend:
+    build: .
+    image: luminate-frontend
+    restart: unless-stopped
+    ports:
+      - 3000:3000
+    depends_on:
+      - database
+      - redis
+    environment:
+      REDIS_HOST: redis
+      REDIS_PORT: 6379
 
 volumes:
   database-storage:
