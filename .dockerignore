@@ -13,9 +13,11 @@
 # .dockerignore
 # Dockerfile
 
+# ignore folder apps-api
+apps-api
 
 # node
-# **/node_modules
+**/node_modules
 
 **/dist
 
